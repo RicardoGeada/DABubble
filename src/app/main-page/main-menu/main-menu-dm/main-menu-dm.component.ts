@@ -4,6 +4,7 @@ import { DynamicContentComponent } from '../../../shared/dynamic-content/dynamic
 import { UserService } from '../../../firebase.service/user.service';
 import { User } from '../../../interfaces/user.interface';
 import { ChannelFirebaseService } from '../../../firebase.service/channelFirebase.service';
+import { user } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-main-menu-dm',
@@ -31,5 +32,6 @@ export class MainMenuDmComponent implements OnInit, OnDestroy {
 
   openDirectChannel( user_id: string ) {
     this.channelService.openDirectChannel(this.userService.currentUser.id, user_id);
+    console.log(user_id);
   }
 }

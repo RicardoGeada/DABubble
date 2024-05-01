@@ -10,6 +10,8 @@ import { ChannelFirebaseService } from '../../../firebase.service/channelFirebas
 import { ChannelTypeEnum } from '../../../shared/enums/channel-type.enum';
 import { Observable } from 'rxjs';
 import { Channel } from '../../../interfaces/channel.interface';
+import { UserAuthService } from '../../../firebase.service/user.auth.service';
+import { UserService } from '../../../firebase.service/user.service';
 
 @Component({
   selector: 'app-main-menu-channels',
@@ -27,13 +29,27 @@ export class MainMenuChannelsComponent implements OnInit {
   isExpanded = true;
 
 
-  constructor(private customDialogService: CustomDialogService, public channelService : ChannelFirebaseService) {
+  constructor(private customDialogService: CustomDialogService, public channelService : ChannelFirebaseService,  private authService: UserAuthService,
+    private userService: UserService
+  ) {
     
   }
 
   ngOnInit(): void {
-    
+    this.loadChannelsForCurrentUser();
+    console.log(this.channelService.channels)
   }
+
+  loadChannelsForCurrentUser() {
+    const userId = this.userService.currentUser.id;  // Ruft die aktuelle Benutzer-ID ab
+    console.log(userId);
+    if (userId) {
+      this.channelService.getChannelsForCurrentUser(userId);
+    } else {
+      console.error('Keine Benutzer-ID verfügbar');
+    }
+  }
+  
 
   toggleExpansion() {
     this.isExpanded = !this.isExpanded;

@@ -51,7 +51,9 @@ export class AddChannelCardComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     public channelService : ChannelFirebaseService,
     public userService : UserService,
-  ) {}
+  ) {
+    console.log(this.channelService.channels)
+  }
 
   ngOnInit(): void {
 

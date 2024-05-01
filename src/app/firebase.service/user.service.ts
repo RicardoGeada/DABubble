@@ -30,6 +30,7 @@ export class UserService implements OnDestroy {
                 // let userData = { id, data };
                 this.allUsers.push(this.setUsers(data, id));
             });
+            console.log("Benutzerdaten geladen: ", this.allUsers);
         });
     }
 
@@ -65,7 +66,43 @@ export class UserService implements OnDestroy {
 
     getCurrentUser(email: string) {
         this.currentUser = this.allUsers.find(user => user.email === email);
+        console.log('Benutzer gefunden:', this.currentUser);
     }
+
+    getCurrentUserId(): string | null {
+        return this.currentUser ? this.currentUser.uid : null;
+      }
+    // getCurrentUser(email: string) {
+    //     console.log("Suche nach Benutzer mit E-Mail: ", email);
+    //     console.log("Verfügbare Benutzer: ", this.allUsers);
+    //     let user = this.allUsers.find(user => user.email === email);
+    //     if (user) {
+    //         this.currentUser = user;
+    //         console.log('Benutzer gefunden:', this.currentUser);
+    //     } else {
+    //         console.error('Kein Benutzer mit dieser E-Mail gefunden.');
+    //         this.currentUser = null;  // Sicherstellen, dass kein ungültiger Zustand bleibt
+    //     }
+    // }
+    
+
+    // Methode, um den aktuellen Benutzer basierend auf einer Benutzer-ID zu laden
+// loadCurrentUser(userId: string) {
+//     const userRef = this.getSingleUserRef(userId);
+//     return onSnapshot(userRef, (doc) => {
+//         if (doc.exists()) {
+//             this.currentUser = { id: doc.id, ...doc.data() } as User;
+//         } else {
+//             console.error('Kein Benutzer gefunden.');
+//             this.currentUser = null;
+//         }
+//     }, (error) => {
+//         console.error('Fehler beim Laden des Benutzers:', error);
+//         this.currentUser = null;
+//     });
+// }
+
+    
 
     ngOnDestroy(): void {
         this.unsubUsers();

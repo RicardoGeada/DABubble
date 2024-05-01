@@ -13,6 +13,10 @@ export class UserAuthService {
 
   constructor(private auth: Auth) { }
 
+  getCurrentUserId(): string | null {
+    return this.auth.currentUser ? this.auth.currentUser.uid : null;
+  }
+
   loginUser(email: string, password: string) {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
