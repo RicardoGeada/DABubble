@@ -151,8 +151,7 @@ export class ChannelComponent {
 
 
   ngOnInit() {
-
-    if (this.userService.currentUser.last_channel) {
+    if (this.userService.currentUser && this.userService.currentUser.last_channel) {
       this.openChannel();
     }
     // this.subscriptions.add(
