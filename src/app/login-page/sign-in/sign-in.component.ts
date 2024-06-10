@@ -33,7 +33,6 @@ export class SignInComponent {
 
   constructor(
     private router: Router, private userService: UserService, private userAuth: UserAuthService) {
-
   }
 
 
@@ -83,7 +82,7 @@ export class SignInComponent {
 
 
   validatePassword(password: string): boolean {
-    // Mindestens 6 Zeichen, mindestens eine Großbuchstabe, eine Kleinbuchstabe und ein Sonderzeichen
+    // Mindestens 6 Zeichen, mindestens eine Großbuchstabe, eine Kleinbuchstabe, eine Zahl und ein Sonderzeichen
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
     if (!passwordRegex.test(password)) {
       this.passwordError = true;

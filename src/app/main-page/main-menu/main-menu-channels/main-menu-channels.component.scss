@@ -3,19 +3,15 @@
 .scroll-channels{
   @include dFlex($fd: column, $ai: flex-start, $gap: 25px);
   width: 100%;
-  // max-height: 50;
   height: 100%;
   overflow-y: scroll;
   justify-content: unset;
-  // max-height: 40%;
-  // overflow-y: auto;
+  background-color: whitesmoke; // VIELLEICHT
 }
 .menu-channel-container {
-  // @include dFlex($fd: column, $ai: flex-start, $gap: 25px);
   @include dFlex($fd: column,$gap: 15px);
   width: 100%;
   height: 50%;
-  // max-height: calc(100% - 100px);
 
   .menu-channel-header {
     @include dFlex($jc: space-between);

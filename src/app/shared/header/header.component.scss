@@ -5,10 +5,6 @@ header {
     position: absolute;
     top: -40px;
     left: -30px;
-    // align-items: center;
-    // padding: 75px;
-    // animation: fadeIn 1s forwards 4200ms;
-    // opacity: 0;
 }
 
 .logo-login {
@@ -40,14 +36,11 @@ header {
 }
 
 .intro-logo-container {
-    // display: none;
     height: 100vh;
     width: 100dvw;
     position: absolute;
     z-index: 1;
     overflow: hidden;
-    // pointer-events: none;
-    // touch-action: none;
 
 }
 
@@ -92,7 +85,6 @@ header {
     align-items: center;
     overflow: hidden;
     transform: translateX(0%);
-    // animation: revealText 1000ms forwards 1500ms;
 }
 
 .create-new-account-container {

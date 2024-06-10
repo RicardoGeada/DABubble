@@ -202,15 +202,9 @@ export class UserService implements OnDestroy {
       const storage = getStorage();
       const storageRef = ref(storage, 'images/' + file.name);
       const uploadTask = uploadBytesResumable(storageRef, file);
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-        },
-        (error) => {
-          reject(error);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      uploadTask.on('state_changed',(snapshot) => {},
+        (error) => { reject(error);
+         }, () => {getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             resolve(downloadURL);
           });
         }

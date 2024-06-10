@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { ChannelFirebaseService } from '../../../firebase.service/channelFirebase.service';
 import { Router, RouterModule} from '@angular/router';
 import { MainMenuComponent } from '../main-menu.component';
 
@@ -19,6 +18,7 @@ export class MainMenuHeaderComponent {
     public mainMenu: MainMenuComponent,
   ) {}
 
+  
   openNewChannel() {
     this.mainMenu.openNewChannel();
   }

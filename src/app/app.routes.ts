@@ -12,7 +12,6 @@ import { ChannelComponent } from './main-page/channel/channel.component';
 
 
 export const routes: Routes = [
-
     {   path: 'login-page', component: LoginPageComponent, children: [
             { path: 'login', component: LoginComponent },
             { path: 'signin', component: SignInComponent },

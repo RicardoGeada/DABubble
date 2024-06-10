@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -20,7 +20,7 @@ import { StateManagementService } from '../../../services/state-management.servi
   templateUrl: './main-menu-channels.component.html',
   styleUrl: './main-menu-channels.component.scss',
 })
-export class MainMenuChannelsComponent implements OnInit {
+export class MainMenuChannelsComponent {
   isExpanded: boolean = true;
   activeChannelId: string = '';
 
@@ -36,8 +36,6 @@ export class MainMenuChannelsComponent implements OnInit {
     private stateService: StateManagementService
   ) {}
 
-  ngOnInit(): void {
-  }
 
   selectChannel(channelId: string) {
     this.stateService.setSelectedChannelId(channelId);
@@ -45,22 +43,20 @@ export class MainMenuChannelsComponent implements OnInit {
     this.threadService.closeThread();
   }
 
+
   mobileChange() {
     this.mainPage.toggleMenu();
     this.sharedService.showMobileDiv();
   }
 
+
   toggleExpansion(): void {
     this.isExpanded = !this.isExpanded;
   }
 
+
   openAddChannelDialog(): void {
     const component = AddChannelCardComponent;
     this.customDialogService.openDialog(component);
-  }
-
-  closeThread() {
-    // this.userService.saveLastThread(this.userService.currentUser.id, '');
-    // this.threadService.closeThread();
   }
 }

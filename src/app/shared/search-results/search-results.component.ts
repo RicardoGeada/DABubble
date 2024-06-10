@@ -9,8 +9,6 @@ import { ThreadService } from '../../services/thread.service';
 import { UtilityService } from '../../services/utility.service';
 import { UserService } from '../../firebase.service/user.service';
 import { FormControl } from '@angular/forms';
-import { MessageService } from '../../firebase.service/message.service';
-import { ChannelFirebaseService } from '../../firebase.service/channelFirebase.service';
 
 
 @Component({
@@ -20,7 +18,7 @@ import { ChannelFirebaseService } from '../../firebase.service/channelFirebase.s
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.scss',
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent {
   @Input() searchControl!: FormControl;
   @Input() filteredUsers: User[] = [];
   @Input() filteredChannels: Channel[] = []; 
@@ -32,22 +30,17 @@ export class SearchResultsComponent implements OnInit {
     public router: Router,
     public threadService: ThreadService,
     public utilityService: UtilityService,
-    // public messageService: MessageService,
-    // public channelService: ChannelFirebaseService,
-    // public userService: UserService
-  ) {
-   
-  }
+  ) { }
 
-  ngOnInit(): void {}
 
   getUserDisplayName(userId: string): string {
     if (!this.userService) {
-      return 'User Name'; // Handle potential missing UserService
+      return 'User Name';
     }
     const user = this.userService.getUser(userId);
     return user ? user.name : 'User Name';
   }
+
 
   shouldShowSearchResults(): boolean {
     return this.searchControl.value.trim().length > 0 &&
@@ -58,6 +51,7 @@ export class SearchResultsComponent implements OnInit {
   displayChannelTime(): string {
     return this.utilityService.getChannelCreationTime();
   }
+  
 
   closeThread() {
     this.userService.saveLastThread(this.userService.currentUser.id, '');

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule, ViewportScroller } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
@@ -17,8 +17,6 @@ import { OpenProfileDirective } from '../../../shared/directives/open-profile.di
 import { Router, RouterModule } from '@angular/router';
 import { ThreadService } from '../../../services/thread.service';
 import { UtilityService } from '../../../services/utility.service';
-import { ChannelComponent } from '../../channel/channel.component';
-// import { SearchResultsComponent } from '../../../shared/search-results/search-results.component';
 
 @Component({
   selector: 'app-search-bar',
@@ -62,6 +60,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     public viewportScroller: ViewportScroller,
   ) { }
 
+
   ngOnInit(): void {
     this.subscriptions.add(
       this.searchControl.valueChanges
@@ -72,34 +71,57 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     );
   }
 
+
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
+
 
   clearSearch(): void {
     this.searchControl.setValue('');
   }
 
+
   filter(searchTerm: string): void {
     if (searchTerm.startsWith('@')) {
-      this.filteredUsers = this.searchService.filterUsersByPrefix(searchTerm, this.userService.allUsers);
-      this.filteredChannels = [];
-      this.filteredMessages = [];
+      this.searchForUser(searchTerm);
     } else if (searchTerm.startsWith('#')) {
-      this.filteredChannels = this.searchService.filterChannelsByTypeAndPrefix(searchTerm, ChannelTypeEnum.main);
+      this.searchForChannel(searchTerm);
+    } else if (searchTerm.length > 0) {
+      this.searchForAnything(searchTerm);
+    } else {
+      this.clearFilters();
+    }
+  }
+
+
+  clearFilters() {
+    const results = this.searchService.clearFilters();
+    this.filteredUsers = results.users;
+    this.filteredChannels = results.channels;
+    this.filteredMessages = results.messages;
+  }
+
+
+  searchForAnything(searchTerm: any) {
+    const results = this.searchService.applyFilters(searchTerm);
+    this.filteredUsers = results.users;
+    this.filteredChannels = this.sortChannels(results.channels);
+    this.filteredMessages = this.sortMessages(results.messages);
+  }
+
+
+  searchForUser(searchTerm: any) {
+    this.filteredUsers = this.searchService.filterUsersByPrefix(searchTerm, this.userService.allUsers);
+    this.filteredChannels = [];
+    this.filteredMessages = [];
+  }
+
+
+  searchForChannel(searchTerm: any) {
+    this.filteredChannels = this.searchService.filterChannelsByTypeAndPrefix(searchTerm, ChannelTypeEnum.main);
       this.filteredUsers = [];
       this.filteredMessages = [];
-    } else if (searchTerm.length > 0) {
-      const results = this.searchService.applyFilters(searchTerm);
-      this.filteredUsers = results.users;
-      this.filteredChannels = this.sortChannels(results.channels); // muss nicht aber hey
-      this.filteredMessages = this.sortMessages(results.messages);
-    } else {
-      const results = this.searchService.clearFilters();
-      this.filteredUsers = results.users;
-      this.filteredChannels = results.channels;
-      this.filteredMessages = results.messages;
-    }
   }
 
 

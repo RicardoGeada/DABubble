@@ -1,7 +1,6 @@
-import { Injectable, OnDestroy, inject } from '@angular/core';
-import { Firestore, collection, onSnapshot, DocumentData, addDoc, doc, updateDoc, deleteDoc, getDoc, Query, query, where, orderBy } from '@angular/fire/firestore';
+import { Injectable, inject } from '@angular/core';
+import { Firestore, collection, onSnapshot, addDoc, doc, updateDoc, query, where, orderBy } from '@angular/fire/firestore';
 import { Reaction } from '../interfaces/reaction.interface';
-// import { getFirestore } from "firebase/firestore";
 
 
 @Injectable({
@@ -11,18 +10,13 @@ import { Reaction } from '../interfaces/reaction.interface';
 export class ReactionService {
     firestore: Firestore = inject(Firestore);
 
-    constructor() {
-
-    }
-
-    ngOnDestroy(): void {
-        // throw new Error('Method not implemented.');
-    }
+    constructor() {  }
 
     // References
     getReactionsRef() {
         return collection(this.firestore, 'reactions');
     }
+
 
     setReaction(data: any, id: string) : Reaction {
         return {
@@ -35,12 +29,14 @@ export class ReactionService {
         }
     }
 
+
     // CREATE
     async addReaction(reaction : Reaction) {
         let ref = this.getReactionsRef();
         const docRef = await addDoc(ref, reaction);
         return docRef.id;
     }
+
 
     // READ
     subReactionsForMessage(message_id : string) {
@@ -55,15 +51,12 @@ export class ReactionService {
         return {snapshot, reactionsArray};
     }
 
+
     // UPDATE
     async updateReaction(reaction : Reaction) {
         if (reaction.id) {
           let docRef = doc(this.getReactionsRef(), reaction.id);
-          await updateDoc(docRef, JSON.parse(JSON.stringify(reaction))).catch(
-            (err) => console.error(err)
-          );
+          await updateDoc(docRef, JSON.parse(JSON.stringify(reaction)))
         }
       }
-
-
 }

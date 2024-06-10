@@ -38,7 +38,6 @@ export class MessageInputComponent {
 
   messageInput: string = '';
   currentUser: User = this.userService.currentUser;
-
   message: Message = {
     user_id: '',
     channel_id: '',
@@ -51,8 +50,6 @@ export class MessageInputComponent {
     is_deleted: false,
     last_reply: 0,
   };
-
-
   currentFile: any | null = null;
   errorMessage: string = '';
 
@@ -134,21 +131,18 @@ export class MessageInputComponent {
     else return this.currentUser;
   }
 
+
   getTextareaPlaceholderText() {
-    switch (this.channelService.currentChannel.channel_type) {
-      case 'main': return 'Nachricht an ' + '#' + this.channelService.currentChannel.name;
-      case 'direct':
-        if (this.channelService.currentChannel.members.length == 2) return 'Nachricht an ' + this.getDirectChannelUser()?.name;
-        else return 'Nachricht an ' + 'dich';    
-      case 'thread': return 'Antworten...';
-      case 'new': return 'Starte eine neue Nachricht';
-      default: return 'Starte eine neue Nachricht';
-    }
+    const channel = this.channelService.currentChannel;
+    const channelType = channel.channel_type;
+    const channelName = channel.name;
+    const members = channel.members;
+    if (channelType === 'main') return `Nachricht an #${channelName}`;
+    if (channelType === 'direct') return `Nachricht an ${members[0] === members[1] || members.length === 1 ? 'dich' : this.getDirectChannelUser()?.name}`;
+    if (channelType === 'thread') return 'Antworten...';
+    return 'Starte eine neue Nachricht';
   }
 
-  //#endregion placeholder
-
- //#region file add / remove
 
   addDocument(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -156,25 +150,31 @@ export class MessageInputComponent {
       const file = input.files[0];
       this.currentFile = file;
       this.currentFile.URL = this.createURL(file);
-      if (file.size > 500 * 1024) { //500KB
-        this.currentFile = null;
-        this.errorMessage = 'Die Datei ist zu groß. Max. 500KB.';
-        setTimeout(() => (this.errorMessage = ''), 5000);
-      }
-
+      if (file.size > 500 * 1024) this.checkIfFileIsTooBig();
       const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'application/pdf'];
-
-      if (!allowedTypes.includes(file.type)) {
-        this.currentFile = null;
-        this.errorMessage = 'Ungültiger Dateityp. Bitte wählen Sie eine Bild- oder PDF-Datei.';
-        setTimeout(() => (this.errorMessage = ''), 5000);
-      }
+      if (!allowedTypes.includes(file.type)) this.wrongFileType();
     }
   }
+
+
+  checkIfFileIsTooBig(){
+      this.currentFile = null;
+      this.errorMessage = 'Die Datei ist zu groß. Max. 500KB.';
+      setTimeout(() => this.errorMessage = '', 5000);
+  }
+
+
+  wrongFileType() {
+    this.currentFile = null;
+    this.errorMessage = 'Ungültiger Dateityp. Bitte wählen Sie eine Bild- oder PDF-Datei.';
+    setTimeout(() => this.errorMessage = '', 5000);
+  }
+
 
   createURL(file: File) {
     return URL.createObjectURL(file);
   }
+
 
   removeFile(input: HTMLInputElement) {
     this.currentFile = null;
@@ -352,5 +352,4 @@ export class MessageInputComponent {
   async setFocusOnInput() {
     await this.channelInput.nativeElement.focus();
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import {
@@ -38,23 +38,27 @@ export class AddMemberCardComponent {
     public userManagementService: UserManagementService,
     public router: Router,
     public sharedService: SharedService
-  ) {}
+  ) { }
+
 
   onFilterUsers(): void {
     this.filteredUsers = this.userManagementService.filterUsers(this.searchInput, this.selectedUsers);
     this.showUserList = true;
   }
 
+
   onSelectUser(user: User): void {
     this.selectedUsers = this.userManagementService.selectUser(this.selectedUsers, user);
     this.searchInput = '';
-    this.onFilterUsers(); 
+    this.onFilterUsers();
   }
+
 
   onRemoveSelectedUser(user: User): void {
     this.selectedUsers = this.userManagementService.removeSelectedUser(this.selectedUsers, user);
-    this.onFilterUsers(); 
+    this.onFilterUsers();
   }
+
 
   onUpdateMembers(): void {
     let memberIds: string[];
@@ -63,23 +67,25 @@ export class AddMemberCardComponent {
     } else {
       memberIds = this.userManagementService.getMemberIds(this.selectedUsers);
     }
+    this.update(memberIds);
+    
+  }
 
+
+  update(memberIds: string[]) {
     const channelId = this.userManagementService.getCurrentChannelId();
     if (channelId) {
       this.userManagementService.updateMembers(channelId, memberIds)
-        this.closeMenuIfMobile();
+      this.closeMenuIfMobile();
       this.router.navigate(['/main-page/' + channelId])
-        .then(() => 
+        .then(() =>
           this.dialogRef.close()
-          
-        )
-        .catch(error => console.error('Fehler beim Aktualisieren der Mitgliederliste:', error));
-    } else {
-      console.error('Keine Channel-ID verfügbar zum Aktualisieren der Mitglieder.');
+        );
     }
-    
   }
-  closeMenuIfMobile (){
+
+
+  closeMenuIfMobile() {
     if (window.innerWidth < 768) {
       this.sharedService.isMenuOpen = false;
       this.sharedService.showMobileDiv();

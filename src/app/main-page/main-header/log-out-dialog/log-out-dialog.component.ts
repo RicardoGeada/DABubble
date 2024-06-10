@@ -15,10 +15,6 @@ import { OpenProfileDirective } from '../../../shared/directives/open-profile.di
 })
 export class LogOutDialogComponent {
 
-  isMobile() {
-    return window.innerWidth <= 768;
-  } 
-
   constructor(
     public dialogRef: MatDialogRef<LogOutDialogComponent>,
     private userAuth: UserAuthService,
@@ -26,20 +22,23 @@ export class LogOutDialogComponent {
     public userService: UserService
   ) {}
 
+
   openCurrentUser(): void {
     this.dialogRef.close();
   }
 
-  logOut(): void {
-    // localStorage.removeItem('currentUser');
-    // sobald logged in user funktioniert
 
+  isMobile() {
+    return window.innerWidth <= 768;
+  } 
+
+
+  logOut(): void {
     this.userAuth.logout().then(() => {
       this.router.navigate(['/login-page']);
       localStorage.removeItem('currentUser');
       this.dialogRef.close();
       this.userService.updateOnlineStatus(this.userService.currentUser.id, false);
-      // location.reload();d
     });
   }
 }

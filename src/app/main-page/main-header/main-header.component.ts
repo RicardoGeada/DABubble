@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { SearchBarComponent } from './search-bar/search-bar.component';
@@ -22,27 +22,39 @@ export class MainHeaderComponent {
   serverName: any = 'Dabbuble';
   isMenuOpen: boolean = true;
 
-  constructor(private customDialogService: CustomDialogService,
-    public userService: UserService, public channelService: ChannelFirebaseService,
-    private renderer: Renderer2, private el: ElementRef,
+  constructor(
+    private customDialogService: CustomDialogService,
+    public userService: UserService,
+    public channelService: ChannelFirebaseService,
+    private renderer: Renderer2, 
+    private el: ElementRef,
     public sharedService: SharedService,
     public mainPage: MainPageComponent,
     public threadService: ThreadService) {
   }
 
+
   ngAfterViewInit() {
+    this.showMobileWorkspace();
+    this.hideMobileWorkspace();
+  }
+
+
+  showMobileWorkspace(){
     this.sharedService.showMobileDiv$.subscribe(() => {
       const mobileDiv = this.el.nativeElement.querySelector('.mobileDiv');
       this.renderer.addClass(mobileDiv, 'show');
     });
+  }
+
+
+  hideMobileWorkspace(){
     this.sharedService.backToChannels$.subscribe(() => {
       const mobileDiv = this.el.nativeElement.querySelector('.mobileDiv');
       this.renderer.removeClass(mobileDiv, 'show');
     });
   }
 
-  ngOnInit() {
-  }
 
   backToChannels() {
     this.sharedService.backToChannels();
@@ -54,5 +66,4 @@ export class MainHeaderComponent {
     const component = LogOutDialogComponent;
     this.customDialogService.openDialogAbsolute({button, component, position : 'right', mobilePosition : 'bottom', maxWidth : '282px'});
   }
-
 }

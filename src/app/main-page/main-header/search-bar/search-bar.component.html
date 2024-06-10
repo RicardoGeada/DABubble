@@ -3,7 +3,6 @@
     [formControl]="searchControl">
     <input class="searchbar-input-mobile" (blur)="onBlur()" type="text" matInput placeholder="Gehe zu..." maxlength="40" autocomplete="off"
     [formControl]="searchControl"> 
-    <!-- ob die searchbar jetzt da sein soll weiß ich nicht genau, sieht aber so aus -->
     <svg width="35" height="36" viewBox="0 0 35 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         <mask id="mask0_813_12244" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="35"
             height="36">
@@ -15,19 +14,6 @@
                 fill="#686868" />
         </g>
     </svg>
-
-    
-    <!-- <div class="search-container">
-        <app-search-results
-          [filteredUsers]="filteredUsers"
-          [filteredChannels]="filteredChannels"
-          [filteredMessages]="filteredMessages"
-          [searchControl]="searchControl"
-          [userService]="userService"
-        ></app-search-results>
-      </div>
-      
-       -->
 
 
     @if (searchControl && (filteredUsers.length > 0 || filteredChannels.length > 0 || filteredMessages.length > 0)) {

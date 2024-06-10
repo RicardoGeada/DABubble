@@ -29,5 +29,4 @@ export class StateManagementService {
   getSelectedUserId() {
     return this.selectedUserId.asObservable();
   }
-
 }

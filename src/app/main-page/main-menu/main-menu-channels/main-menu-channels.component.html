@@ -59,7 +59,6 @@
         @if (channel.channel_type === 'main') {
 
         <div class="menu-channel-content" [routerLink]="['/main-page' , channel.id]">
-            <!-- <div class="channel" [class.active]="channel.id === activeChannelId" (click)="selectChannel(channel.id)"> -->
             <div class="channel" [class.active]="channel.id === channelService.currentChannel.id"
                 (click)="selectChannel(channel.id)">
                 <svg class="svg-color" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -92,7 +91,6 @@
                             fill="black" />
                     </g>
                 </svg>
-                <!-- <img src="assets/img/tag.png" alt=""> -->
                 <span class="channel-name">{{channel.name}}</span>
             </div>
         </div>

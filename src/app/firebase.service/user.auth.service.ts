@@ -15,7 +15,9 @@ export class UserAuthService {
   googleEmail: any = '';
   googleProfileImg: any = '';
 
-  constructor(public auth: Auth, public userService: UserService, private router: Router) { }
+  constructor(public auth: Auth, 
+    public userService: UserService, 
+    private router: Router) { }
 
 
   //#region Sign In
@@ -75,14 +77,11 @@ export class UserAuthService {
     const provider = new GoogleAuthProvider();
     return signInWithPopup(this.auth, provider)
       .then((result) => {
-        var user = result.user;
+        let user = result.user;
         this.googleName = user.displayName;
         this.googleEmail = user.email;
         this.googleProfileImg = user.photoURL;
       })
-      .catch((error) => {
-        console.error(error);
-      });
   }
 
 

@@ -469,13 +469,13 @@ app-privacy-policy{
   }
   app-sign-in,
   app-avatar {
-    top: 50px;
-    height: 610px;
+    top: 20px;
+    height: 680px;
   }
   app-reset-password,
   app-check-email {
     top: 30px;
-    height: 420px;
+    height: 520px;
   }
 }
 @media (max-width: 500px) {
@@ -484,11 +484,11 @@ app-privacy-policy{
   }
   app-sign-in,
   app-avatar {
-    height: 475px;
+    height: 600px;
   }
   app-reset-password,
   app-check-email {
-    height: 385px;
+    height: 550px;
   }
 }
 @media (max-width: 420px) {
@@ -498,7 +498,8 @@ app-privacy-policy{
 }
 @media (max-width: 350px) {
   app-avatar {
-    top: 70px;
+    top: 0px;
+    height: 680px;
   }
 }
 

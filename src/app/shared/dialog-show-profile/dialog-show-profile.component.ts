@@ -21,7 +21,6 @@ import { ThreadService } from '../../services/thread.service';
 })
 export class DialogShowProfileComponent implements OnInit {
   user: User | null = null;
-
   newDirectChannel : Channel = {
     id: '',
     name: 'Direct Channel',
@@ -60,7 +59,8 @@ export class DialogShowProfileComponent implements OnInit {
   editCurrentUser(button: HTMLElement): void {
     const component = DialogEditProfileComponent;
     let userHeadButton = document.getElementById('userHead');
-    if(userHeadButton) {this.customDialogService.openDialogAbsolute({button : userHeadButton, component, position : 'right', mobilePosition: 'mid', maxWidth: '500px'});}
+    if(userHeadButton) {this.customDialogService.openDialogAbsolute({button : userHeadButton, component, 
+        position : 'right', mobilePosition: 'mid', maxWidth: '500px'});}
     else {this.customDialogService.openDialog(component)};
     this.dialogRef.close();
   }

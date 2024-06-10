@@ -33,9 +33,7 @@ export class CheckEmailComponent {
       this.triggerAnimation();
       this.resetEmail = '';
       this.error = false;
-    }).catch((error) => {
-      this.error = true;
-    });
+    })
   }
 
 

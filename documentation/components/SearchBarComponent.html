@@ -1,0 +1,2198 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>da-bubble documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">da-bubble documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SearchBarComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/main-page/main-header/search-bar/search-bar.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-search-bar</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>MatInputModule</code>
+                            <code>FormsModule</code>
+                            <code>ReactiveFormsModule</code>
+                                <code><a href="../directives/OpenProfileDirective.html" target="_self" >OpenProfileDirective</a></code>
+                            <code>RouterModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./search-bar.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./search-bar.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#channelService" >channelService</a>
+                            </li>
+                            <li>
+                                <a href="#filteredChannels" >filteredChannels</a>
+                            </li>
+                            <li>
+                                <a href="#filteredMessages" >filteredMessages</a>
+                            </li>
+                            <li>
+                                <a href="#filteredUsers" >filteredUsers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#messageService" >messageService</a>
+                            </li>
+                            <li>
+                                <a href="#newDirectChannel" >newDirectChannel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#router" >router</a>
+                            </li>
+                            <li>
+                                <a href="#searchControl" >searchControl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#searchService" >searchService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#subscriptions" >subscriptions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#threadService" >threadService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#userService" >userService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#utilityService" >utilityService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#viewportScroller" >viewportScroller</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clearFilters" >clearFilters</a>
+                            </li>
+                            <li>
+                                <a href="#clearSearch" >clearSearch</a>
+                            </li>
+                            <li>
+                                <a href="#closeThread" >closeThread</a>
+                            </li>
+                            <li>
+                                <a href="#displayChannelTime" >displayChannelTime</a>
+                            </li>
+                            <li>
+                                <a href="#displayMessageTime" >displayMessageTime</a>
+                            </li>
+                            <li>
+                                <a href="#filter" >filter</a>
+                            </li>
+                            <li>
+                                <a href="#getChannelName" >getChannelName</a>
+                            </li>
+                            <li>
+                                <a href="#getUserImg" >getUserImg</a>
+                            </li>
+                            <li>
+                                <a href="#navigateToMessage" >navigateToMessage</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onBlur" >onBlur</a>
+                            </li>
+                            <li>
+                                <a href="#searchForAnything" >searchForAnything</a>
+                            </li>
+                            <li>
+                                <a href="#searchForChannel" >searchForChannel</a>
+                            </li>
+                            <li>
+                                <a href="#searchForUser" >searchForUser</a>
+                            </li>
+                            <li>
+                                <a href="#sortChannels" >sortChannels</a>
+                            </li>
+                            <li>
+                                <a href="#sortMessages" >sortMessages</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, channelService: <a href="../injectables/ChannelFirebaseService.html" target="_self">ChannelFirebaseService</a>, messageService: <a href="../injectables/MessageService.html" target="_self">MessageService</a>, searchService: <a href="../injectables/SearchService.html" target="_self">SearchService</a>, router: Router, threadService: <a href="../injectables/ThreadService.html" target="_self">ThreadService</a>, utilityService: <a href="../injectables/UtilityService.html" target="_self">UtilityService</a>, viewportScroller: ViewportScroller)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:50</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>channelService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ChannelFirebaseService.html" target="_self" >ChannelFirebaseService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>messageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MessageService.html" target="_self" >MessageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>searchService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SearchService.html" target="_self" >SearchService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>threadService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ThreadService.html" target="_self" >ThreadService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>utilityService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UtilityService.html" target="_self" >UtilityService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>viewportScroller</td>
+                                                  
+                                                        <td>
+                                                                    <code>ViewportScroller</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearFilters"></a>
+                    <span class="name">
+                        <span ><b>clearFilters</b></span>
+                        <a href="#clearFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearFilters()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearSearch"></a>
+                    <span class="name">
+                        <span ><b>clearSearch</b></span>
+                        <a href="#clearSearch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearSearch()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeThread"></a>
+                    <span class="name">
+                        <span ><b>closeThread</b></span>
+                        <a href="#closeThread"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeThread()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="153"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:153</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayChannelTime"></a>
+                    <span class="name">
+                        <span ><b>displayChannelTime</b></span>
+                        <a href="#displayChannelTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>displayChannelTime()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="143"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:143</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayMessageTime"></a>
+                    <span class="name">
+                        <span ><b>displayMessageTime</b></span>
+                        <a href="#displayMessageTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>displayMessageTime(message: <a href="../interfaces/Message.html" target="_self">Message</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="148"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:148</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>message</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Message.html" target="_self" >Message</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filter"></a>
+                    <span class="name">
+                        <span ><b>filter</b></span>
+                        <a href="#filter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filter(searchTerm: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="85"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:85</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>searchTerm</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getChannelName"></a>
+                    <span class="name">
+                        <span ><b>getChannelName</b></span>
+                        <a href="#getChannelName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getChannelName(channelId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="159"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:159</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>channelId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUserImg"></a>
+                    <span class="name">
+                        <span ><b>getUserImg</b></span>
+                        <a href="#getUserImg"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUserImg(messageId: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="165"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:165</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>messageId</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateToMessage"></a>
+                    <span class="name">
+                        <span ><b>navigateToMessage</b></span>
+                        <a href="#navigateToMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateToMessage(message: <a href="../interfaces/Message.html" target="_self">Message</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="172"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:172</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>message</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Message.html" target="_self" >Message</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onBlur"></a>
+                    <span class="name">
+                        <span ><b>onBlur</b></span>
+                        <a href="#onBlur"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onBlur()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="138"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:138</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchForAnything"></a>
+                    <span class="name">
+                        <span ><b>searchForAnything</b></span>
+                        <a href="#searchForAnything"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>searchForAnything(searchTerm: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="106"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:106</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>searchTerm</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchForChannel"></a>
+                    <span class="name">
+                        <span ><b>searchForChannel</b></span>
+                        <a href="#searchForChannel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>searchForChannel(searchTerm: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="121"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:121</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>searchTerm</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchForUser"></a>
+                    <span class="name">
+                        <span ><b>searchForUser</b></span>
+                        <a href="#searchForUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>searchForUser(searchTerm: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="114"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:114</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>searchTerm</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sortChannels"></a>
+                    <span class="name">
+                        <span ><b>sortChannels</b></span>
+                        <a href="#sortChannels"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sortChannels(channels: <a href="../interfaces/Channel.html" target="_self">Channel[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="133"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:133</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>channels</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Channel.html" target="_self" >Channel[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Channel.html" target="_self" >Channel[]</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sortMessages"></a>
+                    <span class="name">
+                        <span ><b>sortMessages</b></span>
+                        <a href="#sortMessages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sortMessages(messages: <a href="../interfaces/Message.html" target="_self">Message[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="128"
+                                    class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:128</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>messages</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Message.html" target="_self" >Message[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Message.html" target="_self" >Message[]</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="channelService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>channelService</b></span>
+                        <a href="#channelService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ChannelFirebaseService.html" target="_self" >ChannelFirebaseService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filteredChannels"></a>
+                    <span class="name">
+                        <span ><b>filteredChannels</b></span>
+                        <a href="#filteredChannels"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Channel.html" target="_self" >Channel[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filteredMessages"></a>
+                    <span class="name">
+                        <span ><b>filteredMessages</b></span>
+                        <a href="#filteredMessages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Message.html" target="_self" >Message[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filteredUsers"></a>
+                    <span class="name">
+                        <span ><b>filteredUsers</b></span>
+                        <a href="#filteredUsers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >User[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="messageService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>messageService</b></span>
+                        <a href="#messageService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/MessageService.html" target="_self" >MessageService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="newDirectChannel"></a>
+                    <span class="name">
+                        <span ><b>newDirectChannel</b></span>
+                        <a href="#newDirectChannel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Channel.html" target="_self" >Channel</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    id: &#x27;&#x27;,
+    name: &#x27;Direct Channel&#x27;,
+    description: &#x27;&#x27;,
+    created_at: new Date().getTime(),
+    creator: &#x27;&#x27;,
+    members: [],
+    active_members: [],
+    channel_type: ChannelTypeEnum.direct,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="router"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>router</b></span>
+                        <a href="#router"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Router</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchControl"></a>
+                    <span class="name">
+                        <span ><b>searchControl</b></span>
+                        <a href="#searchControl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormControl()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>searchService</b></span>
+                        <a href="#searchService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/SearchService.html" target="_self" >SearchService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subscriptions"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>subscriptions</b></span>
+                        <a href="#subscriptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subscription()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="threadService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>threadService</b></span>
+                        <a href="#threadService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ThreadService.html" target="_self" >ThreadService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>userService</b></span>
+                        <a href="#userService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="utilityService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>utilityService</b></span>
+                        <a href="#utilityService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/UtilityService.html" target="_self" >UtilityService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewportScroller"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>viewportScroller</b></span>
+                        <a href="#viewportScroller"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ViewportScroller</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/main-page/main-header/search-bar/search-bar.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, OnDestroy } from &#x27;@angular/core&#x27;;
+import { CommonModule, ViewportScroller } from &#x27;@angular/common&#x27;;
+import { MatInputModule } from &#x27;@angular/material/input&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { UserService } from &#x27;../../../firebase.service/user.service&#x27;;
+import { User } from &#x27;../../../interfaces/user.interface&#x27;;
+import { ChannelFirebaseService } from &#x27;../../../firebase.service/channelFirebase.service&#x27;;
+import { Channel } from &#x27;../../../interfaces/channel.interface&#x27;;
+import { MessageService } from &#x27;../../../firebase.service/message.service&#x27;;
+import { Message } from &#x27;../../../interfaces/message.interface&#x27;;
+import { FormControl } from &#x27;@angular/forms&#x27;;
+import { ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
+import { debounceTime, Subscription } from &#x27;rxjs&#x27;;
+import { ChannelTypeEnum } from &#x27;../../../shared/enums/channel-type.enum&#x27;;
+import { SearchService } from &#x27;../../../services/search.service&#x27;;
+import { OpenProfileDirective } from &#x27;../../../shared/directives/open-profile.directive&#x27;;
+import { Router, RouterModule } from &#x27;@angular/router&#x27;;
+import { ThreadService } from &#x27;../../../services/thread.service&#x27;;
+import { UtilityService } from &#x27;../../../services/utility.service&#x27;;
+
+@Component({
+  selector: &#x27;app-search-bar&#x27;,
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    OpenProfileDirective,
+    RouterModule,
+  ],
+  templateUrl: &#x27;./search-bar.component.html&#x27;,
+  styleUrl: &#x27;./search-bar.component.scss&#x27;,
+})
+export class SearchBarComponent implements OnInit, OnDestroy {
+  filteredUsers: User[] &#x3D; [];
+  filteredChannels: Channel[] &#x3D; [];
+  filteredMessages: Message[] &#x3D; [];
+  searchControl &#x3D; new FormControl();
+  private subscriptions &#x3D; new Subscription();
+  newDirectChannel: Channel &#x3D; {
+    id: &#x27;&#x27;,
+    name: &#x27;Direct Channel&#x27;,
+    description: &#x27;&#x27;,
+    created_at: new Date().getTime(),
+    creator: &#x27;&#x27;,
+    members: [],
+    active_members: [],
+    channel_type: ChannelTypeEnum.direct,
+  };
+
+  constructor(
+    public userService: UserService,
+    public channelService: ChannelFirebaseService,
+    public messageService: MessageService,
+    public searchService: SearchService,
+    public router: Router,
+    public threadService: ThreadService,
+    public utilityService: UtilityService,
+    public viewportScroller: ViewportScroller,
+  ) { }
+
+
+  ngOnInit(): void {
+    this.subscriptions.add(
+      this.searchControl.valueChanges
+        .pipe(debounceTime(300))
+        .subscribe((value) &#x3D;&gt; {
+          this.filter(value);
+        })
+    );
+  }
+
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
+
+  clearSearch(): void {
+    this.searchControl.setValue(&#x27;&#x27;);
+  }
+
+
+  filter(searchTerm: string): void {
+    if (searchTerm.startsWith(&#x27;@&#x27;)) {
+      this.searchForUser(searchTerm);
+    } else if (searchTerm.startsWith(&#x27;#&#x27;)) {
+      this.searchForChannel(searchTerm);
+    } else if (searchTerm.length &gt; 0) {
+      this.searchForAnything(searchTerm);
+    } else {
+      this.clearFilters();
+    }
+  }
+
+
+  clearFilters() {
+    const results &#x3D; this.searchService.clearFilters();
+    this.filteredUsers &#x3D; results.users;
+    this.filteredChannels &#x3D; results.channels;
+    this.filteredMessages &#x3D; results.messages;
+  }
+
+
+  searchForAnything(searchTerm: any) {
+    const results &#x3D; this.searchService.applyFilters(searchTerm);
+    this.filteredUsers &#x3D; results.users;
+    this.filteredChannels &#x3D; this.sortChannels(results.channels);
+    this.filteredMessages &#x3D; this.sortMessages(results.messages);
+  }
+
+
+  searchForUser(searchTerm: any) {
+    this.filteredUsers &#x3D; this.searchService.filterUsersByPrefix(searchTerm, this.userService.allUsers);
+    this.filteredChannels &#x3D; [];
+    this.filteredMessages &#x3D; [];
+  }
+
+
+  searchForChannel(searchTerm: any) {
+    this.filteredChannels &#x3D; this.searchService.filterChannelsByTypeAndPrefix(searchTerm, ChannelTypeEnum.main);
+      this.filteredUsers &#x3D; [];
+      this.filteredMessages &#x3D; [];
+  }
+
+
+  sortMessages(messages: Message[]): Message[] {
+    return messages.sort((a, b) &#x3D;&gt; b.created_at - a.created_at);
+  }
+
+
+  sortChannels(channels: Channel[]): Channel[] {
+    return channels.sort((a, b) &#x3D;&gt; b.created_at - a.created_at);
+  }
+
+
+  onBlur(): void {
+    this.clearSearch();
+  }
+
+
+  displayChannelTime(): string {
+    return this.utilityService.getChannelCreationTime();
+  }
+
+
+  displayMessageTime(message: Message): string {
+    return this.utilityService.getMessageCreationTime(message);
+  }
+
+
+  closeThread() {
+    this.userService.saveLastThread(this.userService.currentUser.id, &#x27;&#x27;);
+    this.threadService.closeThread();
+  }
+
+
+  getChannelName(channelId: string) {
+    const channel &#x3D; this.channelService.channels.find((channel) &#x3D;&gt; channel.id &#x3D;&#x3D;&#x3D; channelId);
+    return channel ? channel.name : &#x27;&#x27;;
+  }
+
+
+  getUserImg(messageId: any) {
+    const message &#x3D; this.messageService.allMessages.find((message) &#x3D;&gt; message.id &#x3D;&#x3D;&#x3D; messageId);
+    const user &#x3D; this.userService.getUser(message!.user_id);
+    return user?.profile_img || &#x27;assets/img/deleted.png&#x27;;
+  }
+
+
+  navigateToMessage(message: Message) {
+    if (message.channel_id !&#x3D; &#x27;&#x27;) {
+      this.router.navigate([&#x27;/main-page&#x27;, message.channel_id])
+      this.messageService.changeMessage(message.id);
+    } if (message.thread_id !&#x3D; &#x27;&#x27; &amp;&amp; message.channel_id &#x3D;&#x3D; &#x27;&#x27;) {
+      this.router.navigate([&#x27;/main-page&#x27;, message.thread_id])
+      this.messageService.changeMessage(message.id);
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;search-bar-container&quot;&gt;
+    &lt;input class&#x3D;&quot;searchbar-input&quot; (blur)&#x3D;&quot;onBlur()&quot; type&#x3D;&quot;text&quot; matInput placeholder&#x3D;&quot;DABubble durchsuchen&quot; maxlength&#x3D;&quot;40&quot; autocomplete&#x3D;&quot;off&quot;
+    [formControl]&#x3D;&quot;searchControl&quot;&gt;
+    &lt;input class&#x3D;&quot;searchbar-input-mobile&quot; (blur)&#x3D;&quot;onBlur()&quot; type&#x3D;&quot;text&quot; matInput placeholder&#x3D;&quot;Gehe zu...&quot; maxlength&#x3D;&quot;40&quot; autocomplete&#x3D;&quot;off&quot;
+    [formControl]&#x3D;&quot;searchControl&quot;&gt; 
+    &lt;svg width&#x3D;&quot;35&quot; height&#x3D;&quot;36&quot; viewBox&#x3D;&quot;0 0 35 36&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+        &lt;mask id&#x3D;&quot;mask0_813_12244&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; width&#x3D;&quot;35&quot;
+            height&#x3D;&quot;36&quot;&gt;
+            &lt;rect y&#x3D;&quot;0.5&quot; width&#x3D;&quot;35&quot; height&#x3D;&quot;35&quot; fill&#x3D;&quot;#D9D9D9&quot; /&gt;
+        &lt;/mask&gt;
+        &lt;g mask&#x3D;&quot;url(#mask0_813_12244)&quot;&gt;
+            &lt;path
+                d&#x3D;&quot;M27.5625 30.1042L19.3958 21.9375C18.6667 22.5208 17.8281 22.9826 16.8802 23.3229C15.9323 23.6632 14.9236 23.8333 13.8542 23.8333C11.2049 23.8333 8.96292 22.916 7.12833 21.0815C5.29278 19.2459 4.375 17.0035 4.375 14.3542C4.375 11.7049 5.29278 9.46243 7.12833 7.62687C8.96292 5.79229 11.2049 4.875 13.8542 4.875C16.5035 4.875 18.7459 5.79229 20.5815 7.62687C22.416 9.46243 23.3333 11.7049 23.3333 14.3542C23.3333 15.4236 23.1632 16.4323 22.8229 17.3802C22.4826 18.3281 22.0208 19.1667 21.4375 19.8958L29.6406 28.099C29.908 28.3663 30.0417 28.6944 30.0417 29.0833C30.0417 29.4722 29.8958 29.8125 29.6042 30.1042C29.3368 30.3715 28.9965 30.5052 28.5833 30.5052C28.1701 30.5052 27.8299 30.3715 27.5625 30.1042ZM13.8542 20.9167C15.6771 20.9167 17.2268 20.2789 18.5033 19.0033C19.7789 17.7268 20.4167 16.1771 20.4167 14.3542C20.4167 12.5312 19.7789 10.9815 18.5033 9.705C17.2268 8.42944 15.6771 7.79167 13.8542 7.79167C12.0312 7.79167 10.4815 8.42944 9.205 9.705C7.92944 10.9815 7.29167 12.5312 7.29167 14.3542C7.29167 16.1771 7.92944 17.7268 9.205 19.0033C10.4815 20.2789 12.0312 20.9167 13.8542 20.9167Z&quot;
+                fill&#x3D;&quot;#686868&quot; /&gt;
+        &lt;/g&gt;
+    &lt;/svg&gt;
+
+
+    @if (searchControl &amp;&amp; (filteredUsers.length &gt; 0 || filteredChannels.length &gt; 0 || filteredMessages.length &gt; 0)) {
+    &lt;div class&#x3D;&quot;search-container&quot;&gt;
+        @if (filteredUsers.length &gt; 0) {
+        &lt;ul class&#x3D;&quot;filtered&quot;&gt;
+            &lt;span class&#x3D;&quot;categoryName&quot;&gt;Users:&lt;/span&gt;
+            @for(user of filteredUsers; track user.id) {
+            &lt;li #profileBtn appOpenProfile [userId]&#x3D;&quot;user.id&quot; [button]&#x3D;&quot;profileBtn&quot; (click)&#x3D;&quot;clearSearch()&quot;&gt;
+                &lt;div class&#x3D;&quot;user&quot;&gt;
+                    &lt;div class&#x3D;&quot;user-img-container&quot;&gt;
+                        &lt;img [src]&#x3D;&quot;user.profile_img&quot; alt&#x3D;&quot;&quot; class&#x3D;&quot;profile-img&quot; /&gt;
+                        &lt;div class&#x3D;&quot;online-status-wborder online&quot; [ngClass]&#x3D;&quot;user.logged_in ? &#x27;online&#x27; : &#x27;offline&#x27;&quot;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;user-name fs-18&quot;&gt;{{ userService.getUser(user.id).name }}{{ userService.getUser(user.id).name &#x3D;&#x3D;&#x3D;
+                        userService.currentUser?.name ? &#x27; (Du)&#x27; : &#x27;&#x27; }}&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            }
+        &lt;/ul&gt;
+        }
+
+        @if (filteredChannels.length &gt; 0) {
+        &lt;ul class&#x3D;&quot;filtered&quot;&gt;
+            &lt;span class&#x3D;&quot;categoryName&quot;&gt;Channels:&lt;/span&gt;
+            @for(channel of filteredChannels; track channel.id) {
+            &lt;li [routerLink]&#x3D;&quot;[&#x27;/main-page&#x27; , channel.id]&quot; (click)&#x3D;&quot;closeThread(); clearSearch()&quot;&gt;
+                &lt;div class&#x3D;&quot;channelList&quot;&gt;
+                    &lt;div class&#x3D;&quot;img-channel-hash&quot;&gt;#&lt;/div&gt;
+                    &lt;span class&#x3D;&quot;channel-name&quot;&gt;{{channel.name}}&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            }
+        &lt;/ul&gt;
+        }
+
+        @if (filteredMessages.length &gt; 0) {
+        &lt;ul class&#x3D;&quot;filtered&quot;&gt;
+            &lt;span class&#x3D;&quot;categoryName&quot;&gt;Messages:&lt;/span&gt;
+            @for(message of filteredMessages; track message.id; ) {
+            &lt;li (click)&#x3D;&quot;navigateToMessage(message)&quot;&gt;
+                &lt;div class&#x3D;&quot;channelList&quot;&gt;
+                    &lt;img class&#x3D;&quot;user-avatar&quot; [src]&#x3D;&quot;getUserImg(message.id)&quot; alt&#x3D;&quot;Avatar&quot;&gt;
+                    &lt;div class&#x3D;&quot;messageContainer&quot;&gt;
+                        &lt;div class&#x3D;&quot;messageHeader&quot;&gt;
+                            &lt;span class&#x3D;&quot;user-name&quot;&gt;&lt;/span&gt;
+                            &lt;span class&#x3D;&quot;message-time&quot;&gt;{{displayMessageTime(message) }}&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;span&gt;{{message.message.text}}&lt;/span&gt;
+                        &lt;span class&#x3D;&quot;message-channel-name&quot;&gt;#{{getChannelName(message.channel_id)}}&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            }
+        &lt;/ul&gt;
+        }
+    &lt;/div&gt;
+    }
+&lt;/div&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="search-bar-container">    <input class="searchbar-input" (blur)="onBlur()" type="text" matInput placeholder="DABubble durchsuchen" maxlength="40" autocomplete="off"    [formControl]="searchControl">    <input class="searchbar-input-mobile" (blur)="onBlur()" type="text" matInput placeholder="Gehe zu..." maxlength="40" autocomplete="off"    [formControl]="searchControl">     <svg width="35" height="36" viewBox="0 0 35 36" fill="none" xmlns="http://www.w3.org/2000/svg">        <mask id="mask0_813_12244" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="35"            height="36">            <rect y="0.5" width="35" height="35" fill="#D9D9D9" />        </mask>        <g mask="url(#mask0_813_12244)">            <path                d="M27.5625 30.1042L19.3958 21.9375C18.6667 22.5208 17.8281 22.9826 16.8802 23.3229C15.9323 23.6632 14.9236 23.8333 13.8542 23.8333C11.2049 23.8333 8.96292 22.916 7.12833 21.0815C5.29278 19.2459 4.375 17.0035 4.375 14.3542C4.375 11.7049 5.29278 9.46243 7.12833 7.62687C8.96292 5.79229 11.2049 4.875 13.8542 4.875C16.5035 4.875 18.7459 5.79229 20.5815 7.62687C22.416 9.46243 23.3333 11.7049 23.3333 14.3542C23.3333 15.4236 23.1632 16.4323 22.8229 17.3802C22.4826 18.3281 22.0208 19.1667 21.4375 19.8958L29.6406 28.099C29.908 28.3663 30.0417 28.6944 30.0417 29.0833C30.0417 29.4722 29.8958 29.8125 29.6042 30.1042C29.3368 30.3715 28.9965 30.5052 28.5833 30.5052C28.1701 30.5052 27.8299 30.3715 27.5625 30.1042ZM13.8542 20.9167C15.6771 20.9167 17.2268 20.2789 18.5033 19.0033C19.7789 17.7268 20.4167 16.1771 20.4167 14.3542C20.4167 12.5312 19.7789 10.9815 18.5033 9.705C17.2268 8.42944 15.6771 7.79167 13.8542 7.79167C12.0312 7.79167 10.4815 8.42944 9.205 9.705C7.92944 10.9815 7.29167 12.5312 7.29167 14.3542C7.29167 16.1771 7.92944 17.7268 9.205 19.0033C10.4815 20.2789 12.0312 20.9167 13.8542 20.9167Z"                fill="#686868" />        </g>    </svg>    @if (searchControl && (filteredUsers.length > 0 || filteredChannels.length > 0 || filteredMessages.length > 0)) {    <div class="search-container">        @if (filteredUsers.length > 0) {        <ul class="filtered">            <span class="categoryName">Users:</span>            @for(user of filteredUsers; track user.id) {            <li #profileBtn appOpenProfile [userId]="user.id" [button]="profileBtn" (click)="clearSearch()">                <div class="user">                    <div class="user-img-container">                        <img [src]="user.profile_img" alt="" class="profile-img" />                        <div class="online-status-wborder online" [ngClass]="user.logged_in ? \'online\' : \'offline\'"></div>                    </div>                    <div class="user-name fs-18">{{ userService.getUser(user.id).name }}{{ userService.getUser(user.id).name ===                        userService.currentUser?.name ? \' (Du)\' : \'\' }}</div>                </div>            </li>            }        </ul>        }        @if (filteredChannels.length > 0) {        <ul class="filtered">            <span class="categoryName">Channels:</span>            @for(channel of filteredChannels; track channel.id) {            <li [routerLink]="[\'/main-page\' , channel.id]" (click)="closeThread(); clearSearch()">                <div class="channelList">                    <div class="img-channel-hash">#</div>                    <span class="channel-name">{{channel.name}}</span>                </div>            </li>            }        </ul>        }        @if (filteredMessages.length > 0) {        <ul class="filtered">            <span class="categoryName">Messages:</span>            @for(message of filteredMessages; track message.id; ) {            <li (click)="navigateToMessage(message)">                <div class="channelList">                    <img class="user-avatar" [src]="getUserImg(message.id)" alt="Avatar">                    <div class="messageContainer">                        <div class="messageHeader">                            <span class="user-name"></span>                            <span class="message-time">{{displayMessageTime(message) }}</span>                        </div>                        <span>{{message.message.text}}</span>                        <span class="message-channel-name">#{{getChannelName(message.channel_id)}}</span>                    </div>                </div>            </li>            }        </ul>        }    </div>    }</div></div>'
+    var COMPONENTS = [{'name': 'AddChannelCardComponent', 'selector': 'app-add-channel-card'},{'name': 'AddMemberCardComponent', 'selector': 'app-add-member-card'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AvatarComponent', 'selector': 'app-avatar'},{'name': 'ChannelComponent', 'selector': 'app-channel'},{'name': 'CheckEmailComponent', 'selector': 'app-check-email'},{'name': 'DialogAddMemberComponent', 'selector': 'app-dialog-add-member'},{'name': 'DialogAddMemberMobileComponent', 'selector': 'app-dialog-add-member-mobile'},{'name': 'DialogEditChannelComponent', 'selector': 'app-dialog-edit-channel'},{'name': 'DialogEditProfileComponent', 'selector': 'app-dialog-edit-profile'},{'name': 'DialogEmojiPickerComponent', 'selector': 'app-dialog-emoji-picker'},{'name': 'DialogShowMembersComponent', 'selector': 'app-dialog-show-members'},{'name': 'DialogShowProfileComponent', 'selector': 'app-dialog-show-profile'},{'name': 'EmailSnackbarComponent', 'selector': 'app-email-snackbar'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ImprintComponent', 'selector': 'app-imprint'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LoginPageComponent', 'selector': 'app-login-page'},{'name': 'LoginSnackbarComponent', 'selector': 'app-login-snackbar'},{'name': 'LogOutDialogComponent', 'selector': 'app-log-out-dialog'},{'name': 'MainHeaderComponent', 'selector': 'app-main-header'},{'name': 'MainMenuChannelsComponent', 'selector': 'app-main-menu-channels'},{'name': 'MainMenuComponent', 'selector': 'app-main-menu'},{'name': 'MainMenuDmComponent', 'selector': 'app-main-menu-dm'},{'name': 'MainMenuHeaderComponent', 'selector': 'app-main-menu-header'},{'name': 'MainPageComponent', 'selector': 'app-main-page'},{'name': 'MessageComponent', 'selector': 'app-message'},{'name': 'MessageInputComponent', 'selector': 'app-message-input'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SearchBarComponent', 'selector': 'app-search-bar'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'},{'name': 'SignInComponent', 'selector': 'app-sign-in'},{'name': 'ThreadComponent', 'selector': 'app-thread'},{'name': 'UserCreatedSnackbarComponent', 'selector': 'app-user-created-snackbar'}];
+    var DIRECTIVES = [{'name': 'OpenProfileDirective', 'selector': '[appOpenProfile]'}];
+    var ACTUAL_COMPONENT = {'name': 'SearchBarComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SearchBarComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

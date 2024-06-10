@@ -1,0 +1,3563 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>da-bubble documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">da-bubble documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  MessageComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/main-page/channel/message/message.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-message</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                                <code><a href="../directives/OpenProfileDirective.html" target="_self" >OpenProfileDirective</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./message.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./message.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#attachementsData" >attachementsData</a>
+                            </li>
+                            <li>
+                                <a href="#channelMembers" >channelMembers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#channelService" >channelService</a>
+                            </li>
+                            <li>
+                                <a href="#currentChannel" >currentChannel</a>
+                            </li>
+                            <li>
+                                <a href="#currentUser" >currentUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#customDialogService" >customDialogService</a>
+                            </li>
+                            <li>
+                                <a href="#deleted_img" >deleted_img</a>
+                            </li>
+                            <li>
+                                <a href="#editableMessage" >editableMessage</a>
+                            </li>
+                            <li>
+                                <a href="#editMessage" >editMessage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#elementRef" >elementRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#mainpage" >mainpage</a>
+                            </li>
+                            <li>
+                                <a href="#messageCreator" >messageCreator</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#messageService" >messageService</a>
+                            </li>
+                            <li>
+                                <a href="#reactions" >reactions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#reactionService" >reactionService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sharedService" >sharedService</a>
+                            </li>
+                            <li>
+                                <a href="#showMoreOptions" >showMoreOptions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#threadService" >threadService</a>
+                            </li>
+                            <li>
+                                <a href="#unsubReactions" >unsubReactions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#userService" >userService</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addCurrentUserToReaction" >addCurrentUserToReaction</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#addReaction" >addReaction</a>
+                            </li>
+                            <li>
+                                <a href="#addZero" >addZero</a>
+                            </li>
+                            <li>
+                                <a href="#attachementData" >attachementData</a>
+                            </li>
+                            <li>
+                                <a href="#closeThread" >closeThread</a>
+                            </li>
+                            <li>
+                                <a href="#closeUnder1500" >closeUnder1500</a>
+                            </li>
+                            <li>
+                                <a href="#convertToDate" >convertToDate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#createNewReaction" >createNewReaction</a>
+                            </li>
+                            <li>
+                                <a href="#deleteFile" >deleteFile</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getAttachementsData" >getAttachementsData</a>
+                            </li>
+                            <li>
+                                <a href="#getNewReactionData" >getNewReactionData</a>
+                            </li>
+                            <li>
+                                <a href="#getReactionData" >getReactionData</a>
+                            </li>
+                            <li>
+                                <a href="#getReactions" >getReactions</a>
+                            </li>
+                            <li>
+                                <a href="#getTime" >getTime</a>
+                            </li>
+                            <li>
+                                <a href="#getTimeDifferenceForLastReply" >getTimeDifferenceForLastReply</a>
+                            </li>
+                            <li>
+                                <a href="#getUser" >getUser</a>
+                            </li>
+                            <li>
+                                <a href="#getUserName" >getUserName</a>
+                            </li>
+                            <li>
+                                <a href="#isCurrentUser" >isCurrentUser</a>
+                            </li>
+                            <li>
+                                <a href="#newThreadData" >newThreadData</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openDialogEmojiPicker" >openDialogEmojiPicker</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#openNewThread" >openNewThread</a>
+                            </li>
+                            <li>
+                                <a href="#openReactionPicker" >openReactionPicker</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#openThread" >openThread</a>
+                            </li>
+                            <li>
+                                <a href="#removeCurrentUserFromReaction" >removeCurrentUserFromReaction</a>
+                            </li>
+                            <li>
+                                <a href="#sortedReactionsByLastTimeUsed" >sortedReactionsByLastTimeUsed</a>
+                            </li>
+                            <li>
+                                <a href="#toggleReaction" >toggleReaction</a>
+                            </li>
+                            <li>
+                                <a href="#updateMessage" >updateMessage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#channelType" >channelType</a>
+                            </li>
+                            <li>
+                                <a href="#message" >message</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(messageService: <a href="../injectables/MessageService.html" target="_self">MessageService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, channelService: <a href="../injectables/ChannelFirebaseService.html" target="_self">ChannelFirebaseService</a>, threadService: <a href="../injectables/ThreadService.html" target="_self">ThreadService</a>, customDialogService: <a href="../injectables/CustomDialogService.html" target="_self">CustomDialogService</a>, reactionService: <a href="../injectables/ReactionService.html" target="_self">ReactionService</a>, sharedService: <a href="../injectables/SharedService.html" target="_self">SharedService</a>, mainpage: <a href="../components/MainPageComponent.html" target="_self">MainPageComponent</a>, elementRef: ElementRef)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:54</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>messageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MessageService.html" target="_self" >MessageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>channelService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ChannelFirebaseService.html" target="_self" >ChannelFirebaseService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>threadService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ThreadService.html" target="_self" >ThreadService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>customDialogService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CustomDialogService.html" target="_self" >CustomDialogService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>reactionService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ReactionService.html" target="_self" >ReactionService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sharedService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SharedService.html" target="_self" >SharedService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>mainpage</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../components/MainPageComponent.html" target="_self" >MainPageComponent</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>elementRef</td>
+                                                  
+                                                        <td>
+                                                                    <code>ElementRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="channelType"></a>
+                        <b>channelType</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;main&quot; | &quot;direct&quot; | &quot;thread&quot; | &quot;new&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;main&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:30</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="message"></a>
+                        <b>message</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Message.html" target="_self" >Message</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    user_id: &#x27;&#x27;,
+    channel_id: &#x27;&#x27;,
+    thread_id: &#x27;&#x27;,
+    message: {
+      text: &#x27;&#x27;,
+      reactions: [],
+      attachements: [],
+    },
+    created_at: 0,
+    modified_at: 0,
+    is_deleted: false,
+    total_replies: 0,
+    last_reply: 0,
+  }</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:31</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addCurrentUserToReaction"></a>
+                    <span class="name">
+                        <span ><b>addCurrentUserToReaction</b></span>
+                        <a href="#addCurrentUserToReaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addCurrentUserToReaction(reaction: <a href="../interfaces/Reaction.html" target="_self">Reaction</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="316"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:316</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>reaction</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Reaction.html" target="_self" >Reaction</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addReaction"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>addReaction</b></span>
+                        <a href="#addReaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addReaction(emoji: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="284"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:284</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>emoji</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addZero"></a>
+                    <span class="name">
+                        <span ><b>addZero</b></span>
+                        <a href="#addZero"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addZero(i: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="131"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:131</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>i</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="attachementData"></a>
+                    <span class="name">
+                        <span ><b>attachementData</b></span>
+                        <a href="#attachementData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>attachementData(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="104"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:104</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>path</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeThread"></a>
+                    <span class="name">
+                        <span ><b>closeThread</b></span>
+                        <a href="#closeThread"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeThread()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="229"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:229</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeUnder1500"></a>
+                    <span class="name">
+                        <span ><b>closeUnder1500</b></span>
+                        <a href="#closeUnder1500"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeUnder1500()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="220"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:220</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="convertToDate"></a>
+                    <span class="name">
+                        <span ><b>convertToDate</b></span>
+                        <a href="#convertToDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>convertToDate(dateAsNumber: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="169"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:169</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>dateAsNumber</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createNewReaction"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>createNewReaction</b></span>
+                        <a href="#createNewReaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createNewReaction(emoji: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="296"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:296</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>emoji</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteFile"></a>
+                    <span class="name">
+                        <span ><b>deleteFile</b></span>
+                        <a href="#deleteFile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteFile(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="235"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:235</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>path</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAttachementsData"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getAttachementsData</b></span>
+                        <a href="#getAttachementsData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getAttachementsData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="90"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:90</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNewReactionData"></a>
+                    <span class="name">
+                        <span ><b>getNewReactionData</b></span>
+                        <a href="#getNewReactionData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getNewReactionData(emoji: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="304"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:304</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>emoji</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>{ id: string; message_id: any; users: {}; unicode: string; created_at: any; lastTimeUsed: any; }</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getReactionData"></a>
+                    <span class="name">
+                        <span ><b>getReactionData</b></span>
+                        <a href="#getReactionData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getReactionData(reactionId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="268"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:268</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>reactionId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getReactions"></a>
+                    <span class="name">
+                        <span ><b>getReactions</b></span>
+                        <a href="#getReactions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getReactions()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="259"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:259</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTime"></a>
+                    <span class="name">
+                        <span ><b>getTime</b></span>
+                        <a href="#getTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTime(timeNumber: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="122"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>timeNumber</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTimeDifferenceForLastReply"></a>
+                    <span class="name">
+                        <span ><b>getTimeDifferenceForLastReply</b></span>
+                        <a href="#getTimeDifferenceForLastReply"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTimeDifferenceForLastReply(dateAsNumber: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="151"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:151</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>dateAsNumber</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUser"></a>
+                    <span class="name">
+                        <span ><b>getUser</b></span>
+                        <a href="#getUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUser(user_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="117"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:117</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUserName"></a>
+                    <span class="name">
+                        <span ><b>getUserName</b></span>
+                        <a href="#getUserName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUserName(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="351"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:351</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>userId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isCurrentUser"></a>
+                    <span class="name">
+                        <span ><b>isCurrentUser</b></span>
+                        <a href="#isCurrentUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isCurrentUser()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="112"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:112</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="newThreadData"></a>
+                    <span class="name">
+                        <span ><b>newThreadData</b></span>
+                        <a href="#newThreadData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>newThreadData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="198"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:198</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>{ id: string; name: any; description: string; created_at: any; creator: any; members: {}; active_members: {}; channel_type: any; }</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="85"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:85</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openDialogEmojiPicker"></a>
+                    <span class="name">
+                        <span ><b>openDialogEmojiPicker</b></span>
+                        <a href="#openDialogEmojiPicker"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openDialogEmojiPicker(input: HTMLDivElement)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="246"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:246</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>input</td>
+                                            <td>
+                                                        <code>HTMLDivElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openNewThread"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>openNewThread</b></span>
+                        <a href="#openNewThread"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openNewThread(newThread: <a href="../interfaces/Channel.html" target="_self">Channel</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="212"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:212</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>newThread</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Channel.html" target="_self" >Channel</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openReactionPicker"></a>
+                    <span class="name">
+                        <span ><b>openReactionPicker</b></span>
+                        <a href="#openReactionPicker"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openReactionPicker()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="273"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:273</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openThread"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>openThread</b></span>
+                        <a href="#openThread"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openThread(thread_id: string | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="181"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:181</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>thread_id</td>
+                                            <td>
+                                                        <code>string | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeCurrentUserFromReaction"></a>
+                    <span class="name">
+                        <span ><b>removeCurrentUserFromReaction</b></span>
+                        <a href="#removeCurrentUserFromReaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeCurrentUserFromReaction(reaction: <a href="../interfaces/Reaction.html" target="_self">Reaction</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="328"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:328</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>reaction</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Reaction.html" target="_self" >Reaction</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sortedReactionsByLastTimeUsed"></a>
+                    <span class="name">
+                        <span ><b>sortedReactionsByLastTimeUsed</b></span>
+                        <a href="#sortedReactionsByLastTimeUsed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sortedReactionsByLastTimeUsed()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="357"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:357</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleReaction"></a>
+                    <span class="name">
+                        <span ><b>toggleReaction</b></span>
+                        <a href="#toggleReaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleReaction(reaction: <a href="../interfaces/Reaction.html" target="_self">Reaction</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="342"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:342</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>reaction</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Reaction.html" target="_self" >Reaction</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateMessage"></a>
+                    <span class="name">
+                        <span ><b>updateMessage</b></span>
+                        <a href="#updateMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateMessage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="139"
+                                    class="link-to-prism">src/app/main-page/channel/message/message.component.ts:139</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="attachementsData"></a>
+                    <span class="name">
+                        <span ><b>attachementsData</b></span>
+                        <a href="#attachementsData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="channelMembers"></a>
+                    <span class="name">
+                        <span ><b>channelMembers</b></span>
+                        <a href="#channelMembers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.currentChannel.members</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="channelService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>channelService</b></span>
+                        <a href="#channelService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ChannelFirebaseService.html" target="_self" >ChannelFirebaseService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentChannel"></a>
+                    <span class="name">
+                        <span ><b>currentChannel</b></span>
+                        <a href="#currentChannel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.channelService.currentChannel</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentUser"></a>
+                    <span class="name">
+                        <span ><b>currentUser</b></span>
+                        <a href="#currentUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >User</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.userService.currentUser</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="customDialogService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>customDialogService</b></span>
+                        <a href="#customDialogService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/CustomDialogService.html" target="_self" >CustomDialogService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleted_img"></a>
+                    <span class="name">
+                        <span ><b>deleted_img</b></span>
+                        <a href="#deleted_img"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;assets/img/deleted.png&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editableMessage"></a>
+                    <span class="name">
+                        <span ><b>editableMessage</b></span>
+                        <a href="#editableMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Message.html" target="_self" >Message</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>JSON.parse(JSON.stringify(this.message))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editMessage"></a>
+                    <span class="name">
+                        <span ><b>editMessage</b></span>
+                        <a href="#editMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="elementRef"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>elementRef</b></span>
+                        <a href="#elementRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mainpage"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>mainpage</b></span>
+                        <a href="#mainpage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/MainPageComponent.html" target="_self" >MainPageComponent</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="messageCreator"></a>
+                    <span class="name">
+                        <span ><b>messageCreator</b></span>
+                        <a href="#messageCreator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >User | undefined</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>undefined</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="messageService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>messageService</b></span>
+                        <a href="#messageService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/MessageService.html" target="_self" >MessageService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reactions"></a>
+                    <span class="name">
+                        <span ><b>reactions</b></span>
+                        <a href="#reactions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Reaction.html" target="_self" >Reaction[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reactionService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>reactionService</b></span>
+                        <a href="#reactionService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ReactionService.html" target="_self" >ReactionService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sharedService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>sharedService</b></span>
+                        <a href="#sharedService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/SharedService.html" target="_self" >SharedService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showMoreOptions"></a>
+                    <span class="name">
+                        <span ><b>showMoreOptions</b></span>
+                        <a href="#showMoreOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="threadService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>threadService</b></span>
+                        <a href="#threadService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ThreadService.html" target="_self" >ThreadService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="unsubReactions"></a>
+                    <span class="name">
+                        <span ><b>unsubReactions</b></span>
+                        <a href="#unsubReactions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank" >Function</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>userService</b></span>
+                        <a href="#userService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/main-page/channel/message/message.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Component, ElementRef, Input } from &#x27;@angular/core&#x27;;
+import { Message } from &#x27;../../../interfaces/message.interface&#x27;;
+import { User } from &#x27;../../../interfaces/user.interface&#x27;;
+import { MessageService } from &#x27;../../../firebase.service/message.service&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { UserService } from &#x27;../../../firebase.service/user.service&#x27;;
+import { ChannelFirebaseService } from &#x27;../../../firebase.service/channelFirebase.service&#x27;;
+import { Channel } from &#x27;../../../interfaces/channel.interface&#x27;;
+import { ChannelTypeEnum } from &#x27;../../../shared/enums/channel-type.enum&#x27;;
+import { ThreadService } from &#x27;../../../services/thread.service&#x27;;
+import { DialogEmojiPickerComponent } from &#x27;../dialog-emoji-picker/dialog-emoji-picker.component&#x27;;
+import { CustomDialogService } from &#x27;../../../services/custom-dialog.service&#x27;;
+import { OpenProfileDirective } from &#x27;../../../shared/directives/open-profile.directive&#x27;;
+import { ReactionService } from &#x27;../../../firebase.service/reaction.service&#x27;;
+import { Reaction } from &#x27;../../../interfaces/reaction.interface&#x27;;
+import { SharedService } from &#x27;../../../services/shared.service&#x27;;
+import { MainPageComponent } from &#x27;../../main-page.component&#x27;;
+
+@Component({
+  selector: &#x27;app-message&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, OpenProfileDirective],
+  templateUrl: &#x27;./message.component.html&#x27;,
+  styleUrl: &#x27;./message.component.scss&#x27;,
+})
+export class MessageComponent {
+  showMoreOptions: boolean &#x3D; false;
+  editMessage: boolean &#x3D; false;
+  @Input() channelType: &#x27;main&#x27; | &#x27;direct&#x27; | &#x27;thread&#x27; | &#x27;new&#x27; &#x3D; &#x27;main&#x27;;
+  @Input() message: Message &#x3D; {
+    user_id: &#x27;&#x27;,
+    channel_id: &#x27;&#x27;,
+    thread_id: &#x27;&#x27;,
+    message: {
+      text: &#x27;&#x27;,
+      reactions: [],
+      attachements: [],
+    },
+    created_at: 0,
+    modified_at: 0,
+    is_deleted: false,
+    total_replies: 0,
+    last_reply: 0,
+  };
+  deleted_img: string &#x3D; &#x27;assets/img/deleted.png&#x27;;
+  currentUser: User &#x3D; this.userService.currentUser;
+  currentChannel &#x3D; this.channelService.currentChannel;
+  channelMembers &#x3D; this.currentChannel.members;
+  messageCreator: User | undefined &#x3D; undefined;
+  editableMessage: Message &#x3D; JSON.parse(JSON.stringify(this.message));
+  attachementsData: any[] &#x3D; [];
+  unsubReactions: Function &#x3D; () &#x3D;&gt; { };
+  reactions: Reaction[] &#x3D; [];
+
+  constructor(
+    public messageService: MessageService,
+    public userService: UserService,
+    public channelService: ChannelFirebaseService,
+    public threadService: ThreadService,
+    public customDialogService: CustomDialogService,
+    public reactionService: ReactionService,
+    public sharedService: SharedService,
+    public mainpage: MainPageComponent,
+    public elementRef: ElementRef,
+  ) {
+  }
+
+
+  ngOnInit() {
+    this.messageCreator &#x3D; this.getUser(this.message.user_id);
+    this.editableMessage &#x3D; JSON.parse(JSON.stringify(this.message));
+    this.getAttachementsData();
+    this.getReactions();
+  }
+
+
+  ngOnChanges() {
+    this.editableMessage &#x3D; JSON.parse(JSON.stringify(this.message));
+    if (this.attachementsData.length &#x3D;&#x3D; 0) this.getAttachementsData();
+    this.getReactions();
+  }
+
+
+  ngOnDestroy() {
+    this.unsubReactions();
+  }
+
+
+  async getAttachementsData() {
+    const messageAttachementsPaths &#x3D; this.message.message.attachements;
+    if (messageAttachementsPaths) {
+      this.attachementsData &#x3D; [];
+      messageAttachementsPaths.forEach(async (path) &#x3D;&gt; {
+        if (path !&#x3D; &#x27;deleted&#x27;) {
+          const attachement &#x3D; await this.messageService.getFileData(path);
+          this.attachementsData.push(attachement);
+        }
+      });
+    }
+  }
+
+
+  attachementData(path: string) {
+    let attachementData &#x3D; this.attachementsData.find(
+      (data) &#x3D;&gt; data.path &#x3D;&#x3D; path
+    );
+    return attachementData;
+  }
+
+
+  isCurrentUser(): boolean {
+    return this.currentUser.id &#x3D;&#x3D;&#x3D; this.message.user_id;
+  }
+
+
+  getUser(user_id: string) {
+    return this.userService.allUsers.find((user) &#x3D;&gt; user.id &#x3D;&#x3D; user_id);
+  }
+
+
+  getTime(timeNumber: number) {
+    let date &#x3D; new Date(timeNumber);
+    let h &#x3D; this.addZero(date.getHours());
+    let m &#x3D; this.addZero(date.getMinutes());
+    let time &#x3D; h + &#x27;:&#x27; + m;
+    return time;
+  }
+
+
+  addZero(i: any) {
+    if (i &lt; 10) {
+      i &#x3D; &#x27;0&#x27; + i;
+    }
+    return i;
+  }
+
+
+  updateMessage() {
+    const trimmedMessageText &#x3D; this.editableMessage.message.text.trim();
+    if (trimmedMessageText !&#x3D; &#x27;&#x27;) {
+      this.editableMessage.message.text &#x3D; trimmedMessageText;
+      this.editableMessage.modified_at &#x3D; new Date().getTime();
+      this.messageService.updateMessage(this.editableMessage);
+      this.editMessage &#x3D; false;
+      this.showMoreOptions &#x3D; false;
+    }
+  }
+
+
+  getTimeDifferenceForLastReply(dateAsNumber: number) {
+    let currentDate &#x3D; new Date().getTime();
+    let difference &#x3D; 0;
+    difference &#x3D; currentDate - dateAsNumber;
+    let seconds &#x3D; Math.floor(difference / 1000);
+    let minutes &#x3D; Math.floor(seconds / 60);
+    let hours &#x3D; Math.floor(minutes / 60);
+    let days &#x3D; Math.floor(hours / 24);
+    if (this.convertToDate(currentDate) &#x3D;&#x3D; this.convertToDate(dateAsNumber)) {
+      return this.getTime(dateAsNumber) + &#x27; &#x27; + &#x27;Uhr&#x27;;
+    } else if (hours &gt; 24 &amp;&amp; hours &lt; 48) {
+      return &#x27;Gestern&#x27;;
+    } else {
+      return this.convertToDate(dateAsNumber);
+    }
+  }
+
+
+  convertToDate(dateAsNumber: number) {
+    let date &#x3D; new Date(dateAsNumber);
+    let d: number | string &#x3D; date.getDate();
+    let m: number | string &#x3D; date.getMonth() + 1;
+    let y: number | string &#x3D; date.getFullYear();
+    if (d &lt; 10) d &#x3D; &#x27;0&#x27; + d;
+    if (m &lt; 10) m &#x3D; &#x27;0&#x27; + m;
+    let result &#x3D; d + &#x27;.&#x27; + m + &#x27;.&#x27; + y;
+    return result;
+  }
+
+
+  async openThread(thread_id: string | undefined) {
+    if (this.threadService.threadOpen) {
+      this.closeThread();
+    }
+    if (thread_id &#x3D;&#x3D; undefined || thread_id &#x3D;&#x3D; &#x27;&#x27;) {
+      let newThread: Channel &#x3D; this.newThreadData();
+      this.openNewThread(newThread);
+      this.messageService.updateMessage(this.message);
+      this.closeUnder1500();
+    } else {
+      this.userService.currentUser.last_thread &#x3D; thread_id;
+      this.userService.saveLastThread(this.userService.currentUser.id, thread_id);
+      this.closeUnder1500();
+    }
+  }
+
+
+  newThreadData() {
+    return {
+      id: &#x27;&#x27;,
+      name: this.channelService.currentChannel.name,
+      description: &#x27;&#x27;,
+      created_at: new Date().getTime(),
+      creator: this.userService.currentUser.id,
+      members: [this.userService.currentUser.id],
+      active_members: [],
+      channel_type: ChannelTypeEnum.thread,
+    };
+  }
+
+
+  async openNewThread(newThread: Channel) {
+    let newThreadId &#x3D; await this.channelService.addChannel(newThread);
+    this.userService.saveLastThread(this.userService.currentUser.id, newThreadId);
+    this.userService.currentUser.last_thread &#x3D; newThreadId;
+    this.message.thread_id &#x3D; newThreadId;
+  }
+
+
+  closeUnder1500() {
+    if (window.innerWidth &lt; 1500) {
+      this.sharedService.isMenuOpen &#x3D; false;
+      this.threadService.openThread();
+    }
+    this.threadService.openThread();
+  }
+
+
+  closeThread() {
+    this.userService.saveLastThread(this.userService.currentUser.id, &#x27;&#x27;);
+    this.threadService.closeThread();
+  }
+
+
+  deleteFile(path: string) {
+    this.messageService.deleteFile(path);
+    if (this.message.message.attachements) {
+      const index &#x3D; this.message.message.attachements.indexOf(path);
+      if (index &gt; -1) this.message.message.attachements[index] &#x3D; &#x27;deleted&#x27;;
+      this.message.modified_at &#x3D; new Date().getTime();
+      this.messageService.updateMessage(this.message);
+    }
+  }
+
+
+  openDialogEmojiPicker(input: HTMLDivElement) {
+    const component &#x3D; DialogEmojiPickerComponent;
+    const dialogRef &#x3D; this.customDialogService.openDialog(component);
+    dialogRef.afterClosed().subscribe((result) &#x3D;&gt; {
+      if (result) {
+        this.editableMessage.message.text +&#x3D; result;
+        input.innerText &#x3D; this.editableMessage.message.text;
+      }
+    });
+  }
+
+
+  //#region REACTIONS
+  getReactions() {
+    if (this.message.message.reactions &amp;&amp; this.message.message.reactions.length &gt; 0) {
+      let result &#x3D; this.reactionService.subReactionsForMessage(this.message.id!);
+      this.unsubReactions &#x3D; result.snapshot;
+      this.reactions &#x3D; result.reactionsArray;
+    }
+  }
+
+
+  getReactionData(reactionId: string) {
+    return this.reactions.find((reaction) &#x3D;&gt; reaction.id &#x3D;&#x3D; reactionId);
+  }
+
+
+  openReactionPicker() {
+    const component &#x3D; DialogEmojiPickerComponent;
+    const dialogRef &#x3D; this.customDialogService.openDialog(component);
+    dialogRef.afterClosed().subscribe((result) &#x3D;&gt; {
+      if (result) {
+        this.addReaction(result);
+      }
+    });
+  }
+
+
+  async addReaction(emoji: string) {
+    let currentUserReaction &#x3D; this.reactions.find((reaction) &#x3D;&gt; reaction.users.includes(this.currentUser.id));
+    let reactionWithEmoji &#x3D; this.reactions.find((reaction) &#x3D;&gt; reaction.unicode &#x3D;&#x3D; emoji);
+    if (currentUserReaction &amp;&amp; currentUserReaction.unicode !&#x3D; emoji) this.removeCurrentUserFromReaction(currentUserReaction);
+    if (reactionWithEmoji) {
+      if (!currentUserReaction || currentUserReaction !&#x3D; reactionWithEmoji) this.addCurrentUserToReaction(reactionWithEmoji);
+    } else {
+      this.createNewReaction(emoji);
+    }
+  }
+
+
+  async createNewReaction(emoji: string) {
+    let newReaction: Reaction &#x3D; this.getNewReactionData(emoji);
+    const reactionId &#x3D; await this.reactionService.addReaction(newReaction);
+    this.message.message.reactions?.push(reactionId);
+    this.messageService.updateMessage(this.message);
+  }
+
+
+  getNewReactionData(emoji: string) {
+    return {
+      id: &#x27;&#x27;,
+      message_id: this.message.id!,
+      users: [this.currentUser.id],
+      unicode: emoji,
+      created_at: new Date().getTime(),
+      lastTimeUsed: new Date().getTime(),
+    };
+  }
+
+
+  addCurrentUserToReaction(reaction: Reaction) {
+    if (reaction.users.length &#x3D;&#x3D; 0) reaction.created_at &#x3D; new Date().getTime();
+    reaction.users.push(this.currentUser.id);
+    if (!this.message.message.reactions?.includes(reaction.id)) {
+      this.message.message.reactions?.push(reaction.id);
+      this.messageService.updateMessage(this.message);
+    }
+    reaction.lastTimeUsed &#x3D; new Date().getTime();
+    this.reactionService.updateReaction(reaction);
+  }
+
+
+  removeCurrentUserFromReaction(reaction: Reaction) {
+    let index &#x3D; reaction.users.indexOf(this.currentUser.id);
+    reaction.users.splice(index, 1);
+    if (reaction.users.length &#x3D;&#x3D; 0) {
+      let reactionIdIndex &#x3D; this.message.message.reactions?.indexOf(reaction.id);
+      if (reactionIdIndex !&#x3D; undefined) {
+        this.message.message.reactions?.splice(reactionIdIndex, 1);
+        this.messageService.updateMessage(this.message);
+      }
+    }
+    this.reactionService.updateReaction(reaction);
+  }
+
+
+  toggleReaction(reaction: Reaction) {
+    if (reaction.users.includes(this.currentUser.id)) {
+      this.removeCurrentUserFromReaction(reaction);
+    } else {
+      this.addReaction(reaction.unicode);
+    }
+  }
+
+
+  getUserName(userId: string) {
+    let user &#x3D; this.userService.allUsers.find((user) &#x3D;&gt; user.id &#x3D;&#x3D; userId);
+    return user ? user.name : &#x27;Gelöschter Nutzer&#x27;;
+  }
+
+
+  sortedReactionsByLastTimeUsed() {
+    let filteredReactionsForNoUsers &#x3D; [...this.reactions].filter((reaction) &#x3D;&gt; reaction.users.length &gt; 0)
+    let sortedByLastTimeUsed &#x3D; filteredReactionsForNoUsers.sort((a, b) &#x3D;&gt; b.lastTimeUsed - a.lastTimeUsed);
+    return sortedByLastTimeUsed;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div [ngClass]&#x3D;&quot;{&#x27;message-container&#x27; : !isCurrentUser(), &#x27;message-container-reverse&#x27; : isCurrentUser()}&quot;&gt;
+    &lt;img class&#x3D;&quot;profile-img&quot; [src]&#x3D;&quot;messageCreator?.profile_img ?? deleted_img&quot; alt&#x3D;&quot;&quot;&gt;
+    &lt;!-- message --&gt;
+    @if(!editMessage) {
+        &lt;div class&#x3D;&quot;message-content&quot;&gt;
+            &lt;div class&#x3D;&quot;message-creator&quot;&gt;
+                @if (!this.messageCreator){&lt;span class&#x3D;&quot;name fs-18&quot;&gt;gelöschter Nutzer&lt;/span&gt;}
+                @if (this.messageCreator){&lt;span #profileBtn appOpenProfile [userId]&#x3D;&quot;this.messageCreator.id&quot; [button]&#x3D;&quot;profileBtn&quot; class&#x3D;&quot;name fs-18&quot;&gt;{{ this.messageCreator.name }}&lt;/span&gt;}
+                &lt;span class&#x3D;&quot;time fs-14&quot;&gt;{{ getTime(this.message.created_at) }} Uhr&lt;/span&gt;
+                @if(message.created_at !&#x3D; message.modified_at){&lt;span class&#x3D;&quot;edited fs-14&quot;&gt;(Bearbeitet)&lt;/span&gt;}
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;message&quot;&gt;
+                &lt;div class&#x3D;&quot;text&quot;&gt;{{ message.message.text }}&lt;/div&gt;
+                @if(this.message.message.attachements) {
+                    @for(attachementPath of message.message.attachements; track attachementPath) {
+                        @if(attachementPath !&#x3D; &#x27;deleted&#x27;) {
+                            &lt;div class&#x3D;&quot;attachement-container&quot;&gt;
+                                @if(attachementData(attachementPath)?.type &#x3D;&#x3D; &#x27;application/pdf&#x27; &amp;&amp; attachementData(attachementPath).url) { &lt;!-- pdf type --&gt;
+                                    &lt;div class&#x3D;&quot;attachement-pdf&quot;&gt;
+                                        &lt;div class&#x3D;&quot;pdf-icon&quot;&gt;&lt;b&gt;pdf&lt;/b&gt;&lt;/div&gt;
+                                        &lt;div class&#x3D;&quot;file-name&quot;&gt;{{attachementData(attachementPath).name}}&lt;/div&gt;
+                                    &lt;/div&gt;
+                                }
+                                @else {
+                                        &lt;img class&#x3D;&quot;attachement-img&quot; src&#x3D;&quot;{{attachementData(attachementPath)?.url}}&quot; alt&#x3D;&quot;&quot;&gt;
+                                }
+                                &lt;div class&#x3D;&quot;overlay&quot;&gt;
+                                    &lt;div class&#x3D;&quot;buttons&quot;&gt;
+                                        &lt;button class&#x3D;&quot;btn-icon-v4 download-btn&quot; (click)&#x3D;&quot;this.messageService.downloadFile(attachementPath)&quot;&gt;
+                                            &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; height&#x3D;&quot;24px&quot; viewBox&#x3D;&quot;0 -960 960 960&quot; width&#x3D;&quot;24px&quot; fill&#x3D;&quot;var(--color-grey)&quot;&gt;&lt;path d&#x3D;&quot;M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z&quot;/&gt;&lt;/svg&gt;
+                                        &lt;/button&gt;
+                                        &lt;a class&#x3D;&quot;btn-icon-v4&quot; href&#x3D;&quot;{{attachementData(attachementPath)?.url}}&quot; target&#x3D;&quot;_blank&quot;&gt;
+                                            &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; height&#x3D;&quot;24px&quot; viewBox&#x3D;&quot;0 -960 960 960&quot; width&#x3D;&quot;24px&quot; fill&#x3D;&quot;var(--color-grey)&quot;&gt;&lt;path d&#x3D;&quot;M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z&quot;/&gt;&lt;/svg&gt;
+                                        &lt;/a&gt;
+                                        @if(messageCreator?.id &#x3D;&#x3D; currentUser.id) {
+                                            &lt;button class&#x3D;&quot;btn-icon-v4 download-btn&quot; (click)&#x3D;&quot;deleteFile(attachementPath)&quot;&gt;
+                                                &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; height&#x3D;&quot;24px&quot; viewBox&#x3D;&quot;0 -960 960 960&quot; width&#x3D;&quot;24px&quot; fill&#x3D;&quot;var(--color-grey)&quot;&gt;&lt;path d&#x3D;&quot;M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z&quot;/&gt;&lt;/svg&gt;
+                                            &lt;/button&gt;
+                                        }
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        }
+                        @else {
+                            &lt;div class&#x3D;&quot;attachement-deleted&quot;&gt;
+                                &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; height&#x3D;&quot;24px&quot; viewBox&#x3D;&quot;0 -960 960 960&quot; width&#x3D;&quot;24px&quot; fill&#x3D;&quot;var(--color-gray)&quot;&gt;&lt;path d&#x3D;&quot;M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z&quot;/&gt;&lt;/svg&gt;
+                                &lt;span&gt;Die Datei wurde gelöscht.&lt;/span&gt;
+                            &lt;/div&gt;
+                        }
+                    }
+                }
+            &lt;/div&gt;
+            @if (currentChannel.channel_type !&#x3D; &#x27;thread&#x27; &amp;&amp; message.total_replies &amp;&amp; message.total_replies &gt; 0) {
+                &lt;div class&#x3D;&quot;replies&quot;&gt;
+                    &lt;button class&#x3D;&quot;count fs-18&quot; (click)&#x3D;&quot;openThread(message.thread_id)&quot;&gt;{{ message.total_replies }} {{ message.total_replies &gt; 1 ? &#x27;Antworten&#x27; : &#x27;Antwort&#x27; }}&lt;/button&gt;
+                    @if ( message.last_reply ) {
+                        &lt;span class&#x3D;&quot;last-reply fs-14&quot;&gt;Letzte Antwort {{ getTimeDifferenceForLastReply(this.message.last_reply)}}&lt;/span&gt;
+                    }
+                &lt;/div&gt;
+            }
+            &lt;!-- reactions --&gt;
+            @if (message.message.reactions &amp;&amp; message.message.reactions.length &gt; 0) {
+                &lt;div class&#x3D;&quot;reactions-outer-container&quot;&gt;
+                &lt;div class&#x3D;&quot;reactions-inner-container&quot;&gt;
+                    @for(reaction of reactions; track reaction.id) {
+                        @if(reaction.users.length &gt; 0) {
+                            &lt;div class&#x3D;&quot;reaction-container&quot;&gt;
+                                &lt;div class&#x3D;&quot;reaction&quot; (click)&#x3D;&quot;toggleReaction(reaction)&quot;&gt;
+                                    &lt;div class&#x3D;&quot;emojicon&quot;&gt;{{reaction.unicode}}&lt;/div&gt;
+                                    &lt;div class&#x3D;&quot;reaction-counter fs-16&quot;&gt;{{reaction.users.length}}&lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;reaction-hover-info-container&quot;&gt;
+                                    &lt;div class&#x3D;&quot;emojicon&quot;&gt; {{reaction.unicode}} &lt;/div&gt;
+                                    &lt;div class&#x3D;&quot;reaction-hover-info&quot;&gt;
+                                            @for(userId of reaction.users; track userId; let i &#x3D; $index) {
+                                                    &lt;div class&#x3D;&quot;reaction-user fs-18&quot;&gt;
+                                                        {{getUserName(userId)}}{{(reaction.users.length &gt; 1 &amp;&amp; i &lt; reaction.users.length - 1) ? &#x27;,&#x27; : &#x27;&#x27;}}
+                                                &lt;/div&gt;
+                                                }
+                                    
+                                        
+                                        &lt;div class&#x3D;&quot;reaction-text fs-16&quot;&gt;{{ reaction.users.length &gt; 1 ? &#x27;haben reagiert&#x27;  : &#x27;hat reagiert&#x27;}}&lt;/div&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;  
+                        }
+                    }
+                    &lt;/div&gt;
+                 &lt;!-- add reaction --&gt;
+                    &lt;button class&#x3D;&quot;btn-icon-v5&quot; (click)&#x3D;&quot;openReactionPicker()&quot;&gt;
+                        &lt;svg width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                            &lt;mask id&#x3D;&quot;mask0_813_12127&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot;&gt;
+                            &lt;rect width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; fill&#x3D;&quot;#D9D9D9&quot;/&gt;
+                            &lt;/mask&gt;
+                            &lt;g mask&#x3D;&quot;url(#mask0_813_12127)&quot;&gt;
+                            &lt;path d&#x3D;&quot;M12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6873 5.825 19.975 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26267 14.6833 2 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31267 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.31233 8.1 2.787C9.31667 2.26233 10.6167 2 12 2C12.75 2 13.4793 2.079 14.188 2.237C14.896 2.39567 15.5667 2.625 16.2 2.925C16.1333 3.09167 16.0833 3.26667 16.05 3.45C16.0167 3.63333 16 3.81667 16 4C16 4.23333 16.025 4.454 16.075 4.662C16.125 4.87067 16.1917 5.06667 16.275 5.25C15.6583 4.86667 14.9917 4.56233 14.275 4.337C13.5583 4.11233 12.8 4 12 4C9.78333 4 7.896 4.779 6.338 6.337C4.77933 7.89567 4 9.78333 4 12C4 14.2167 4.77933 16.1043 6.338 17.663C7.896 19.221 9.78333 20 12 20C14.2167 20 16.1043 19.221 17.663 17.663C19.221 16.1043 20 14.2167 20 12C20 11.3333 19.921 10.6917 19.763 10.075C19.6043 9.45833 19.3833 8.875 19.1 8.325C19.3667 8.54167 19.6583 8.70833 19.975 8.825C20.2917 8.94167 20.6333 9 21 9C21.0833 9 21.171 8.996 21.263 8.988C21.3543 8.97933 21.4417 8.96667 21.525 8.95C21.675 9.43333 21.7917 9.92933 21.875 10.438C21.9583 10.946 22 11.4667 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6873 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6873 15.9 21.212C14.6833 21.7373 13.3833 22 12 22ZM15.5 11C15.9333 11 16.2917 10.8583 16.575 10.575C16.8583 10.2917 17 9.93333 17 9.5C17 9.06667 16.8583 8.70833 16.575 8.425C16.2917 8.14167 15.9333 8 15.5 8C15.0667 8 14.7083 8.14167 14.425 8.425C14.1417 8.70833 14 9.06667 14 9.5C14 9.93333 14.1417 10.2917 14.425 10.575C14.7083 10.8583 15.0667 11 15.5 11ZM8.5 11C8.93333 11 9.29167 10.8583 9.575 10.575C9.85833 10.2917 10 9.93333 10 9.5C10 9.06667 9.85833 8.70833 9.575 8.425C9.29167 8.14167 8.93333 8 8.5 8C8.06667 8 7.70833 8.14167 7.425 8.425C7.14167 8.70833 7 9.06667 7 9.5C7 9.93333 7.14167 10.2917 7.425 10.575C7.70833 10.8583 8.06667 11 8.5 11ZM12 17.5C13.1833 17.5 14.229 17.175 15.137 16.525C16.0457 15.875 16.7 15.0333 17.1 14H6.9C7.3 15.0333 7.95433 15.875 8.863 16.525C9.771 17.175 10.8167 17.5 12 17.5ZM20 5H19C18.7167 5 18.4793 4.904 18.288 4.712C18.096 4.52067 18 4.28333 18 4C18 3.71667 18.096 3.479 18.288 3.287C18.4793 3.09567 18.7167 3 19 3H20V2C20 1.71667 20.096 1.479 20.288 1.287C20.4793 1.09567 20.7167 1 21 1C21.2833 1 21.5207 1.09567 21.712 1.287C21.904 1.479 22 1.71667 22 2V3H23C23.2833 3 23.5207 3.09567 23.712 3.287C23.904 3.479 24 3.71667 24 4C24 4.28333 23.904 4.52067 23.712 4.712C23.5207 4.904 23.2833 5 23 5H22V6C22 6.28333 21.904 6.521 21.712 6.713C21.5207 6.90433 21.2833 7 21 7C20.7167 7 20.4793 6.90433 20.288 6.713C20.096 6.521 20 6.28333 20 6V5Z&quot; fill&#x3D;&quot;#1C1B1F&quot;/&gt;
+                            &lt;/g&gt;
+                        &lt;/svg&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            }
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;reaction-bar&quot;&gt;
+            @if (channelType !&#x3D; &#x27;thread&#x27;) {
+                @if(message.message.reactions &amp;&amp; message.message.reactions.length &gt; 0) {
+                    @for(reaction of sortedReactionsByLastTimeUsed(); track reaction; let index &#x3D; $index) {
+                        @if(index &lt; 2) {
+                            &lt;button class&#x3D;&quot;btn-icon-v6 w40&quot; (click)&#x3D;&quot;addReaction(getReactionData(reaction.id)?.unicode!)&quot;&gt;
+                                &lt;div class&#x3D;&quot;emojicone&quot;&gt;{{getReactionData(reaction.id)?.unicode}}&lt;/div&gt;
+                            &lt;/button&gt;
+                        }
+                    }
+                    
+                }
+            }
+            &lt;!-- add reaction --&gt;
+            &lt;button class&#x3D;&quot;btn-icon w40&quot; (click)&#x3D;&quot;openReactionPicker()&quot;&gt;
+                &lt;svg width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                    &lt;mask id&#x3D;&quot;mask0_813_12127&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot;&gt;
+                    &lt;rect width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; fill&#x3D;&quot;#D9D9D9&quot;/&gt;
+                    &lt;/mask&gt;
+                    &lt;g mask&#x3D;&quot;url(#mask0_813_12127)&quot;&gt;
+                    &lt;path d&#x3D;&quot;M12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6873 5.825 19.975 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26267 14.6833 2 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31267 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.31233 8.1 2.787C9.31667 2.26233 10.6167 2 12 2C12.75 2 13.4793 2.079 14.188 2.237C14.896 2.39567 15.5667 2.625 16.2 2.925C16.1333 3.09167 16.0833 3.26667 16.05 3.45C16.0167 3.63333 16 3.81667 16 4C16 4.23333 16.025 4.454 16.075 4.662C16.125 4.87067 16.1917 5.06667 16.275 5.25C15.6583 4.86667 14.9917 4.56233 14.275 4.337C13.5583 4.11233 12.8 4 12 4C9.78333 4 7.896 4.779 6.338 6.337C4.77933 7.89567 4 9.78333 4 12C4 14.2167 4.77933 16.1043 6.338 17.663C7.896 19.221 9.78333 20 12 20C14.2167 20 16.1043 19.221 17.663 17.663C19.221 16.1043 20 14.2167 20 12C20 11.3333 19.921 10.6917 19.763 10.075C19.6043 9.45833 19.3833 8.875 19.1 8.325C19.3667 8.54167 19.6583 8.70833 19.975 8.825C20.2917 8.94167 20.6333 9 21 9C21.0833 9 21.171 8.996 21.263 8.988C21.3543 8.97933 21.4417 8.96667 21.525 8.95C21.675 9.43333 21.7917 9.92933 21.875 10.438C21.9583 10.946 22 11.4667 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6873 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6873 15.9 21.212C14.6833 21.7373 13.3833 22 12 22ZM15.5 11C15.9333 11 16.2917 10.8583 16.575 10.575C16.8583 10.2917 17 9.93333 17 9.5C17 9.06667 16.8583 8.70833 16.575 8.425C16.2917 8.14167 15.9333 8 15.5 8C15.0667 8 14.7083 8.14167 14.425 8.425C14.1417 8.70833 14 9.06667 14 9.5C14 9.93333 14.1417 10.2917 14.425 10.575C14.7083 10.8583 15.0667 11 15.5 11ZM8.5 11C8.93333 11 9.29167 10.8583 9.575 10.575C9.85833 10.2917 10 9.93333 10 9.5C10 9.06667 9.85833 8.70833 9.575 8.425C9.29167 8.14167 8.93333 8 8.5 8C8.06667 8 7.70833 8.14167 7.425 8.425C7.14167 8.70833 7 9.06667 7 9.5C7 9.93333 7.14167 10.2917 7.425 10.575C7.70833 10.8583 8.06667 11 8.5 11ZM12 17.5C13.1833 17.5 14.229 17.175 15.137 16.525C16.0457 15.875 16.7 15.0333 17.1 14H6.9C7.3 15.0333 7.95433 15.875 8.863 16.525C9.771 17.175 10.8167 17.5 12 17.5ZM20 5H19C18.7167 5 18.4793 4.904 18.288 4.712C18.096 4.52067 18 4.28333 18 4C18 3.71667 18.096 3.479 18.288 3.287C18.4793 3.09567 18.7167 3 19 3H20V2C20 1.71667 20.096 1.479 20.288 1.287C20.4793 1.09567 20.7167 1 21 1C21.2833 1 21.5207 1.09567 21.712 1.287C21.904 1.479 22 1.71667 22 2V3H23C23.2833 3 23.5207 3.09567 23.712 3.287C23.904 3.479 24 3.71667 24 4C24 4.28333 23.904 4.52067 23.712 4.712C23.5207 4.904 23.2833 5 23 5H22V6C22 6.28333 21.904 6.521 21.712 6.713C21.5207 6.90433 21.2833 7 21 7C20.7167 7 20.4793 6.90433 20.288 6.713C20.096 6.521 20 6.28333 20 6V5Z&quot; fill&#x3D;&quot;#1C1B1F&quot;/&gt;
+                    &lt;/g&gt;
+                &lt;/svg&gt;
+            &lt;/button&gt;
+            &lt;!-- open thread --&gt;
+            @if (channelType !&#x3D; &#x27;thread&#x27;) {
+                &lt;button class&#x3D;&quot;btn-icon w40&quot; (click)&#x3D;&quot;openThread(message.thread_id)&quot;&gt;
+                    &lt;svg width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                        &lt;mask id&#x3D;&quot;mask0_813_12172&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot;&gt;
+                        &lt;rect width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; fill&#x3D;&quot;#D9D9D9&quot;/&gt;
+                        &lt;/mask&gt;
+                        &lt;g mask&#x3D;&quot;url(#mask0_813_12172)&quot;&gt;
+                        &lt;path d&#x3D;&quot;M7 14H17C17.2833 14 17.5207 13.904 17.712 13.712C17.904 13.5207 18 13.2833 18 13C18 12.7167 17.904 12.479 17.712 12.287C17.5207 12.0957 17.2833 12 17 12H7C6.71667 12 6.479 12.0957 6.287 12.287C6.09567 12.479 6 12.7167 6 13C6 13.2833 6.09567 13.5207 6.287 13.712C6.479 13.904 6.71667 14 7 14ZM7 11H17C17.2833 11 17.5207 10.904 17.712 10.712C17.904 10.5207 18 10.2833 18 10C18 9.71667 17.904 9.479 17.712 9.287C17.5207 9.09567 17.2833 9 17 9H7C6.71667 9 6.479 9.09567 6.287 9.287C6.09567 9.479 6 9.71667 6 10C6 10.2833 6.09567 10.5207 6.287 10.712C6.479 10.904 6.71667 11 7 11ZM7 8H17C17.2833 8 17.5207 7.90433 17.712 7.713C17.904 7.521 18 7.28333 18 7C18 6.71667 17.904 6.479 17.712 6.287C17.5207 6.09567 17.2833 6 17 6H7C6.71667 6 6.479 6.09567 6.287 6.287C6.09567 6.479 6 6.71667 6 7C6 7.28333 6.09567 7.521 6.287 7.713C6.479 7.90433 6.71667 8 7 8ZM20.3 20.3L18 18H4C3.45 18 2.97933 17.8043 2.588 17.413C2.196 17.021 2 16.55 2 16V4C2 3.45 2.196 2.979 2.588 2.587C2.97933 2.19567 3.45 2 4 2H20C20.55 2 21.021 2.19567 21.413 2.587C21.8043 2.979 22 3.45 22 4V19.575C22 20.025 21.796 20.3373 21.388 20.512C20.9793 20.6873 20.6167 20.6167 20.3 20.3ZM4 4V16H18.825L20 17.175V4H4Z&quot; fill&#x3D;&quot;#1C1B1F&quot;/&gt;
+                        &lt;/g&gt;
+                    &lt;/svg&gt;
+                &lt;/button&gt;
+            }
+            @if (isCurrentUser()) {
+                            &lt;!-- more-options-button --&gt;
+            &lt;div class&#x3D;&quot;more-options-button-container&quot;&gt;
+                &lt;button class&#x3D;&quot;btn-icon w40&quot; (click)&#x3D;&quot;showMoreOptions &#x3D; !showMoreOptions&quot;&gt;
+                    &lt;svg width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                        &lt;mask id&#x3D;&quot;mask0_1817_16514&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot;&gt;
+                        &lt;rect width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; fill&#x3D;&quot;#D9D9D9&quot;/&gt;
+                        &lt;/mask&gt;
+                        &lt;g mask&#x3D;&quot;url(#mask0_1817_16514)&quot;&gt;
+                        &lt;path d&#x3D;&quot;M12 20C11.45 20 10.9792 19.8042 10.5875 19.4125C10.1958 19.0208 10 18.55 10 18C10 17.45 10.1958 16.9792 10.5875 16.5875C10.9792 16.1958 11.45 16 12 16C12.55 16 13.0208 16.1958 13.4125 16.5875C13.8042 16.9792 14 17.45 14 18C14 18.55 13.8042 19.0208 13.4125 19.4125C13.0208 19.8042 12.55 20 12 20ZM12 14C11.45 14 10.9792 13.8042 10.5875 13.4125C10.1958 13.0208 10 12.55 10 12C10 11.45 10.1958 10.9792 10.5875 10.5875C10.9792 10.1958 11.45 10 12 10C12.55 10 13.0208 10.1958 13.4125 10.5875C13.8042 10.9792 14 11.45 14 12C14 12.55 13.8042 13.0208 13.4125 13.4125C13.0208 13.8042 12.55 14 12 14ZM12 8C11.45 8 10.9792 7.80417 10.5875 7.4125C10.1958 7.02083 10 6.55 10 6C10 5.45 10.1958 4.97917 10.5875 4.5875C10.9792 4.19583 11.45 4 12 4C12.55 4 13.0208 4.19583 13.4125 4.5875C13.8042 4.97917 14 5.45 14 6C14 6.55 13.8042 7.02083 13.4125 7.4125C13.0208 7.80417 12.55 8 12 8Z&quot; fill&#x3D;&quot;#1C1B1F&quot;/&gt;
+                        &lt;/g&gt;
+                    &lt;/svg&gt;    
+                &lt;/button&gt;
+                @if(showMoreOptions) {
+                    &lt;div class&#x3D;&quot;more-options-menu&quot;&gt;
+                        &lt;button class&#x3D;&quot;btn-text-v2 fs-20&quot; (click)&#x3D;&quot;editMessage &#x3D; true&quot;&gt;Nachricht bearbeiten&lt;/button&gt;
+                    &lt;/div&gt;
+                }
+            &lt;/div&gt;
+            }
+        &lt;/div&gt;
+    }
+
+
+    &lt;!-- edit - message --&gt;
+    @if(editMessage) {
+        &lt;div [ngClass]&#x3D;&quot;{&#x27;message-edit-container&#x27; : channelType !&#x3D; &#x27;thread&#x27;, &#x27;message-edit-container-thread&#x27; : channelType &#x3D;&#x3D; &#x27;thread&#x27;}&quot;&gt;
+            &lt;div #channelInput name&#x3D;&quot;channelInput&quot; class&#x3D;&quot;message-input&quot; contenteditable&#x3D;&quot;true&quot; (input)&#x3D;&quot;this.editableMessage.message.text&#x3D; channelInput.innerText&quot;&gt;
+                {{this.message.message.text}}
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;message-edit-buttons&quot;&gt;
+                &lt;!-- add emoticon --&gt;
+                &lt;button class&#x3D;&quot;btn-icon w40&quot; (click)&#x3D;&quot;openDialogEmojiPicker(channelInput)&quot;&gt;
+                    &lt;svg width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                      &lt;mask id&#x3D;&quot;mask0_813_12139&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot;&gt;
+                      &lt;rect width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; fill&#x3D;&quot;#D9D9D9&quot;/&gt;
+                      &lt;/mask&gt;
+                      &lt;g mask&#x3D;&quot;url(#mask0_813_12139)&quot;&gt;
+                      &lt;path d&#x3D;&quot;M15.5 11C15.9333 11 16.2917 10.8583 16.575 10.575C16.8583 10.2917 17 9.93333 17 9.5C17 9.06667 16.8583 8.70833 16.575 8.425C16.2917 8.14167 15.9333 8 15.5 8C15.0667 8 14.7083 8.14167 14.425 8.425C14.1417 8.70833 14 9.06667 14 9.5C14 9.93333 14.1417 10.2917 14.425 10.575C14.7083 10.8583 15.0667 11 15.5 11ZM8.5 11C8.93333 11 9.29167 10.8583 9.575 10.575C9.85833 10.2917 10 9.93333 10 9.5C10 9.06667 9.85833 8.70833 9.575 8.425C9.29167 8.14167 8.93333 8 8.5 8C8.06667 8 7.70833 8.14167 7.425 8.425C7.14167 8.70833 7 9.06667 7 9.5C7 9.93333 7.14167 10.2917 7.425 10.575C7.70833 10.8583 8.06667 11 8.5 11ZM12 17.5C12.95 17.5 13.8167 17.2877 14.6 16.863C15.3833 16.4377 15.9917 15.9 16.425 15.25C16.625 14.95 16.6543 14.6667 16.513 14.4C16.371 14.1333 16.15 14 15.85 14C15.7333 14 15.6167 14.0333 15.5 14.1C15.3833 14.1667 15.2917 14.25 15.225 14.35C14.8583 14.85 14.4 15.25 13.85 15.55C13.3 15.85 12.6833 16 12 16C11.3167 16 10.7 15.85 10.15 15.55C9.6 15.25 9.14167 14.85 8.775 14.35C8.70833 14.25 8.61267 14.1667 8.488 14.1C8.36267 14.0333 8.24167 14 8.125 14C7.84167 14 7.62933 14.129 7.488 14.387C7.346 14.6457 7.36667 14.9167 7.55 15.2C8 15.8833 8.61667 16.4377 9.4 16.863C10.1833 17.2877 11.05 17.5 12 17.5ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6873 5.825 19.975 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26267 14.6833 2 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31267 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.31233 8.1 2.787C9.31667 2.26233 10.6167 2 12 2C13.3833 2 14.6833 2.26233 15.9 2.787C17.1167 3.31233 18.175 4.025 19.075 4.925C19.975 5.825 20.6873 6.88333 21.212 8.1C21.7373 9.31667 22 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6873 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6873 15.9 21.212C14.6833 21.7373 13.3833 22 12 22ZM12 20C14.2167 20 16.1043 19.221 17.663 17.663C19.221 16.1043 20 14.2167 20 12C20 9.78333 19.221 7.89567 17.663 6.337C16.1043 4.779 14.2167 4 12 4C9.78333 4 7.896 4.779 6.338 6.337C4.77933 7.89567 4 9.78333 4 12C4 14.2167 4.77933 16.1043 6.338 17.663C7.896 19.221 9.78333 20 12 20Z&quot; fill&#x3D;&quot;#686868&quot;/&gt;
+                      &lt;/g&gt;
+                    &lt;/svg&gt;                               
+                &lt;/button&gt;
+                &lt;div class&#x3D;&quot;message-confirm-buttons&quot;&gt;
+                    @if(channelType !&#x3D; &#x27;thread&#x27;) {
+                        &lt;button class&#x3D;&quot;btn-secondary fs-18&quot; (click)&#x3D;&quot;editMessage &#x3D; false; showMoreOptions &#x3D; false&quot;&gt;Abbrechen&lt;/button&gt;
+                        &lt;button class&#x3D;&quot;btn-primary fs-18&quot; (click)&#x3D;&quot;updateMessage()&quot;&gt;Speichern&lt;/button&gt;
+                    }
+                    @if(channelType &#x3D;&#x3D; &#x27;thread&#x27;) {
+                        &lt;button class&#x3D;&quot;btn-icon w40&quot; (click)&#x3D;&quot;editMessage &#x3D; false; showMoreOptions &#x3D; false&quot;&gt;
+                            &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; height&#x3D;&quot;24&quot; viewBox&#x3D;&quot;0 -960 960 960&quot; width&#x3D;&quot;24&quot; fill&#x3D;&quot;var(--color-light-purple)&quot;&gt;&lt;path d&#x3D;&quot;m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z&quot;/&gt;&lt;/svg&gt;
+                        &lt;/button&gt;
+                        &lt;button class&#x3D;&quot;btn-icon w40&quot; (click)&#x3D;&quot;updateMessage()&quot;&gt;
+                            &lt;svg width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                &lt;mask id&#x3D;&quot;mask0_1814_16197&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot;&gt;
+                                &lt;rect width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; fill&#x3D;&quot;#D9D9D9&quot;/&gt;
+                                &lt;/mask&gt;
+                                &lt;g mask&#x3D;&quot;url(#mask0_1814_16197)&quot;&gt;
+                                &lt;path d&#x3D;&quot;M10.6 13.8L8.45 11.65C8.26667 11.4667 8.03333 11.375 7.75 11.375C7.46667 11.375 7.23333 11.4667 7.05 11.65C6.86667 11.8333 6.775 12.0667 6.775 12.35C6.775 12.6333 6.86667 12.8667 7.05 13.05L9.9 15.9C10.1 16.1 10.3333 16.2 10.6 16.2C10.8667 16.2 11.1 16.1 11.3 15.9L16.95 10.25C17.1333 10.0667 17.225 9.83333 17.225 9.55C17.225 9.26667 17.1333 9.03333 16.95 8.85C16.7667 8.66667 16.5333 8.575 16.25 8.575C15.9667 8.575 15.7333 8.66667 15.55 8.85L10.6 13.8ZM12 22C10.6167 22 9.31667 21.7375 8.1 21.2125C6.88333 20.6875 5.825 19.975 4.925 19.075C4.025 18.175 3.3125 17.1167 2.7875 15.9C2.2625 14.6833 2 13.3833 2 12C2 10.6167 2.2625 9.31667 2.7875 8.1C3.3125 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.3125 8.1 2.7875C9.31667 2.2625 10.6167 2 12 2C13.3833 2 14.6833 2.2625 15.9 2.7875C17.1167 3.3125 18.175 4.025 19.075 4.925C19.975 5.825 20.6875 6.88333 21.2125 8.1C21.7375 9.31667 22 10.6167 22 12C22 13.3833 21.7375 14.6833 21.2125 15.9C20.6875 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6875 15.9 21.2125C14.6833 21.7375 13.3833 22 12 22ZM12 20C14.2333 20 16.125 19.225 17.675 17.675C19.225 16.125 20 14.2333 20 12C20 9.76667 19.225 7.875 17.675 6.325C16.125 4.775 14.2333 4 12 4C9.76667 4 7.875 4.775 6.325 6.325C4.775 7.875 4 9.76667 4 12C4 14.2333 4.775 16.125 6.325 17.675C7.875 19.225 9.76667 20 12 20Z&quot; fill&#x3D;&quot;var(--color-purple-2)&quot;/&gt;
+                                &lt;/g&gt;
+                            &lt;/svg&gt;
+                        &lt;/button&gt;
+                    }
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    }
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div [ngClass]="{\'message-container\' : !isCurrentUser(), \'message-container-reverse\' : isCurrentUser()}">    <img class="profile-img" [src]="messageCreator?.profile_img ?? deleted_img" alt="">    <!-- message -->    @if(!editMessage) {        <div class="message-content">            <div class="message-creator">                @if (!this.messageCreator){<span class="name fs-18">gelöschter Nutzer</span>}                @if (this.messageCreator){<span #profileBtn appOpenProfile [userId]="this.messageCreator.id" [button]="profileBtn" class="name fs-18">{{ this.messageCreator.name }}</span>}                <span class="time fs-14">{{ getTime(this.message.created_at) }} Uhr</span>                @if(message.created_at != message.modified_at){<span class="edited fs-14">(Bearbeitet)</span>}            </div>            <div class="message">                <div class="text">{{ message.message.text }}</div>                @if(this.message.message.attachements) {                    @for(attachementPath of message.message.attachements; track attachementPath) {                        @if(attachementPath != \'deleted\') {                            <div class="attachement-container">                                @if(attachementData(attachementPath)?.type == \'application/pdf\' && attachementData(attachementPath).url) { <!-- pdf type -->                                    <div class="attachement-pdf">                                        <div class="pdf-icon"><b>pdf</b></div>                                        <div class="file-name">{{attachementData(attachementPath).name}}</div>                                    </div>                                }                                @else {                                        <img class="attachement-img" src="{{attachementData(attachementPath)?.url}}" alt="">                                }                                <div class="overlay">                                    <div class="buttons">                                        <button class="btn-icon-v4 download-btn" (click)="this.messageService.downloadFile(attachementPath)">                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--color-grey)"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>                                        </button>                                        <a class="btn-icon-v4" href="{{attachementData(attachementPath)?.url}}" target="_blank">                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--color-grey)"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>                                        </a>                                        @if(messageCreator?.id == currentUser.id) {                                            <button class="btn-icon-v4 download-btn" (click)="deleteFile(attachementPath)">                                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--color-grey)"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>                                            </button>                                        }                                    </div>                                </div>                            </div>                        }                        @else {                            <div class="attachement-deleted">                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--color-gray)"><path d="M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"/></svg>                                <span>Die Datei wurde gelöscht.</span>                            </div>                        }                    }                }            </div>            @if (currentChannel.channel_type != \'thread\' && message.total_replies && message.total_replies > 0) {                <div class="replies">                    <button class="count fs-18" (click)="openThread(message.thread_id)">{{ message.total_replies }} {{ message.total_replies > 1 ? \'Antworten\' : \'Antwort\' }}</button>                    @if ( message.last_reply ) {                        <span class="last-reply fs-14">Letzte Antwort {{ getTimeDifferenceForLastReply(this.message.last_reply)}}</span>                    }                </div>            }            <!-- reactions -->            @if (message.message.reactions && message.message.reactions.length > 0) {                <div class="reactions-outer-container">                <div class="reactions-inner-container">                    @for(reaction of reactions; track reaction.id) {                        @if(reaction.users.length > 0) {                            <div class="reaction-container">                                <div class="reaction" (click)="toggleReaction(reaction)">                                    <div class="emojicon">{{reaction.unicode}}</div>                                    <div class="reaction-counter fs-16">{{reaction.users.length}}</div>                                </div>                                <div class="reaction-hover-info-container">                                    <div class="emojicon"> {{reaction.unicode}} </div>                                    <div class="reaction-hover-info">                                            @for(userId of reaction.users; track userId; let i = $index) {                                                    <div class="reaction-user fs-18">                                                        {{getUserName(userId)}}{{(reaction.users.length > 1 && i < reaction.users.length - 1) ? \',\' : \'\'}}                                                </div>                                                }                                                                                                                    <div class="reaction-text fs-16">{{ reaction.users.length > 1 ? \'haben reagiert\'  : \'hat reagiert\'}}</div>                                    </div>                                </div>                            </div>                          }                    }                    </div>                 <!-- add reaction -->                    <button class="btn-icon-v5" (click)="openReactionPicker()">                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                            <mask id="mask0_813_12127" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">                            <rect width="24" height="24" fill="#D9D9D9"/>                            </mask>                            <g mask="url(#mask0_813_12127)">                            <path d="M12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6873 5.825 19.975 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26267 14.6833 2 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31267 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.31233 8.1 2.787C9.31667 2.26233 10.6167 2 12 2C12.75 2 13.4793 2.079 14.188 2.237C14.896 2.39567 15.5667 2.625 16.2 2.925C16.1333 3.09167 16.0833 3.26667 16.05 3.45C16.0167 3.63333 16 3.81667 16 4C16 4.23333 16.025 4.454 16.075 4.662C16.125 4.87067 16.1917 5.06667 16.275 5.25C15.6583 4.86667 14.9917 4.56233 14.275 4.337C13.5583 4.11233 12.8 4 12 4C9.78333 4 7.896 4.779 6.338 6.337C4.77933 7.89567 4 9.78333 4 12C4 14.2167 4.77933 16.1043 6.338 17.663C7.896 19.221 9.78333 20 12 20C14.2167 20 16.1043 19.221 17.663 17.663C19.221 16.1043 20 14.2167 20 12C20 11.3333 19.921 10.6917 19.763 10.075C19.6043 9.45833 19.3833 8.875 19.1 8.325C19.3667 8.54167 19.6583 8.70833 19.975 8.825C20.2917 8.94167 20.6333 9 21 9C21.0833 9 21.171 8.996 21.263 8.988C21.3543 8.97933 21.4417 8.96667 21.525 8.95C21.675 9.43333 21.7917 9.92933 21.875 10.438C21.9583 10.946 22 11.4667 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6873 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6873 15.9 21.212C14.6833 21.7373 13.3833 22 12 22ZM15.5 11C15.9333 11 16.2917 10.8583 16.575 10.575C16.8583 10.2917 17 9.93333 17 9.5C17 9.06667 16.8583 8.70833 16.575 8.425C16.2917 8.14167 15.9333 8 15.5 8C15.0667 8 14.7083 8.14167 14.425 8.425C14.1417 8.70833 14 9.06667 14 9.5C14 9.93333 14.1417 10.2917 14.425 10.575C14.7083 10.8583 15.0667 11 15.5 11ZM8.5 11C8.93333 11 9.29167 10.8583 9.575 10.575C9.85833 10.2917 10 9.93333 10 9.5C10 9.06667 9.85833 8.70833 9.575 8.425C9.29167 8.14167 8.93333 8 8.5 8C8.06667 8 7.70833 8.14167 7.425 8.425C7.14167 8.70833 7 9.06667 7 9.5C7 9.93333 7.14167 10.2917 7.425 10.575C7.70833 10.8583 8.06667 11 8.5 11ZM12 17.5C13.1833 17.5 14.229 17.175 15.137 16.525C16.0457 15.875 16.7 15.0333 17.1 14H6.9C7.3 15.0333 7.95433 15.875 8.863 16.525C9.771 17.175 10.8167 17.5 12 17.5ZM20 5H19C18.7167 5 18.4793 4.904 18.288 4.712C18.096 4.52067 18 4.28333 18 4C18 3.71667 18.096 3.479 18.288 3.287C18.4793 3.09567 18.7167 3 19 3H20V2C20 1.71667 20.096 1.479 20.288 1.287C20.4793 1.09567 20.7167 1 21 1C21.2833 1 21.5207 1.09567 21.712 1.287C21.904 1.479 22 1.71667 22 2V3H23C23.2833 3 23.5207 3.09567 23.712 3.287C23.904 3.479 24 3.71667 24 4C24 4.28333 23.904 4.52067 23.712 4.712C23.5207 4.904 23.2833 5 23 5H22V6C22 6.28333 21.904 6.521 21.712 6.713C21.5207 6.90433 21.2833 7 21 7C20.7167 7 20.4793 6.90433 20.288 6.713C20.096 6.521 20 6.28333 20 6V5Z" fill="#1C1B1F"/>                            </g>                        </svg>                    </button>                </div>            }        </div>        <div class="reaction-bar">            @if (channelType != \'thread\') {                @if(message.message.reactions && message.message.reactions.length > 0) {                    @for(reaction of sortedReactionsByLastTimeUsed(); track reaction; let index = $index) {                        @if(index < 2) {                            <button class="btn-icon-v6 w40" (click)="addReaction(getReactionData(reaction.id)?.unicode!)">                                <div class="emojicone">{{getReactionData(reaction.id)?.unicode}}</div>                            </button>                        }                    }                                    }            }            <!-- add reaction -->            <button class="btn-icon w40" (click)="openReactionPicker()">                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                    <mask id="mask0_813_12127" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">                    <rect width="24" height="24" fill="#D9D9D9"/>                    </mask>                    <g mask="url(#mask0_813_12127)">                    <path d="M12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6873 5.825 19.975 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26267 14.6833 2 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31267 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.31233 8.1 2.787C9.31667 2.26233 10.6167 2 12 2C12.75 2 13.4793 2.079 14.188 2.237C14.896 2.39567 15.5667 2.625 16.2 2.925C16.1333 3.09167 16.0833 3.26667 16.05 3.45C16.0167 3.63333 16 3.81667 16 4C16 4.23333 16.025 4.454 16.075 4.662C16.125 4.87067 16.1917 5.06667 16.275 5.25C15.6583 4.86667 14.9917 4.56233 14.275 4.337C13.5583 4.11233 12.8 4 12 4C9.78333 4 7.896 4.779 6.338 6.337C4.77933 7.89567 4 9.78333 4 12C4 14.2167 4.77933 16.1043 6.338 17.663C7.896 19.221 9.78333 20 12 20C14.2167 20 16.1043 19.221 17.663 17.663C19.221 16.1043 20 14.2167 20 12C20 11.3333 19.921 10.6917 19.763 10.075C19.6043 9.45833 19.3833 8.875 19.1 8.325C19.3667 8.54167 19.6583 8.70833 19.975 8.825C20.2917 8.94167 20.6333 9 21 9C21.0833 9 21.171 8.996 21.263 8.988C21.3543 8.97933 21.4417 8.96667 21.525 8.95C21.675 9.43333 21.7917 9.92933 21.875 10.438C21.9583 10.946 22 11.4667 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6873 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6873 15.9 21.212C14.6833 21.7373 13.3833 22 12 22ZM15.5 11C15.9333 11 16.2917 10.8583 16.575 10.575C16.8583 10.2917 17 9.93333 17 9.5C17 9.06667 16.8583 8.70833 16.575 8.425C16.2917 8.14167 15.9333 8 15.5 8C15.0667 8 14.7083 8.14167 14.425 8.425C14.1417 8.70833 14 9.06667 14 9.5C14 9.93333 14.1417 10.2917 14.425 10.575C14.7083 10.8583 15.0667 11 15.5 11ZM8.5 11C8.93333 11 9.29167 10.8583 9.575 10.575C9.85833 10.2917 10 9.93333 10 9.5C10 9.06667 9.85833 8.70833 9.575 8.425C9.29167 8.14167 8.93333 8 8.5 8C8.06667 8 7.70833 8.14167 7.425 8.425C7.14167 8.70833 7 9.06667 7 9.5C7 9.93333 7.14167 10.2917 7.425 10.575C7.70833 10.8583 8.06667 11 8.5 11ZM12 17.5C13.1833 17.5 14.229 17.175 15.137 16.525C16.0457 15.875 16.7 15.0333 17.1 14H6.9C7.3 15.0333 7.95433 15.875 8.863 16.525C9.771 17.175 10.8167 17.5 12 17.5ZM20 5H19C18.7167 5 18.4793 4.904 18.288 4.712C18.096 4.52067 18 4.28333 18 4C18 3.71667 18.096 3.479 18.288 3.287C18.4793 3.09567 18.7167 3 19 3H20V2C20 1.71667 20.096 1.479 20.288 1.287C20.4793 1.09567 20.7167 1 21 1C21.2833 1 21.5207 1.09567 21.712 1.287C21.904 1.479 22 1.71667 22 2V3H23C23.2833 3 23.5207 3.09567 23.712 3.287C23.904 3.479 24 3.71667 24 4C24 4.28333 23.904 4.52067 23.712 4.712C23.5207 4.904 23.2833 5 23 5H22V6C22 6.28333 21.904 6.521 21.712 6.713C21.5207 6.90433 21.2833 7 21 7C20.7167 7 20.4793 6.90433 20.288 6.713C20.096 6.521 20 6.28333 20 6V5Z" fill="#1C1B1F"/>                    </g>                </svg>            </button>            <!-- open thread -->            @if (channelType != \'thread\') {                <button class="btn-icon w40" (click)="openThread(message.thread_id)">                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                        <mask id="mask0_813_12172" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">                        <rect width="24" height="24" fill="#D9D9D9"/>                        </mask>                        <g mask="url(#mask0_813_12172)">                        <path d="M7 14H17C17.2833 14 17.5207 13.904 17.712 13.712C17.904 13.5207 18 13.2833 18 13C18 12.7167 17.904 12.479 17.712 12.287C17.5207 12.0957 17.2833 12 17 12H7C6.71667 12 6.479 12.0957 6.287 12.287C6.09567 12.479 6 12.7167 6 13C6 13.2833 6.09567 13.5207 6.287 13.712C6.479 13.904 6.71667 14 7 14ZM7 11H17C17.2833 11 17.5207 10.904 17.712 10.712C17.904 10.5207 18 10.2833 18 10C18 9.71667 17.904 9.479 17.712 9.287C17.5207 9.09567 17.2833 9 17 9H7C6.71667 9 6.479 9.09567 6.287 9.287C6.09567 9.479 6 9.71667 6 10C6 10.2833 6.09567 10.5207 6.287 10.712C6.479 10.904 6.71667 11 7 11ZM7 8H17C17.2833 8 17.5207 7.90433 17.712 7.713C17.904 7.521 18 7.28333 18 7C18 6.71667 17.904 6.479 17.712 6.287C17.5207 6.09567 17.2833 6 17 6H7C6.71667 6 6.479 6.09567 6.287 6.287C6.09567 6.479 6 6.71667 6 7C6 7.28333 6.09567 7.521 6.287 7.713C6.479 7.90433 6.71667 8 7 8ZM20.3 20.3L18 18H4C3.45 18 2.97933 17.8043 2.588 17.413C2.196 17.021 2 16.55 2 16V4C2 3.45 2.196 2.979 2.588 2.587C2.97933 2.19567 3.45 2 4 2H20C20.55 2 21.021 2.19567 21.413 2.587C21.8043 2.979 22 3.45 22 4V19.575C22 20.025 21.796 20.3373 21.388 20.512C20.9793 20.6873 20.6167 20.6167 20.3 20.3ZM4 4V16H18.825L20 17.175V4H4Z" fill="#1C1B1F"/>                        </g>                    </svg>                </button>            }            @if (isCurrentUser()) {                            <!-- more-options-button -->            <div class="more-options-button-container">                <button class="btn-icon w40" (click)="showMoreOptions = !showMoreOptions">                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                        <mask id="mask0_1817_16514" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">                        <rect width="24" height="24" fill="#D9D9D9"/>                        </mask>                        <g mask="url(#mask0_1817_16514)">                        <path d="M12 20C11.45 20 10.9792 19.8042 10.5875 19.4125C10.1958 19.0208 10 18.55 10 18C10 17.45 10.1958 16.9792 10.5875 16.5875C10.9792 16.1958 11.45 16 12 16C12.55 16 13.0208 16.1958 13.4125 16.5875C13.8042 16.9792 14 17.45 14 18C14 18.55 13.8042 19.0208 13.4125 19.4125C13.0208 19.8042 12.55 20 12 20ZM12 14C11.45 14 10.9792 13.8042 10.5875 13.4125C10.1958 13.0208 10 12.55 10 12C10 11.45 10.1958 10.9792 10.5875 10.5875C10.9792 10.1958 11.45 10 12 10C12.55 10 13.0208 10.1958 13.4125 10.5875C13.8042 10.9792 14 11.45 14 12C14 12.55 13.8042 13.0208 13.4125 13.4125C13.0208 13.8042 12.55 14 12 14ZM12 8C11.45 8 10.9792 7.80417 10.5875 7.4125C10.1958 7.02083 10 6.55 10 6C10 5.45 10.1958 4.97917 10.5875 4.5875C10.9792 4.19583 11.45 4 12 4C12.55 4 13.0208 4.19583 13.4125 4.5875C13.8042 4.97917 14 5.45 14 6C14 6.55 13.8042 7.02083 13.4125 7.4125C13.0208 7.80417 12.55 8 12 8Z" fill="#1C1B1F"/>                        </g>                    </svg>                    </button>                @if(showMoreOptions) {                    <div class="more-options-menu">                        <button class="btn-text-v2 fs-20" (click)="editMessage = true">Nachricht bearbeiten</button>                    </div>                }            </div>            }        </div>    }    <!-- edit - message -->    @if(editMessage) {        <div [ngClass]="{\'message-edit-container\' : channelType != \'thread\', \'message-edit-container-thread\' : channelType == \'thread\'}">            <div #channelInput name="channelInput" class="message-input" contenteditable="true" (input)="this.editableMessage.message.text= channelInput.innerText">                {{this.message.message.text}}            </div>            <div class="message-edit-buttons">                <!-- add emoticon -->                <button class="btn-icon w40" (click)="openDialogEmojiPicker(channelInput)">                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                      <mask id="mask0_813_12139" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">                      <rect width="24" height="24" fill="#D9D9D9"/>                      </mask>                      <g mask="url(#mask0_813_12139)">                      <path d="M15.5 11C15.9333 11 16.2917 10.8583 16.575 10.575C16.8583 10.2917 17 9.93333 17 9.5C17 9.06667 16.8583 8.70833 16.575 8.425C16.2917 8.14167 15.9333 8 15.5 8C15.0667 8 14.7083 8.14167 14.425 8.425C14.1417 8.70833 14 9.06667 14 9.5C14 9.93333 14.1417 10.2917 14.425 10.575C14.7083 10.8583 15.0667 11 15.5 11ZM8.5 11C8.93333 11 9.29167 10.8583 9.575 10.575C9.85833 10.2917 10 9.93333 10 9.5C10 9.06667 9.85833 8.70833 9.575 8.425C9.29167 8.14167 8.93333 8 8.5 8C8.06667 8 7.70833 8.14167 7.425 8.425C7.14167 8.70833 7 9.06667 7 9.5C7 9.93333 7.14167 10.2917 7.425 10.575C7.70833 10.8583 8.06667 11 8.5 11ZM12 17.5C12.95 17.5 13.8167 17.2877 14.6 16.863C15.3833 16.4377 15.9917 15.9 16.425 15.25C16.625 14.95 16.6543 14.6667 16.513 14.4C16.371 14.1333 16.15 14 15.85 14C15.7333 14 15.6167 14.0333 15.5 14.1C15.3833 14.1667 15.2917 14.25 15.225 14.35C14.8583 14.85 14.4 15.25 13.85 15.55C13.3 15.85 12.6833 16 12 16C11.3167 16 10.7 15.85 10.15 15.55C9.6 15.25 9.14167 14.85 8.775 14.35C8.70833 14.25 8.61267 14.1667 8.488 14.1C8.36267 14.0333 8.24167 14 8.125 14C7.84167 14 7.62933 14.129 7.488 14.387C7.346 14.6457 7.36667 14.9167 7.55 15.2C8 15.8833 8.61667 16.4377 9.4 16.863C10.1833 17.2877 11.05 17.5 12 17.5ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6873 5.825 19.975 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26267 14.6833 2 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31267 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.31233 8.1 2.787C9.31667 2.26233 10.6167 2 12 2C13.3833 2 14.6833 2.26233 15.9 2.787C17.1167 3.31233 18.175 4.025 19.075 4.925C19.975 5.825 20.6873 6.88333 21.212 8.1C21.7373 9.31667 22 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6873 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6873 15.9 21.212C14.6833 21.7373 13.3833 22 12 22ZM12 20C14.2167 20 16.1043 19.221 17.663 17.663C19.221 16.1043 20 14.2167 20 12C20 9.78333 19.221 7.89567 17.663 6.337C16.1043 4.779 14.2167 4 12 4C9.78333 4 7.896 4.779 6.338 6.337C4.77933 7.89567 4 9.78333 4 12C4 14.2167 4.77933 16.1043 6.338 17.663C7.896 19.221 9.78333 20 12 20Z" fill="#686868"/>                      </g>                    </svg>                                               </button>                <div class="message-confirm-buttons">                    @if(channelType != \'thread\') {                        <button class="btn-secondary fs-18" (click)="editMessage = false; showMoreOptions = false">Abbrechen</button>                        <button class="btn-primary fs-18" (click)="updateMessage()">Speichern</button>                    }                    @if(channelType == \'thread\') {                        <button class="btn-icon w40" (click)="editMessage = false; showMoreOptions = false">                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="var(--color-light-purple)"><path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>                        </button>                        <button class="btn-icon w40" (click)="updateMessage()">                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                <mask id="mask0_1814_16197" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">                                <rect width="24" height="24" fill="#D9D9D9"/>                                </mask>                                <g mask="url(#mask0_1814_16197)">                                <path d="M10.6 13.8L8.45 11.65C8.26667 11.4667 8.03333 11.375 7.75 11.375C7.46667 11.375 7.23333 11.4667 7.05 11.65C6.86667 11.8333 6.775 12.0667 6.775 12.35C6.775 12.6333 6.86667 12.8667 7.05 13.05L9.9 15.9C10.1 16.1 10.3333 16.2 10.6 16.2C10.8667 16.2 11.1 16.1 11.3 15.9L16.95 10.25C17.1333 10.0667 17.225 9.83333 17.225 9.55C17.225 9.26667 17.1333 9.03333 16.95 8.85C16.7667 8.66667 16.5333 8.575 16.25 8.575C15.9667 8.575 15.7333 8.66667 15.55 8.85L10.6 13.8ZM12 22C10.6167 22 9.31667 21.7375 8.1 21.2125C6.88333 20.6875 5.825 19.975 4.925 19.075C4.025 18.175 3.3125 17.1167 2.7875 15.9C2.2625 14.6833 2 13.3833 2 12C2 10.6167 2.2625 9.31667 2.7875 8.1C3.3125 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.3125 8.1 2.7875C9.31667 2.2625 10.6167 2 12 2C13.3833 2 14.6833 2.2625 15.9 2.7875C17.1167 3.3125 18.175 4.025 19.075 4.925C19.975 5.825 20.6875 6.88333 21.2125 8.1C21.7375 9.31667 22 10.6167 22 12C22 13.3833 21.7375 14.6833 21.2125 15.9C20.6875 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6875 15.9 21.2125C14.6833 21.7375 13.3833 22 12 22ZM12 20C14.2333 20 16.125 19.225 17.675 17.675C19.225 16.125 20 14.2333 20 12C20 9.76667 19.225 7.875 17.675 6.325C16.125 4.775 14.2333 4 12 4C9.76667 4 7.875 4.775 6.325 6.325C4.775 7.875 4 9.76667 4 12C4 14.2333 4.775 16.125 6.325 17.675C7.875 19.225 9.76667 20 12 20Z" fill="var(--color-purple-2)"/>                                </g>                            </svg>                        </button>                    }                </div>            </div>        </div>    }</div></div>'
+    var COMPONENTS = [{'name': 'AddChannelCardComponent', 'selector': 'app-add-channel-card'},{'name': 'AddMemberCardComponent', 'selector': 'app-add-member-card'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AvatarComponent', 'selector': 'app-avatar'},{'name': 'ChannelComponent', 'selector': 'app-channel'},{'name': 'CheckEmailComponent', 'selector': 'app-check-email'},{'name': 'DialogAddMemberComponent', 'selector': 'app-dialog-add-member'},{'name': 'DialogAddMemberMobileComponent', 'selector': 'app-dialog-add-member-mobile'},{'name': 'DialogEditChannelComponent', 'selector': 'app-dialog-edit-channel'},{'name': 'DialogEditProfileComponent', 'selector': 'app-dialog-edit-profile'},{'name': 'DialogEmojiPickerComponent', 'selector': 'app-dialog-emoji-picker'},{'name': 'DialogShowMembersComponent', 'selector': 'app-dialog-show-members'},{'name': 'DialogShowProfileComponent', 'selector': 'app-dialog-show-profile'},{'name': 'EmailSnackbarComponent', 'selector': 'app-email-snackbar'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ImprintComponent', 'selector': 'app-imprint'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LoginPageComponent', 'selector': 'app-login-page'},{'name': 'LoginSnackbarComponent', 'selector': 'app-login-snackbar'},{'name': 'LogOutDialogComponent', 'selector': 'app-log-out-dialog'},{'name': 'MainHeaderComponent', 'selector': 'app-main-header'},{'name': 'MainMenuChannelsComponent', 'selector': 'app-main-menu-channels'},{'name': 'MainMenuComponent', 'selector': 'app-main-menu'},{'name': 'MainMenuDmComponent', 'selector': 'app-main-menu-dm'},{'name': 'MainMenuHeaderComponent', 'selector': 'app-main-menu-header'},{'name': 'MainPageComponent', 'selector': 'app-main-page'},{'name': 'MessageComponent', 'selector': 'app-message'},{'name': 'MessageInputComponent', 'selector': 'app-message-input'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SearchBarComponent', 'selector': 'app-search-bar'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'},{'name': 'SignInComponent', 'selector': 'app-sign-in'},{'name': 'ThreadComponent', 'selector': 'app-thread'},{'name': 'UserCreatedSnackbarComponent', 'selector': 'app-user-created-snackbar'}];
+    var DIRECTIVES = [{'name': 'OpenProfileDirective', 'selector': '[appOpenProfile]'}];
+    var ACTUAL_COMPONENT = {'name': 'MessageComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MessageComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

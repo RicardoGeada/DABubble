@@ -37,7 +37,7 @@ import { Router } from '@angular/router';
   templateUrl: './add-channel-card.component.html',
   styleUrl: './add-channel-card.component.scss',
 })
-export class AddChannelCardComponent implements OnInit, OnDestroy {
+export class AddChannelCardComponent {
   duplicateName = false;
   channel: Channel = {
     id: '',
@@ -53,58 +53,29 @@ export class AddChannelCardComponent implements OnInit, OnDestroy {
   constructor(
     public dialogRef: MatDialogRef<AddChannelCardComponent>,
     public dialog: MatDialog,
-    public channelService : ChannelFirebaseService,
-    public userService : UserService,
+    public channelService: ChannelFirebaseService,
+    public userService: UserService,
     public customDialogService: CustomDialogService,
     public router: Router
-  ) {}
+  ) { }
 
-  ngOnInit(): void {
-
-  }
-
-  ngOnDestroy(): void {
-
-  }
-
-  // async createChannel(button: HTMLElement): Promise<void> {
-  //   try {
-  //     const channelId = await this.channelService.addChannel(this.channel);
-  
-  //     this.channelService.setCurrentChannel(channelId);
-  //     // console.log('Channel created and set as currentChannel', this.channelService.currentChannel);
-  
-  //     this.dialogRef.close();
-  //     this.openAddUserDialog(button);
-  //   } catch (error) {
-  //     console.error('Fehler beim Erstellen des Channels:', error);
-  //   }
-  // }
 
   async createChannel(button: HTMLElement): Promise<void> {
-    try {
-      // const allChannels = await this.channelService.getAllChannels();
-  
-      const isDuplicate = this.channelService.channels.some(channel => channel.name === this.channel.name);
-      if (isDuplicate) {
-        this.duplicateName = true;
-        // warum werden alle channel geladen
-      } else {
+    const isDuplicate = this.channelService.channels.some(channel => channel.name === this.channel.name);
+    if (isDuplicate) {
+      this.duplicateName = true;
+    } else {
       const channelId = await this.channelService.addChannel(this.channel);
       this.channelService.setCurrentChannel(channelId);
       this.router.navigate(['/main-page', channelId]);
-      // console.log('Channel created and set as currentChannel', this.channelService.currentChannel);
-
       this.dialogRef.close();
       this.openAddUserDialog(button);
-      }
-    } catch (error) {
-      console.error('Fehler beim Erstellen des Channels:', error);
     }
   }
-  
+
+
   openAddUserDialog(button: HTMLElement): void {
     const component = AddMemberCardComponent;
-    this.customDialogService.openDialogAbsolute({button, component, position : 'mid', mobilePosition: 'bottom', maxWidth : '554px'});
+    this.customDialogService.openDialogAbsolute({ button, component, position: 'mid', mobilePosition: 'bottom', maxWidth: '554px' });
   }
 }

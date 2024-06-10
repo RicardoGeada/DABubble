@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MainMenuHeaderComponent } from './main-menu-header/main-menu-header.component';
@@ -29,29 +29,18 @@ import { SearchBarComponent } from '../main-header/search-bar/search-bar.compone
 })
 export class MainMenuComponent{
   isMenuOpen: boolean = this.sharedService.isMenuOpen;
-  constructor(public channelService: ChannelFirebaseService, 
+
+  constructor(
+    public channelService: ChannelFirebaseService, 
     public sharedService: SharedService,
-  public userService: UserService,
-public router: Router,
-public mainPage: MainPageComponent) { }
+    public userService: UserService,
+    public router: Router,
+    public mainPage: MainPageComponent
+  ) { }
     
-  
 
-  ngOnInit(): void {
-  }
-
-  // Erstellt über Servername Devspace einen channel mit type 'new'
   openNewChannel(){
-    const newChannel: Channel = {
-        id: '',
-        name: '',
-        description: '',
-        created_at: 0,
-        creator: this.userService.currentUser.id,
-        members: [this.userService.currentUser.id],
-        active_members: [this.userService.currentUser.id],
-        channel_type: ChannelTypeEnum.new,
-    };
+    const newChannel: Channel = this.getChannelData();
     this.sharedService.backToChannels();
     this.sharedService.showMobileDiv(); 
     this.channelService.addChannel(newChannel).then(channelId => {
@@ -60,6 +49,19 @@ public mainPage: MainPageComponent) { }
       localStorage.setItem('currentUser', JSON.stringify(this.userService.currentUser));
       this.router.navigate(['/main-page/', channelId]); 
     });
+  }
 
+
+  getChannelData(){
+    return {
+      id: '',
+      name: '',
+      description: '',
+      created_at: 0,
+      creator: this.userService.currentUser.id,
+      members: [this.userService.currentUser.id],
+      active_members: [this.userService.currentUser.id],
+      channel_type: ChannelTypeEnum.new,
+  };
   }
 }

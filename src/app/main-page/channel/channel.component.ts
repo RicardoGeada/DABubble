@@ -1,5 +1,5 @@
 import { CommonModule, ViewportScroller } from '@angular/common';
-import { Component, ElementRef, QueryList, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MessageComponent } from './message/message.component';
 import { DialogAddMemberComponent } from './dialog-add-member/dialog-add-member.component';
 import { CustomDialogService } from '../../services/custom-dialog.service';
@@ -11,12 +11,12 @@ import { FormsModule } from '@angular/forms';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../firebase.service/user.service';
 import { ChannelFirebaseService } from '../../firebase.service/channelFirebase.service';
-import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ThreadService } from '../../services/thread.service';
 import { MessageInputComponent } from '../message-input/message-input.component';
 import { FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, filter, Subscription } from 'rxjs';
+import { debounceTime, Subscription } from 'rxjs';
 import { ChannelTypeEnum } from '../../shared/enums/channel-type.enum';
 import { Channel } from '../../interfaces/channel.interface';
 import { SearchService } from '../../services/search.service';
@@ -46,7 +46,6 @@ import { UserAuthService } from '../../firebase.service/user.auth.service';
 })
 export class ChannelComponent {
   @ViewChild(MessageInputComponent) messageInputComponent!: MessageInputComponent;
-  @ViewChild(MessageComponent) private messages!: QueryList<MessageComponent>;
 
   messageInput: string = '';
   currentUser: User = this.userService.currentUser;
@@ -68,14 +67,13 @@ export class ChannelComponent {
   };
   channelId: string = '';
   isLoading = false;
+  inputText : string = '';
 
   // searchControl = new FormControl();
   // private subscriptions = new Subscription();
   // filteredUsers: User[] = [];
   // filteredChannels: Channel[] = [];
   // selectedUserId: string = '';
-
-  inputText : string = '';
 
   newDirectChannel: Channel = {
     id: '',
@@ -143,6 +141,7 @@ export class ChannelComponent {
     }
   }
 
+
   ngAfterViewInit() {
     this.setFocus();
     this.messageService.currentMessage.subscribe(messageId => {
@@ -189,29 +188,21 @@ export class ChannelComponent {
   //   this.searchControl.setValue('');
   // }
 
+
+  // --------------------------------------------------
   // filter(searchTerm: string): void {
   //   if (searchTerm.startsWith('@')) {
-  //     // Suche Benutzer mit dem Präfix '@'
-  //     this.filteredUsers = this.searchService.filterUsersByPrefix(
-  //       searchTerm,
-  //       this.userService.allUsers
-  //     );
+  //     this.filteredUsers = this.searchService.filterUsersByPrefix(searchTerm, this.userService.allUsers);
   //     this.filteredChannels = [];
   //   } else if (searchTerm.startsWith('#')) {
-  //     // Suche Kanäle vom Typ 'main' mit dem Präfix '#'
-  //     this.filteredChannels = this.searchService.filterChannelsByTypeAndPrefix(
-  //       searchTerm,
-  //       ChannelTypeEnum.main
-  //     );
+  //     this.filteredChannels = this.searchService.filterChannelsByTypeAndPrefix(searchTerm, ChannelTypeEnum.main);
   //     this.filteredUsers = [];
   //   } else {
-  //     // Klare Filter, wenn kein Suchbegriff vorhanden ist
   //     const results = this.searchService.clearFilters();
   //     this.filteredUsers = results.users;
   //     this.filteredChannels = results.channels;
   //   }
   // }
-
 
 
   async openDirectChannel(user_id: string): Promise<void> {
@@ -240,8 +231,7 @@ export class ChannelComponent {
     this.activatedRoute.params.subscribe((params) => {
       if (params['channelId']) {
         this.loadChannelData(params['channelId']);
-      }
-      else {
+      } else {
         this.loadChannelData(this.userService.currentUser.last_channel);
       }
     });

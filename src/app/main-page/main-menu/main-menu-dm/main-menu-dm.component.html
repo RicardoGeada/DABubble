@@ -77,13 +77,7 @@
                     (click)="openDirectChannel(userService.currentUser?.id)">
                     <div class="profile-img-container">
                         <img [src]="userService.currentUser?.profile_img" alt="" class="profile-img">
-                        <!-- @if (!userService.currentUser.logged_in){
-                        <div class="online-status-wborder offline"></div>
-                        } -->
-                        <!-- @if (userService.currentUser.logged_in){ -->
                         <div class="online-status-wborder online"></div>
-                        <!-- } -->
-
                     </div>
                     <div class="channel-member-name fs-18">
                         {{ userService.currentUser?.name }} (Du)

@@ -20,7 +20,7 @@ import {
   getDownloadURL,
 } from 'firebase/storage';
 import { deleteObject, getMetadata } from '@angular/fire/storage';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +28,6 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class MessageService {
   private messageSource = new Subject<string>();
   currentMessage = this.messageSource.asObservable();
-
   firestore: Firestore = inject(Firestore);
   messages: Message[] = [];
   allMessages: any[] = [];
@@ -47,8 +46,8 @@ export class MessageService {
     is_deleted: false,
     total_replies: 0,
   };
-  unsubMessages = () => {};
-  unsubMessagesThread =  () => {};
+  unsubMessages = () => { };
+  unsubMessagesThread = () => { };
   unsubAllMessages;
 
   constructor() {
@@ -107,12 +106,14 @@ export class MessageService {
     };
   }
 
+
   /* CREATE */
   async addMessage(message: Message) {
     let ref = this.getMessagesRef();
     const docRef = await addDoc(ref, message);
     return docRef.id;
   }
+
 
   /* READ */
   subMessages(channel_id: string) {
@@ -128,6 +129,7 @@ export class MessageService {
       });
     });
   }
+
 
   subMessagesThread(thread_id: string) {
     const q = query(
@@ -155,7 +157,6 @@ export class MessageService {
   }
 
 
-
   /* UPDATE */
   async updateMessage(message: Message) {
     if (message.id) {
@@ -166,37 +167,23 @@ export class MessageService {
     }
   }
 
-  // getAllMessages() {
-  //     const allMessagesQuery = query(this.getMessagesRef());
-  //     this.unsubscribeAllMessages = onSnapshot(allMessagesQuery, (querySnapshot) => {
-  //         this.messages = [];
-  //         querySnapshot.forEach((doc) => {
-  //             const message = this.setMessage(doc.data(), doc.id);
-  //             this.messages.push(message);
-  //         });
-  //     });
-  // }
 
   /* STORAGE */
-
   uploadFile(file: File, path: string): Promise<void> {
     return new Promise((resolve, reject) => {
-      // const path = file.type == 'application/pdf' ? 'pdfs/' + file.name : 'images/' + file.name;
       const storage = getStorage();
       const storageRef = ref(storage, path);
       const uploadTask = uploadBytesResumable(storageRef, file);
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {},
+      uploadTask.on('state_changed', (snapshot) => { },
         (error) => {
           reject(error);
-        },
-        () => {
+        }, () => {
           resolve();
         }
       );
     });
   }
+
 
   async getFileData(path: string) {
     const storage = getStorage();
@@ -211,65 +198,51 @@ export class MessageService {
     };
   }
 
+
   async downloadFile(path: string) {
     const storage = getStorage();
     const storageRef = ref(storage, path);
     const metadata = await getMetadata(storageRef);
     const url = await getDownloadURL(storageRef);
-    try {
-      // Bilddaten als Blob holen
-      const response = await fetch(url, { mode: 'cors' });
-      if (!response.ok) throw new Error('Netzwerkantwort war nicht ok.');
-
-      const blob = await response.blob();
-
-      // Blob-URL erstellen
-      const blobUrl = window.URL.createObjectURL(blob);
-
-      // Temporären Link erstellen
-      const a = document.createElement('a');
-      a.style.display = 'none';
-      a.href = blobUrl;
-      a.download = metadata.name;
-
-      // Link zum DOM hinzufügen
-      document.body.appendChild(a);
-      a.click();
-
-      // Bereinigen
-      window.URL.revokeObjectURL(blobUrl);
-      document.body.removeChild(a);
-    } catch (error) {
-      console.error('Fehler beim Herunterladen des Bildes:', error);
-    }
+    const response = await fetch(url, { mode: 'cors' });
+    if (!response.ok) throw new Error('Netzwerkantwort war nicht ok.');
+    const blob = await response.blob();
+    const blobUrl = window.URL.createObjectURL(blob);
+    this.createElement(blobUrl, metadata);
   }
+
+
+  createElement(blobUrl: string, metadata: any){
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = blobUrl;
+    a.download = metadata.name;
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(blobUrl);
+    document.body.removeChild(a);
+  }
+
 
   deleteFile(path: string) {
     const storage = getStorage();
     const storageRef = ref(storage, path);
-    // Delete the file
-    deleteObject(storageRef)
-      .then(() => {
-        // File deleted successfully
-      })
-      .catch((error) => {
-        // Uh-oh, an error occurred!
-      });
+    deleteObject(storageRef);
   }
 
-  async removeThreadMessagesFromChannel(threadId: string){
-      const q = query(this.getMessagesRef(), where('thread_id', '==', threadId));
-      const querySnapshot = await getDocs(q);
-    
-      for (let doc of querySnapshot.docs) {
-        await deleteDoc(doc.ref);
-      }
+
+  async removeThreadMessagesFromChannel(threadId: string) {
+    const q = query(this.getMessagesRef(), where('thread_id', '==', threadId));
+    const querySnapshot = await getDocs(q);
+    for (let doc of querySnapshot.docs) {
+      await deleteDoc(doc.ref);
+    }
   }
 
-  async removeMessagesFromEmptyChannel(channelId: string){
+
+  async removeMessagesFromEmptyChannel(channelId: string) {
     const q = query(this.getMessagesRef(), where('channel_id', '==', channelId));
     const querySnapshot = await getDocs(q);
-  
     for (let doc of querySnapshot.docs) {
       await deleteDoc(doc.ref);
     }

@@ -1,0 +1,1444 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>da-bubble documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">da-bubble documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  MainMenuDmComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-main-menu-dm</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./main-menu-dm.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./main-menu-dm.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#channelService" >channelService</a>
+                            </li>
+                            <li>
+                                <a href="#isExpanded" >isExpanded</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#mainpage" >mainpage</a>
+                            </li>
+                            <li>
+                                <a href="#newDirectChannel" >newDirectChannel</a>
+                            </li>
+                            <li>
+                                <a href="#profileImg" >profileImg</a>
+                            </li>
+                            <li>
+                                <a href="#selectedUserId" >selectedUserId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sharedService" >sharedService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#threadService" >threadService</a>
+                            </li>
+                            <li>
+                                <a href="#users" >users</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#userService" >userService</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#closeThread" >closeThread</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#createNewDirectChannel" >createNewDirectChannel</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#openChannel" >openChannel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#openDirectChannel" >openDirectChannel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#openDirectChannelMobile" >openDirectChannelMobile</a>
+                            </li>
+                            <li>
+                                <a href="#toggleExpansion" >toggleExpansion</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, channelService: <a href="../injectables/ChannelFirebaseService.html" target="_self">ChannelFirebaseService</a>, router: Router, threadService: <a href="../injectables/ThreadService.html" target="_self">ThreadService</a>, stateService: <a href="../injectables/StateManagementService.html" target="_self">StateManagementService</a>, mainpage: <a href="../components/MainPageComponent.html" target="_self">MainPageComponent</a>, sharedService: <a href="../injectables/SharedService.html" target="_self">SharedService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:36</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>channelService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ChannelFirebaseService.html" target="_self" >ChannelFirebaseService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>threadService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ThreadService.html" target="_self" >ThreadService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>stateService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StateManagementService.html" target="_self" >StateManagementService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>mainpage</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../components/MainPageComponent.html" target="_self" >MainPageComponent</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sharedService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SharedService.html" target="_self" >SharedService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeThread"></a>
+                    <span class="name">
+                        <span ><b>closeThread</b></span>
+                        <a href="#closeThread"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeThread()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="97"
+                                    class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:97</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createNewDirectChannel"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>createNewDirectChannel</b></span>
+                        <a href="#createNewDirectChannel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createNewDirectChannel(user_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openChannel"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>openChannel</b></span>
+                        <a href="#openChannel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openChannel(user_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openDirectChannel"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>openDirectChannel</b></span>
+                        <a href="#openDirectChannel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openDirectChannel(user_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openDirectChannelMobile"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>openDirectChannelMobile</b></span>
+                        <a href="#openDirectChannelMobile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openDirectChannelMobile(user_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user_id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleExpansion"></a>
+                    <span class="name">
+                        <span ><b>toggleExpansion</b></span>
+                        <a href="#toggleExpansion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleExpansion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="channelService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>channelService</b></span>
+                        <a href="#channelService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ChannelFirebaseService.html" target="_self" >ChannelFirebaseService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isExpanded"></a>
+                    <span class="name">
+                        <span ><b>isExpanded</b></span>
+                        <a href="#isExpanded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mainpage"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>mainpage</b></span>
+                        <a href="#mainpage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/MainPageComponent.html" target="_self" >MainPageComponent</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="newDirectChannel"></a>
+                    <span class="name">
+                        <span ><b>newDirectChannel</b></span>
+                        <a href="#newDirectChannel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Channel.html" target="_self" >Channel</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    id: &#x27;&#x27;,
+    name: &#x27;Direct Channel&#x27;,
+    description: &#x27;&#x27;,
+    created_at: new Date().getTime(),
+    creator: &#x27;&#x27;,
+    members: [],
+    active_members: [],
+    channel_type: ChannelTypeEnum.direct,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="profileImg"></a>
+                    <span class="name">
+                        <span ><b>profileImg</b></span>
+                        <a href="#profileImg"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.userService.currentUser?.profile_img</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedUserId"></a>
+                    <span class="name">
+                        <span ><b>selectedUserId</b></span>
+                        <a href="#selectedUserId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sharedService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>sharedService</b></span>
+                        <a href="#sharedService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/SharedService.html" target="_self" >SharedService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="threadService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>threadService</b></span>
+                        <a href="#threadService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ThreadService.html" target="_self" >ThreadService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="users"></a>
+                    <span class="name">
+                        <span ><b>users</b></span>
+                        <a href="#users"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >User[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>userService</b></span>
+                        <a href="#userService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/main-page/main-menu/main-menu-dm/main-menu-dm.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, OnDestroy } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { UserService } from &#x27;../../../firebase.service/user.service&#x27;;
+import { User } from &#x27;../../../interfaces/user.interface&#x27;;
+import { ChannelFirebaseService } from &#x27;../../../firebase.service/channelFirebase.service&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Channel } from &#x27;../../../interfaces/channel.interface&#x27;;
+import { ChannelTypeEnum } from &#x27;../../../shared/enums/channel-type.enum&#x27;;
+import { ThreadService } from &#x27;../../../services/thread.service&#x27;;
+import { StateManagementService } from &#x27;../../../services/state-management.service&#x27;;
+import { MainPageComponent } from &#x27;../../main-page.component&#x27;;
+import { SharedService } from &#x27;../../../services/shared.service&#x27;;
+
+
+@Component({
+  selector: &#x27;app-main-menu-dm&#x27;,
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: &#x27;./main-menu-dm.component.html&#x27;,
+  styleUrl: &#x27;./main-menu-dm.component.scss&#x27;,
+})
+export class MainMenuDmComponent implements OnInit {
+  isExpanded: boolean &#x3D; true;
+  users: User[] &#x3D; [];
+  selectedUserId: string &#x3D; &#x27;&#x27;;
+  profileImg &#x3D; this.userService.currentUser?.profile_img;
+  newDirectChannel : Channel &#x3D; {
+    id: &#x27;&#x27;,
+    name: &#x27;Direct Channel&#x27;,
+    description: &#x27;&#x27;,
+    created_at: new Date().getTime(),
+    creator: &#x27;&#x27;,
+    members: [],
+    active_members: [],
+    channel_type: ChannelTypeEnum.direct,
+  }
+
+  constructor(
+    public userService: UserService,
+    public channelService: ChannelFirebaseService,
+    private router : Router,
+    public threadService : ThreadService,
+    private stateService: StateManagementService,
+    public mainpage: MainPageComponent,
+    public sharedService: SharedService
+  ) {}
+
+
+  ngOnInit(): void {
+    this.users &#x3D; this.userService.allUsers;
+    this.stateService.getSelectedUserId().subscribe(id &#x3D;&gt; {
+      this.selectedUserId &#x3D; id ? id : &#x27;&#x27;;
+    });
+  }
+
+
+  toggleExpansion(): void {
+    this.isExpanded &#x3D; !this.isExpanded;
+  }
+
+
+  async openDirectChannel(user_id: string): Promise&lt;void&gt; {
+    this.openChannel(user_id);
+    this.closeThread();
+    this.stateService.setSelectedUserId(user_id);
+  }
+
+
+  async openDirectChannelMobile(user_id: string): Promise&lt;void&gt; {
+    this.mainpage.toggleMenu();
+    this.sharedService.showMobileDiv();
+    this.openChannel(user_id);
+    this.closeThread();
+    this.stateService.setSelectedUserId(user_id);
+  }
+
+
+  async openChannel(user_id: string): Promise&lt;void&gt; {
+    let channel_id &#x3D; this.channelService.getDirectChannelId(this.userService.currentUser.id, user_id);
+    if (channel_id !&#x3D; &#x27;&#x27;) {
+      this.router.navigateByUrl(&#x27;/main-page/&#x27; + channel_id);
+    } else {
+      channel_id &#x3D; await this.createNewDirectChannel(user_id);
+      this.router.navigateByUrl(&#x27;/main-page/&#x27; + channel_id);
+    }
+  }
+
+
+  async createNewDirectChannel(user_id : string) {
+    this.newDirectChannel.creator &#x3D; this.userService.currentUser.id;
+    this.newDirectChannel.created_at &#x3D; new Date().getTime();
+    this.newDirectChannel.members &#x3D; [this.userService.currentUser.id, user_id];
+    return await this.channelService.addChannel(this.newDirectChannel);
+  }
+
+
+  closeThread() {
+    this.userService.saveLastThread(this.userService.currentUser.id, &#x27;&#x27;);
+    this.threadService.closeThread();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;menu-channel-container&quot;&gt;
+    &lt;div class&#x3D;&quot;menu-channel-header&quot;&gt;
+        &lt;div class&#x3D;&quot;menu-channel-header-left&quot; (click)&#x3D;&quot;toggleExpansion()&quot;&gt;
+            &lt;svg class&#x3D;&quot;svg-color&quot; width&#x3D;&quot;30&quot; height&#x3D;&quot;30&quot; viewBox&#x3D;&quot;0 0 30 30&quot; fill&#x3D;&quot;none&quot;
+                [ngStyle]&#x3D;&quot;{ transform: !isExpanded ? &#x27;rotate(-90deg)&#x27; : &#x27;rotate(0deg)&#x27; }&quot;
+                xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                &lt;mask id&#x3D;&quot;mask0_235_344&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; width&#x3D;&quot;30&quot;
+                    height&#x3D;&quot;30&quot;&gt;
+                    &lt;rect width&#x3D;&quot;30&quot; height&#x3D;&quot;30&quot; fill&#x3D;&quot;#D9D9D9&quot; /&gt;
+                &lt;/mask&gt;
+                &lt;g mask&#x3D;&quot;url(#mask0_235_344)&quot;&gt;
+                    &lt;path
+                        d&#x3D;&quot;M14.1248 17.875L10.8748 14.625C10.479 14.2292 10.3907 13.7762 10.6098 13.2662C10.8282 12.7554 11.2186 12.5 11.7811 12.5H18.2186C18.7811 12.5 19.1715 12.7554 19.3898 13.2662C19.609 13.7762 19.5207 14.2292 19.1248 14.625L15.8748 17.875C15.7498 18 15.6144 18.0937 15.4686 18.1562C15.3227 18.2187 15.1665 18.25 14.9998 18.25C14.8332 18.25 14.6769 18.2187 14.5311 18.1562C14.3852 18.0937 14.2498 18 14.1248 17.875Z&quot;
+                        fill&#x3D;&quot;black&quot; /&gt;
+                &lt;/g&gt;
+            &lt;/svg&gt;
+            &lt;div class&#x3D;&quot;menu-channel-title&quot;&gt;
+                &lt;svg class&#x3D;&quot;svg-color&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot;
+                    xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                    &lt;mask id&#x3D;&quot;mask0_813_12108&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; width&#x3D;&quot;24&quot;
+                        height&#x3D;&quot;24&quot;&gt;
+                        &lt;rect width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; fill&#x3D;&quot;#D9D9D9&quot; /&gt;
+                    &lt;/mask&gt;
+                    &lt;g mask&#x3D;&quot;url(#mask0_813_12108)&quot;&gt;
+                        &lt;path
+                            d&#x3D;&quot;M5.85 17.1C6.7 16.45 7.65 15.9373 8.7 15.562C9.75 15.1873 10.85 15 12 15C13.15 15 14.25 15.1873 15.3 15.562C16.35 15.9373 17.3 16.45 18.15 17.1C18.7333 16.4167 19.1877 15.6417 19.513 14.775C19.8377 13.9083 20 12.9833 20 12C20 9.78333 19.221 7.89567 17.663 6.337C16.1043 4.779 14.2167 4 12 4C9.78333 4 7.896 4.779 6.338 6.337C4.77933 7.89567 4 9.78333 4 12C4 12.9833 4.16267 13.9083 4.488 14.775C4.81267 15.6417 5.26667 16.4167 5.85 17.1ZM12 13C11.0167 13 10.1873 12.6627 9.512 11.988C8.83733 11.3127 8.5 10.4833 8.5 9.5C8.5 8.51667 8.83733 7.68733 9.512 7.012C10.1873 6.33733 11.0167 6 12 6C12.9833 6 13.8127 6.33733 14.488 7.012C15.1627 7.68733 15.5 8.51667 15.5 9.5C15.5 10.4833 15.1627 11.3127 14.488 11.988C13.8127 12.6627 12.9833 13 12 13ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6873 5.825 19.975 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26267 14.6833 2 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31267 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.31233 8.1 2.787C9.31667 2.26233 10.6167 2 12 2C13.3833 2 14.6833 2.26233 15.9 2.787C17.1167 3.31233 18.175 4.025 19.075 4.925C19.975 5.825 20.6873 6.88333 21.212 8.1C21.7373 9.31667 22 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6873 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6873 15.9 21.212C14.6833 21.7373 13.3833 22 12 22ZM12 20C12.8833 20 13.7167 19.871 14.5 19.613C15.2833 19.3543 16 18.9833 16.65 18.5C16 18.0167 15.2833 17.6457 14.5 17.387C13.7167 17.129 12.8833 17 12 17C11.1167 17 10.2833 17.129 9.5 17.387C8.71667 17.6457 8 18.0167 7.35 18.5C8 18.9833 8.71667 19.3543 9.5 19.613C10.2833 19.871 11.1167 20 12 20ZM12 11C12.4333 11 12.7917 10.8583 13.075 10.575C13.3583 10.2917 13.5 9.93333 13.5 9.5C13.5 9.06667 13.3583 8.70833 13.075 8.425C12.7917 8.14167 12.4333 8 12 8C11.5667 8 11.2083 8.14167 10.925 8.425C10.6417 8.70833 10.5 9.06667 10.5 9.5C10.5 9.93333 10.6417 10.2917 10.925 10.575C11.2083 10.8583 11.5667 11 12 11Z&quot;
+                            fill&#x3D;&quot;black&quot; /&gt;
+                    &lt;/g&gt;
+                &lt;/svg&gt;
+                Direktnachrichten
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;scroll-dms&quot;&gt;
+        &lt;div class&#x3D;&quot;mobile&quot;&gt;
+            @if (isExpanded) {
+            &lt;!-- THIS IS YOU  --&gt;
+            &lt;div class&#x3D;&quot;channel-header-direct mobile&quot;&gt;
+                &lt;div class&#x3D;&quot;channel-member&quot; [class.selected]&#x3D;&quot;userService.currentUser?.id &#x3D;&#x3D;&#x3D; selectedUserId&quot;
+                    (click)&#x3D;&quot;openDirectChannel(userService.currentUser?.id)&quot;&gt;
+                    &lt;div class&#x3D;&quot;profile-img-container&quot;&gt;
+                        &lt;img [src]&#x3D;&quot;profileImg&quot; alt&#x3D;&quot;&quot; class&#x3D;&quot;profile-img&quot;&gt;
+                        &lt;div class&#x3D;&quot;online-status-wborder online&quot;&gt;&lt;/div&gt;
+
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;channel-member-name fs-18&quot;&gt;
+                        {{ userService.currentUser?.name }} (Du)
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- OTHERS USERS  --&gt;
+            @for(user of userService.allUsers; track user?.id) {
+            @if(user?.id !&#x3D; userService.currentUser?.id ) {
+            &lt;div class&#x3D;&quot;channel-header-direct mobile&quot;&gt;
+                &lt;div class&#x3D;&quot;channel-member&quot; [class.selected]&#x3D;&quot;user?.id &#x3D;&#x3D;&#x3D; selectedUserId&quot;
+                    (click)&#x3D;&quot;openDirectChannelMobile(user?.id)&quot;&gt;
+                    &lt;div class&#x3D;&quot;profile-img-container&quot;&gt;
+                        &lt;img [src]&#x3D;&quot;user.profile_img&quot; alt&#x3D;&quot;&quot; class&#x3D;&quot;profile-img&quot;&gt;
+                        &lt;div class&#x3D;&quot;online-status-wborder&quot; [ngClass]&#x3D;&quot;user.logged_in ? &#x27;online&#x27; : &#x27;offline&#x27;&quot;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class&#x3D;&quot;channel-member-name fs-18&quot;&gt;
+                        {{ user.name }}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            }
+            }
+            }
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;not-mobile&quot;&gt;
+            @if (isExpanded) {
+            &lt;!-- THIS IS YOU  --&gt;
+            &lt;div class&#x3D;&quot;channel-header-direct&quot;&gt;
+                &lt;div class&#x3D;&quot;channel-member&quot; [class.selected]&#x3D;&quot;userService.currentUser?.id &#x3D;&#x3D;&#x3D; selectedUserId&quot;
+                    (click)&#x3D;&quot;openDirectChannel(userService.currentUser?.id)&quot;&gt;
+                    &lt;div class&#x3D;&quot;profile-img-container&quot;&gt;
+                        &lt;img [src]&#x3D;&quot;userService.currentUser?.profile_img&quot; alt&#x3D;&quot;&quot; class&#x3D;&quot;profile-img&quot;&gt;
+                        &lt;div class&#x3D;&quot;online-status-wborder online&quot;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;channel-member-name fs-18&quot;&gt;
+                        {{ userService.currentUser?.name }} (Du)
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- OTHERS USERS  --&gt;
+            @for(user of userService.allUsers; track user?.id) {
+            @if(user?.id !&#x3D; userService.currentUser?.id ) {
+            &lt;div class&#x3D;&quot;channel-header-direct&quot;&gt;
+                &lt;div class&#x3D;&quot;channel-member&quot; [class.selected]&#x3D;&quot;user?.id &#x3D;&#x3D;&#x3D; selectedUserId&quot;
+                    (click)&#x3D;&quot;openDirectChannel(user?.id)&quot;&gt;
+                    &lt;div class&#x3D;&quot;profile-img-container&quot;&gt;
+                        &lt;img [src]&#x3D;&quot;user.profile_img&quot; alt&#x3D;&quot;&quot; class&#x3D;&quot;profile-img&quot;&gt;
+                        &lt;div class&#x3D;&quot;online-status-wborder&quot; [ngClass]&#x3D;&quot;user.logged_in ? &#x27;online&#x27; : &#x27;offline&#x27;&quot;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class&#x3D;&quot;channel-member-name fs-18&quot;&gt;
+                        {{ user.name }}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            }
+            }
+
+            }
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><section class="menu-channel-container">    <div class="menu-channel-header">        <div class="menu-channel-header-left" (click)="toggleExpansion()">            <svg class="svg-color" width="30" height="30" viewBox="0 0 30 30" fill="none"                [ngStyle]="{ transform: !isExpanded ? \'rotate(-90deg)\' : \'rotate(0deg)\' }"                xmlns="http://www.w3.org/2000/svg">                <mask id="mask0_235_344" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="30"                    height="30">                    <rect width="30" height="30" fill="#D9D9D9" />                </mask>                <g mask="url(#mask0_235_344)">                    <path                        d="M14.1248 17.875L10.8748 14.625C10.479 14.2292 10.3907 13.7762 10.6098 13.2662C10.8282 12.7554 11.2186 12.5 11.7811 12.5H18.2186C18.7811 12.5 19.1715 12.7554 19.3898 13.2662C19.609 13.7762 19.5207 14.2292 19.1248 14.625L15.8748 17.875C15.7498 18 15.6144 18.0937 15.4686 18.1562C15.3227 18.2187 15.1665 18.25 14.9998 18.25C14.8332 18.25 14.6769 18.2187 14.5311 18.1562C14.3852 18.0937 14.2498 18 14.1248 17.875Z"                        fill="black" />                </g>            </svg>            <div class="menu-channel-title">                <svg class="svg-color" width="24" height="24" viewBox="0 0 24 24" fill="none"                    xmlns="http://www.w3.org/2000/svg">                    <mask id="mask0_813_12108" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"                        height="24">                        <rect width="24" height="24" fill="#D9D9D9" />                    </mask>                    <g mask="url(#mask0_813_12108)">                        <path                            d="M5.85 17.1C6.7 16.45 7.65 15.9373 8.7 15.562C9.75 15.1873 10.85 15 12 15C13.15 15 14.25 15.1873 15.3 15.562C16.35 15.9373 17.3 16.45 18.15 17.1C18.7333 16.4167 19.1877 15.6417 19.513 14.775C19.8377 13.9083 20 12.9833 20 12C20 9.78333 19.221 7.89567 17.663 6.337C16.1043 4.779 14.2167 4 12 4C9.78333 4 7.896 4.779 6.338 6.337C4.77933 7.89567 4 9.78333 4 12C4 12.9833 4.16267 13.9083 4.488 14.775C4.81267 15.6417 5.26667 16.4167 5.85 17.1ZM12 13C11.0167 13 10.1873 12.6627 9.512 11.988C8.83733 11.3127 8.5 10.4833 8.5 9.5C8.5 8.51667 8.83733 7.68733 9.512 7.012C10.1873 6.33733 11.0167 6 12 6C12.9833 6 13.8127 6.33733 14.488 7.012C15.1627 7.68733 15.5 8.51667 15.5 9.5C15.5 10.4833 15.1627 11.3127 14.488 11.988C13.8127 12.6627 12.9833 13 12 13ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6873 5.825 19.975 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26267 14.6833 2 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31267 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.31233 8.1 2.787C9.31667 2.26233 10.6167 2 12 2C13.3833 2 14.6833 2.26233 15.9 2.787C17.1167 3.31233 18.175 4.025 19.075 4.925C19.975 5.825 20.6873 6.88333 21.212 8.1C21.7373 9.31667 22 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6873 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6873 15.9 21.212C14.6833 21.7373 13.3833 22 12 22ZM12 20C12.8833 20 13.7167 19.871 14.5 19.613C15.2833 19.3543 16 18.9833 16.65 18.5C16 18.0167 15.2833 17.6457 14.5 17.387C13.7167 17.129 12.8833 17 12 17C11.1167 17 10.2833 17.129 9.5 17.387C8.71667 17.6457 8 18.0167 7.35 18.5C8 18.9833 8.71667 19.3543 9.5 19.613C10.2833 19.871 11.1167 20 12 20ZM12 11C12.4333 11 12.7917 10.8583 13.075 10.575C13.3583 10.2917 13.5 9.93333 13.5 9.5C13.5 9.06667 13.3583 8.70833 13.075 8.425C12.7917 8.14167 12.4333 8 12 8C11.5667 8 11.2083 8.14167 10.925 8.425C10.6417 8.70833 10.5 9.06667 10.5 9.5C10.5 9.93333 10.6417 10.2917 10.925 10.575C11.2083 10.8583 11.5667 11 12 11Z"                            fill="black" />                    </g>                </svg>                Direktnachrichten            </div>        </div>    </div>    <div class="scroll-dms">        <div class="mobile">            @if (isExpanded) {            <!-- THIS IS YOU  -->            <div class="channel-header-direct mobile">                <div class="channel-member" [class.selected]="userService.currentUser?.id === selectedUserId"                    (click)="openDirectChannel(userService.currentUser?.id)">                    <div class="profile-img-container">                        <img [src]="profileImg" alt="" class="profile-img">                        <div class="online-status-wborder online"></div>                    </div>                    <div class="channel-member-name fs-18">                        {{ userService.currentUser?.name }} (Du)                    </div>                </div>            </div>            <!-- OTHERS USERS  -->            @for(user of userService.allUsers; track user?.id) {            @if(user?.id != userService.currentUser?.id ) {            <div class="channel-header-direct mobile">                <div class="channel-member" [class.selected]="user?.id === selectedUserId"                    (click)="openDirectChannelMobile(user?.id)">                    <div class="profile-img-container">                        <img [src]="user.profile_img" alt="" class="profile-img">                        <div class="online-status-wborder" [ngClass]="user.logged_in ? \'online\' : \'offline\'"></div>                    </div>                    <div class="channel-member-name fs-18">                        {{ user.name }}                    </div>                </div>            </div>            }            }            }        </div>        <div class="not-mobile">            @if (isExpanded) {            <!-- THIS IS YOU  -->            <div class="channel-header-direct">                <div class="channel-member" [class.selected]="userService.currentUser?.id === selectedUserId"                    (click)="openDirectChannel(userService.currentUser?.id)">                    <div class="profile-img-container">                        <img [src]="userService.currentUser?.profile_img" alt="" class="profile-img">                        <div class="online-status-wborder online"></div>                    </div>                    <div class="channel-member-name fs-18">                        {{ userService.currentUser?.name }} (Du)                    </div>                </div>            </div>            <!-- OTHERS USERS  -->            @for(user of userService.allUsers; track user?.id) {            @if(user?.id != userService.currentUser?.id ) {            <div class="channel-header-direct">                <div class="channel-member" [class.selected]="user?.id === selectedUserId"                    (click)="openDirectChannel(user?.id)">                    <div class="profile-img-container">                        <img [src]="user.profile_img" alt="" class="profile-img">                        <div class="online-status-wborder" [ngClass]="user.logged_in ? \'online\' : \'offline\'"></div>                    </div>                    <div class="channel-member-name fs-18">                        {{ user.name }}                    </div>                </div>            </div>            }            }            }        </div>    </div></section></div>'
+    var COMPONENTS = [{'name': 'AddChannelCardComponent', 'selector': 'app-add-channel-card'},{'name': 'AddMemberCardComponent', 'selector': 'app-add-member-card'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AvatarComponent', 'selector': 'app-avatar'},{'name': 'ChannelComponent', 'selector': 'app-channel'},{'name': 'CheckEmailComponent', 'selector': 'app-check-email'},{'name': 'DialogAddMemberComponent', 'selector': 'app-dialog-add-member'},{'name': 'DialogAddMemberMobileComponent', 'selector': 'app-dialog-add-member-mobile'},{'name': 'DialogEditChannelComponent', 'selector': 'app-dialog-edit-channel'},{'name': 'DialogEditProfileComponent', 'selector': 'app-dialog-edit-profile'},{'name': 'DialogEmojiPickerComponent', 'selector': 'app-dialog-emoji-picker'},{'name': 'DialogShowMembersComponent', 'selector': 'app-dialog-show-members'},{'name': 'DialogShowProfileComponent', 'selector': 'app-dialog-show-profile'},{'name': 'EmailSnackbarComponent', 'selector': 'app-email-snackbar'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ImprintComponent', 'selector': 'app-imprint'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LoginPageComponent', 'selector': 'app-login-page'},{'name': 'LoginSnackbarComponent', 'selector': 'app-login-snackbar'},{'name': 'LogOutDialogComponent', 'selector': 'app-log-out-dialog'},{'name': 'MainHeaderComponent', 'selector': 'app-main-header'},{'name': 'MainMenuChannelsComponent', 'selector': 'app-main-menu-channels'},{'name': 'MainMenuComponent', 'selector': 'app-main-menu'},{'name': 'MainMenuDmComponent', 'selector': 'app-main-menu-dm'},{'name': 'MainMenuHeaderComponent', 'selector': 'app-main-menu-header'},{'name': 'MainPageComponent', 'selector': 'app-main-page'},{'name': 'MessageComponent', 'selector': 'app-message'},{'name': 'MessageInputComponent', 'selector': 'app-message-input'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SearchBarComponent', 'selector': 'app-search-bar'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'},{'name': 'SignInComponent', 'selector': 'app-sign-in'},{'name': 'ThreadComponent', 'selector': 'app-thread'},{'name': 'UserCreatedSnackbarComponent', 'selector': 'app-user-created-snackbar'}];
+    var DIRECTIVES = [{'name': 'OpenProfileDirective', 'selector': '[appOpenProfile]'}];
+    var ACTUAL_COMPONENT = {'name': 'MainMenuDmComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MainMenuDmComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

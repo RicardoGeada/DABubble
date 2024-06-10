@@ -103,8 +103,6 @@ export class DialogEditProfileComponent implements OnInit {
   }
 
 
-  //Checks if the input value is different from the current user's name and email
-  //If the input value is different, it will update the user's name and/or email
   async onSubmit() {
     if (this.editForm.valid) {
       const displayName = this.editForm.get('name')?.value;
@@ -118,7 +116,6 @@ export class DialogEditProfileComponent implements OnInit {
       else {
         return;
       }
-
     }
   }
 

@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject, Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-
-// um allgemein funktionen zwischen den komponenten zu teilen/nutzen
 export class SharedService {
 
   isMenuOpen: boolean = true;

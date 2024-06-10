@@ -11,9 +11,7 @@ import { PickerComponent } from '@ctrl/ngx-emoji-mart';
 })
 export class DialogEmojiPickerComponent {
 
-  constructor(public dialogRef: MatDialogRef<DialogEmojiPickerComponent>) {
-
-  }
+  constructor(public dialogRef: MatDialogRef<DialogEmojiPickerComponent>) { }
 
   addEmoji(event : any) {
     const emoji = event.emoji.native;

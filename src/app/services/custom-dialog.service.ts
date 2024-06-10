@@ -18,7 +18,6 @@ interface DialogParams {
 export class CustomDialogService {
   dialogRef: MatDialogRef<any> | null = null;
 
-
   constructor(public dialog: MatDialog) {}
 
 
@@ -34,9 +33,7 @@ export class CustomDialogService {
   }
 
 
-  public openDialogAbsolute(
-    {button, component, position, mobilePosition, mobileButton, maxWidth} : DialogParams
-  ) {
+  public openDialogAbsolute({button, component, position, mobilePosition, mobileButton, maxWidth} : DialogParams) {
     let buttonUsed = this.isMobile() && mobileButton ? mobileButton : button;
     let positionAsJSON = this.getPosition(buttonUsed, position, mobilePosition);
     let panelClass = this.getPanelClass(position, mobilePosition);
@@ -54,13 +51,8 @@ export class CustomDialogService {
   }
 
 
-  // Funktion zum Aktualisieren der Dialogposition
-  updateDialogPosition(
-    button: HTMLElement,
-    position: 'left' | 'right' | 'mid',
-    mobilePosition?: 'mid' | 'bottom',
-    mobileButton?: HTMLElement,
-  ): void {
+  updateDialogPosition(button: HTMLElement, position: 'left' | 'right' | 'mid', 
+    mobilePosition?: 'mid' | 'bottom', mobileButton?: HTMLElement,): void {
     if (this.dialogRef) {
       let buttonUsed = this.isMobile() && mobileButton ? mobileButton : button;
       let positionAsJSON = this.getPosition(buttonUsed, position, mobilePosition);
@@ -69,16 +61,11 @@ export class CustomDialogService {
   }
 
 
-  getPosition(
-    button: HTMLElement,
-    position: 'left' | 'right' | 'mid',
-    mobilePosition?: 'mid' | 'bottom'
-  ) {
+  getPosition(button: HTMLElement, position: 'left' | 'right' | 'mid', mobilePosition?: 'mid' | 'bottom') {
     if (this.isMobile() && mobilePosition) {
       return this.getMobilePosition(mobilePosition);
     } else {
       const rect = button.getBoundingClientRect();
-      
       if (position == 'left') return {
         top: rect.bottom + 'px',
         left:  rect.left + 'px',

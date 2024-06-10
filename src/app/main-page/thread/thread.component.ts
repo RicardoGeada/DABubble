@@ -21,10 +21,8 @@ import { SharedService } from '../../services/shared.service';
   styleUrl: './thread.component.scss',
 })
 export class ThreadComponent {
-
   currentUser: User = this.userService.currentUser;
   currentDate: string = '1970/01/01';
-
   messageInput: string = '';
   message: Message = {
     user_id: '',
@@ -39,6 +37,29 @@ export class ThreadComponent {
     is_deleted: false,
     last_reply: 0,
   };
+  weekdays = [
+    'Sonntag',
+    'Montag',
+    'Dienstag',
+    'Mittwoch',
+    'Donnerstag',
+    'Freitag',
+    'Samstag',
+  ];
+  months = [
+    'Januar',
+    'Februar',
+    'März',
+    'April',
+    'Mai',
+    'Juni',
+    'Juli',
+    'August',
+    'September',
+    'Oktober',
+    'November',
+    'Dezember',
+  ];
 
   currenThread;
 
@@ -61,14 +82,15 @@ export class ThreadComponent {
     if (this.userService.currentUser && this.userService.currentUser.last_thread == '') {
       this.closeThread();
     }
-
   }
+
 
   ngOnDestroy() {
     this.channelService.unsubCurrentThread();
     this.messageService.unsubMessagesThread();
     this.currenThread();
   }
+
 
   isNewDate(date: number) {
     let currentDate = this.currentDate;
@@ -77,36 +99,14 @@ export class ThreadComponent {
     return currentDate != messageDate;
   }
 
+
   getDateFormat(dateInput: number) {
-    const weekdays = [
-      'Sonntag',
-      'Montag',
-      'Dienstag',
-      'Mittwoch',
-      'Donnerstag',
-      'Freitag',
-      'Samstag',
-    ];
-    const months = [
-      'Januar',
-      'Februar',
-      'März',
-      'April',
-      'Mai',
-      'Juni',
-      'Juli',
-      'August',
-      'September',
-      'Oktober',
-      'November',
-      'Dezember',
-    ];
     let d = new Date(dateInput);
     let date = d.getDate();
     let day: number | string = d.getDay();
     let month: number | string = d.getMonth() + 1;
-    day = weekdays[day];
-    month = months[month];
+    day = this.weekdays[day];
+    month = this.months[month];
     let result = day + ',' + ' ' + date + ' ' + month;
     return result;
   }
@@ -123,27 +123,15 @@ export class ThreadComponent {
   }
 
   getTextareaPlaceholderText() {
-    switch (this.channelService.currentChannel.channel_type) {
-      case 'main':
-        return 'Nachricht an ' + '#' + this.channelService.currentChannel.name;
-        break;
-      case 'direct':
-        if (this.channelService.currentChannel.members.length == 2) {
-          return 'Nachricht an ' + this.getDirectChannelUser()?.name;
-        } else {
-          return 'Nachricht an ' + 'dich';
-        }
-        break;
-      case 'thread':
-        return 'Antworten...';
-        break;
-      case 'new':
-        return 'Starte eine neue Nachricht';
-        break;
-      default:
-        return 'Starte eine neue Nachricht';
-    }
+    let channel = this.channelService.currentChannel;
+    let channelType = channel.channel_type;
+    let channelName = channel.name;
+    let members = channel.members;
+    return channelType === 'main' ? 'Nachricht an #' + channelName :
+           channelType === 'direct' ? 'Nachricht an ' + (members[0] === members[1] || members.length === 1 ? 'dich' : this.getDirectChannelUser()?.name) :
+           channelType === 'thread' ? 'Antworten...' : 'Starte eine neue Nachricht';
   }
+
 
   getDirectChannelUser() {
     let contact = this.channelService.currentChannel.members.find((member) => member != this.currentUser.id);
@@ -151,31 +139,15 @@ export class ThreadComponent {
     else return this.currentUser;
   }
 
+
   closeThread() {
     this.userService.saveLastThread(this.userService.currentUser.id, '');
     this.threadService.closeThread();
   }
 
+
   setFocus() {
     document.getElementById('threadInput')?.focus();
     this.messageInput = '';
   }
-
-  // @HostListener('window:mousemove', ['$event'])
-  // onMouseMove(event: MouseEvent) {
-  //   this.sharedService.isMenuOpen$.subscribe(isMenuOpen => {
-  //       let th = document.getElementById('thread');
-  //       if (th) {
-  //           if (window.innerWidth < 1024 && isMenuOpen) {
-  //               th.style.position = 'absolute';
-  //               th.style.left = '40px';
-  //               th.style.maxWidth = 'calc(100% - 40px)';
-  //           } 
-  //           else {
-  //               // th.style.position = 'relative';
-  //               // th.style.left = '0';
-  //           }
-  //       }
-  //   });
-  // }
 }

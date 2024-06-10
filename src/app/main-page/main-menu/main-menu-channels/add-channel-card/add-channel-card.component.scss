@@ -87,7 +87,6 @@
     border-radius: 0;
     gap: 0;
 
-    // left: -80px; // ein justify content center vom cdk global overlay wrapper wird hiermit ausgeglichen
 
     .mat-card-title-custom{
       margin-bottom: 40px;
@@ -103,24 +102,3 @@
 
 
 }
-// @media (max-width: 500px){
-//   .mat-card-custom{
-//     padding: 40px 20px;
-//     .description-text{
-//       font-size: 16px;
-//     }
-//   }
-// }
-
-// @media (max-width: 330px){
-//   .mat-card-custom{
-//     .mat-dialog-content-custom{
-//       .input-wrapper{
-//         gap: 5px;
-//       }
-//       .input-description{
-//         font-size: 16px;
-//       }
-//     }
-//   }
-// }

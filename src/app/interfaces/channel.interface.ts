@@ -5,7 +5,7 @@ export interface Channel {
   name: string;
   description: string;
   created_at: number;
-  creator: string; // 'user_id'
+  creator: string;
   members: string[];
   active_members: string[];
   channel_type: ChannelTypeEnum;

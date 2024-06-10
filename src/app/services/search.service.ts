@@ -86,8 +86,7 @@ export class SearchService {
 
 
   filterUsersByPrefix(prefix: string, users: User[]): User[] {
-    const lowerCaseTerm = this.searchTerm(prefix.slice(1)); // Entferne das @-Zeichen
-    // Filtere Benutzer basierend auf dem Suchbegriff und prüfe, ob ein Teil des Benutzernamens mit dem Suchbegriff übereinstimmt
+    const lowerCaseTerm = this.searchTerm(prefix.slice(1));
     return users.filter((user) =>
       user.name
         .split(' ')
@@ -100,8 +99,7 @@ export class SearchService {
     prefix: string,
     channelType: ChannelTypeEnum
   ): Channel[] {
-    const lowerCaseTerm = this.searchTerm(prefix.slice(1)); // Entferne das #-Zeichen
-    // Filtere Kanäle basierend auf dem Typ und prüfe, ob ein Teil des Kanalnamens mit dem Suchbegriff übereinstimmt
+    const lowerCaseTerm = this.searchTerm(prefix.slice(1));
     return this.channelService.channels.filter(
       (channel) =>
         channel.channel_type === channelType &&

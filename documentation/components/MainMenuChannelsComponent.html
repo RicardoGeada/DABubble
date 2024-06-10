@@ -1,0 +1,1170 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>da-bubble documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">da-bubble documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  MainMenuChannelsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-main-menu-channels</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>MatCardModule</code>
+                            <code>MatExpansionModule</code>
+                            <code>RouterModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./main-menu-channels.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./main-menu-channels.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activeChannelId" >activeChannelId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#channelService" >channelService</a>
+                            </li>
+                            <li>
+                                <a href="#isExpanded" >isExpanded</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#mainPage" >mainPage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#messageService" >messageService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#router" >router</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sharedService" >sharedService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#threadService" >threadService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#userService" >userService</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#mobileChange" >mobileChange</a>
+                            </li>
+                            <li>
+                                <a href="#openAddChannelDialog" >openAddChannelDialog</a>
+                            </li>
+                            <li>
+                                <a href="#selectChannel" >selectChannel</a>
+                            </li>
+                            <li>
+                                <a href="#toggleExpansion" >toggleExpansion</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(customDialogService: <a href="../injectables/CustomDialogService.html" target="_self">CustomDialogService</a>, channelService: <a href="../injectables/ChannelFirebaseService.html" target="_self">ChannelFirebaseService</a>, messageService: <a href="../injectables/MessageService.html" target="_self">MessageService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, router: Router, threadService: <a href="../injectables/ThreadService.html" target="_self">ThreadService</a>, mainPage: <a href="../components/MainPageComponent.html" target="_self">MainPageComponent</a>, sharedService: <a href="../injectables/SharedService.html" target="_self">SharedService</a>, stateService: <a href="../injectables/StateManagementService.html" target="_self">StateManagementService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>customDialogService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CustomDialogService.html" target="_self" >CustomDialogService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>channelService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ChannelFirebaseService.html" target="_self" >ChannelFirebaseService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>messageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MessageService.html" target="_self" >MessageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>threadService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ThreadService.html" target="_self" >ThreadService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>mainPage</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../components/MainPageComponent.html" target="_self" >MainPageComponent</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sharedService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SharedService.html" target="_self" >SharedService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>stateService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StateManagementService.html" target="_self" >StateManagementService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mobileChange"></a>
+                    <span class="name">
+                        <span ><b>mobileChange</b></span>
+                        <a href="#mobileChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>mobileChange()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openAddChannelDialog"></a>
+                    <span class="name">
+                        <span ><b>openAddChannelDialog</b></span>
+                        <a href="#openAddChannelDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openAddChannelDialog()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectChannel"></a>
+                    <span class="name">
+                        <span ><b>selectChannel</b></span>
+                        <a href="#selectChannel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectChannel(channelId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>channelId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleExpansion"></a>
+                    <span class="name">
+                        <span ><b>toggleExpansion</b></span>
+                        <a href="#toggleExpansion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleExpansion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activeChannelId"></a>
+                    <span class="name">
+                        <span ><b>activeChannelId</b></span>
+                        <a href="#activeChannelId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="channelService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>channelService</b></span>
+                        <a href="#channelService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ChannelFirebaseService.html" target="_self" >ChannelFirebaseService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isExpanded"></a>
+                    <span class="name">
+                        <span ><b>isExpanded</b></span>
+                        <a href="#isExpanded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mainPage"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>mainPage</b></span>
+                        <a href="#mainPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/MainPageComponent.html" target="_self" >MainPageComponent</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="messageService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>messageService</b></span>
+                        <a href="#messageService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/MessageService.html" target="_self" >MessageService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="router"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>router</b></span>
+                        <a href="#router"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Router</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sharedService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>sharedService</b></span>
+                        <a href="#sharedService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/SharedService.html" target="_self" >SharedService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="threadService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>threadService</b></span>
+                        <a href="#threadService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ThreadService.html" target="_self" >ThreadService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>userService</b></span>
+                        <a href="#userService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/main-page/main-menu/main-menu-channels/main-menu-channels.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { MatCardModule } from &#x27;@angular/material/card&#x27;;
+import { MatExpansionModule } from &#x27;@angular/material/expansion&#x27;;
+import { AddChannelCardComponent } from &#x27;./add-channel-card/add-channel-card.component&#x27;;
+import { CustomDialogService } from &#x27;../../../services/custom-dialog.service&#x27;;
+import { ChannelFirebaseService } from &#x27;../../../firebase.service/channelFirebase.service&#x27;;
+import { MessageService } from &#x27;../../../firebase.service/message.service&#x27;;
+import { UserService } from &#x27;../../../firebase.service/user.service&#x27;;
+import { Router, RouterModule } from &#x27;@angular/router&#x27;;
+import { ThreadService } from &#x27;../../../services/thread.service&#x27;;
+import { MainPageComponent } from &#x27;../../main-page.component&#x27;;
+import { SharedService } from &#x27;../../../services/shared.service&#x27;;
+import { StateManagementService } from &#x27;../../../services/state-management.service&#x27;;
+
+@Component({
+  selector: &#x27;app-main-menu-channels&#x27;,
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatExpansionModule, RouterModule],
+  templateUrl: &#x27;./main-menu-channels.component.html&#x27;,
+  styleUrl: &#x27;./main-menu-channels.component.scss&#x27;,
+})
+export class MainMenuChannelsComponent {
+  isExpanded: boolean &#x3D; true;
+  activeChannelId: string &#x3D; &#x27;&#x27;;
+
+  constructor(
+    private customDialogService: CustomDialogService,
+    public channelService: ChannelFirebaseService,
+    public messageService: MessageService,
+    public userService: UserService,
+    public router: Router,
+    public threadService: ThreadService,
+    public mainPage: MainPageComponent,
+    public sharedService: SharedService,
+    private stateService: StateManagementService
+  ) {}
+
+
+  selectChannel(channelId: string) {
+    this.stateService.setSelectedChannelId(channelId);
+    this.userService.saveLastThread(this.userService.currentUser.id, &#x27;&#x27;);
+    this.threadService.closeThread();
+  }
+
+
+  mobileChange() {
+    this.mainPage.toggleMenu();
+    this.sharedService.showMobileDiv();
+  }
+
+
+  toggleExpansion(): void {
+    this.isExpanded &#x3D; !this.isExpanded;
+  }
+
+
+  openAddChannelDialog(): void {
+    const component &#x3D; AddChannelCardComponent;
+    this.customDialogService.openDialog(component);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;menu-channel-container&quot;&gt;
+
+    &lt;div class&#x3D;&quot;menu-channel-header&quot;&gt;
+        &lt;div class&#x3D;&quot;menu-channel-header-left&quot; (click)&#x3D;&quot;toggleExpansion()&quot;&gt;
+            &lt;svg class&#x3D;&quot;svg-color&quot; width&#x3D;&quot;30&quot; height&#x3D;&quot;30&quot; viewBox&#x3D;&quot;0 0 30 30&quot; fill&#x3D;&quot;none&quot;
+                [ngStyle]&#x3D;&quot;{ transform: !isExpanded ? &#x27;rotate(-90deg)&#x27; : &#x27;rotate(0deg)&#x27; }&quot;
+                xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                &lt;mask id&#x3D;&quot;mask0_235_344&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; width&#x3D;&quot;30&quot;
+                    height&#x3D;&quot;30&quot;&gt;
+                    &lt;rect width&#x3D;&quot;30&quot; height&#x3D;&quot;30&quot; fill&#x3D;&quot;#D9D9D9&quot; /&gt;
+                &lt;/mask&gt;
+                &lt;g mask&#x3D;&quot;url(#mask0_235_344)&quot;&gt;
+                    &lt;path
+                        d&#x3D;&quot;M14.1248 17.875L10.8748 14.625C10.479 14.2292 10.3907 13.7762 10.6098 13.2662C10.8282 12.7554 11.2186 12.5 11.7811 12.5H18.2186C18.7811 12.5 19.1715 12.7554 19.3898 13.2662C19.609 13.7762 19.5207 14.2292 19.1248 14.625L15.8748 17.875C15.7498 18 15.6144 18.0937 15.4686 18.1562C15.3227 18.2187 15.1665 18.25 14.9998 18.25C14.8332 18.25 14.6769 18.2187 14.5311 18.1562C14.3852 18.0937 14.2498 18 14.1248 17.875Z&quot;
+                        fill&#x3D;&quot;black&quot; /&gt;
+                &lt;/g&gt;
+            &lt;/svg&gt;
+            &lt;div class&#x3D;&quot;menu-channel-title&quot;&gt;
+                &lt;svg class&#x3D;&quot;svg-color&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot;
+                    xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                    &lt;mask id&#x3D;&quot;mask0_813_12191&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; width&#x3D;&quot;24&quot;
+                        height&#x3D;&quot;24&quot;&gt;
+                        &lt;rect width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; fill&#x3D;&quot;#D9D9D9&quot; /&gt;
+                    &lt;/mask&gt;
+                    &lt;g mask&#x3D;&quot;url(#mask0_813_12191)&quot;&gt;
+                        &lt;path
+                            d&#x3D;&quot;M6 21C4.9 21 3.95833 20.6083 3.175 19.825C2.39167 19.0417 2 18.1 2 17C2 15.9 2.39167 14.9583 3.175 14.175C3.95833 13.3917 4.9 13 6 13C7.1 13 8.04167 13.3917 8.825 14.175C9.60833 14.9583 10 15.9 10 17C10 18.1 9.60833 19.0417 8.825 19.825C8.04167 20.6083 7.1 21 6 21ZM18 21C16.9 21 15.9583 20.6083 15.175 19.825C14.3917 19.0417 14 18.1 14 17C14 15.9 14.3917 14.9583 15.175 14.175C15.9583 13.3917 16.9 13 18 13C19.1 13 20.0417 13.3917 20.825 14.175C21.6083 14.9583 22 15.9 22 17C22 18.1 21.6083 19.0417 20.825 19.825C20.0417 20.6083 19.1 21 18 21ZM6 19C6.55 19 7.02067 18.8043 7.412 18.413C7.804 18.021 8 17.55 8 17C8 16.45 7.804 15.9793 7.412 15.588C7.02067 15.196 6.55 15 6 15C5.45 15 4.97933 15.196 4.588 15.588C4.196 15.9793 4 16.45 4 17C4 17.55 4.196 18.021 4.588 18.413C4.97933 18.8043 5.45 19 6 19ZM18 19C18.55 19 19.021 18.8043 19.413 18.413C19.8043 18.021 20 17.55 20 17C20 16.45 19.8043 15.9793 19.413 15.588C19.021 15.196 18.55 15 18 15C17.45 15 16.979 15.196 16.587 15.588C16.1957 15.9793 16 16.45 16 17C16 17.55 16.1957 18.021 16.587 18.413C16.979 18.8043 17.45 19 18 19ZM12 11C10.9 11 9.95833 10.6083 9.175 9.825C8.39167 9.04167 8 8.1 8 7C8 5.9 8.39167 4.95833 9.175 4.175C9.95833 3.39167 10.9 3 12 3C13.1 3 14.0417 3.39167 14.825 4.175C15.6083 4.95833 16 5.9 16 7C16 8.1 15.6083 9.04167 14.825 9.825C14.0417 10.6083 13.1 11 12 11ZM12 9C12.55 9 13.021 8.804 13.413 8.412C13.8043 8.02067 14 7.55 14 7C14 6.45 13.8043 5.97933 13.413 5.588C13.021 5.196 12.55 5 12 5C11.45 5 10.9793 5.196 10.588 5.588C10.196 5.97933 10 6.45 10 7C10 7.55 10.196 8.02067 10.588 8.412C10.9793 8.804 11.45 9 12 9Z&quot;
+                            fill&#x3D;&quot;black&quot; /&gt;
+                    &lt;/g&gt;
+                &lt;/svg&gt;
+                Channels
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button class&#x3D;&quot;btn-icon-v3&quot; (click)&#x3D;&quot;openAddChannelDialog()&quot;&gt;
+            &lt;svg class&#x3D;&quot;svg-circle&quot; width&#x3D;&quot;30&quot; height&#x3D;&quot;30&quot; viewBox&#x3D;&quot;0 0 30 30&quot; fill&#x3D;&quot;none&quot;
+                xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                &lt;g clip-path&#x3D;&quot;url(#clip0_813_12245)&quot;&gt;
+                    &lt;mask id&#x3D;&quot;mask0_813_12245&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;3&quot; y&#x3D;&quot;3&quot; width&#x3D;&quot;24&quot;
+                        height&#x3D;&quot;24&quot;&gt;
+                        &lt;rect x&#x3D;&quot;3&quot; y&#x3D;&quot;3&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; fill&#x3D;&quot;#D9D9D9&quot; /&gt;
+                    &lt;/mask&gt;
+                    &lt;g mask&#x3D;&quot;url(#mask0_813_12245)&quot;&gt;
+                        &lt;path
+                            d&#x3D;&quot;M15 22C14.7167 22 14.4793 21.904 14.288 21.712C14.096 21.5207 14 21.2833 14 21V16H9C8.71667 16 8.479 15.904 8.287 15.712C8.09567 15.5207 8 15.2833 8 15C8 14.7167 8.09567 14.479 8.287 14.287C8.479 14.0957 8.71667 14 9 14H14V9C14 8.71667 14.096 8.479 14.288 8.287C14.4793 8.09567 14.7167 8 15 8C15.2833 8 15.521 8.09567 15.713 8.287C15.9043 8.479 16 8.71667 16 9V14H21C21.2833 14 21.5207 14.0957 21.712 14.287C21.904 14.479 22 14.7167 22 15C22 15.2833 21.904 15.5207 21.712 15.712C21.5207 15.904 21.2833 16 21 16H16V21C16 21.2833 15.9043 21.5207 15.713 21.712C15.521 21.904 15.2833 22 15 22Z&quot;
+                            fill&#x3D;&quot;black&quot; /&gt;
+                    &lt;/g&gt;
+                &lt;/g&gt;
+                &lt;defs&gt;
+                    &lt;clipPath id&#x3D;&quot;clip0_813_12245&quot;&gt;
+                        &lt;rect x&#x3D;&quot;3&quot; y&#x3D;&quot;3&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; rx&#x3D;&quot;12&quot; fill&#x3D;&quot;white&quot; /&gt;
+                    &lt;/clipPath&gt;
+                &lt;/defs&gt;
+            &lt;/svg&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;scroll-channels&quot;&gt;
+        @if (isExpanded) {
+        @for(channel of channelService.channels; track channel.id) {
+        @if (channel.channel_type &#x3D;&#x3D;&#x3D; &#x27;main&#x27;) {
+
+        &lt;div class&#x3D;&quot;menu-channel-content&quot; [routerLink]&#x3D;&quot;[&#x27;/main-page&#x27; , channel.id]&quot;&gt;
+            &lt;div class&#x3D;&quot;channel&quot; [class.active]&#x3D;&quot;channel.id &#x3D;&#x3D;&#x3D; channelService.currentChannel.id&quot;
+                (click)&#x3D;&quot;selectChannel(channel.id)&quot;&gt;
+                &lt;svg class&#x3D;&quot;svg-color&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot;
+                    xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                    &lt;mask id&#x3D;&quot;mask0_813_12093&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; width&#x3D;&quot;24&quot;
+                        height&#x3D;&quot;24&quot;&gt;
+                        &lt;rect width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; fill&#x3D;&quot;#D9D9D9&quot; /&gt;
+                    &lt;/mask&gt;
+                    &lt;g mask&#x3D;&quot;url(#mask0_813_12093)&quot;&gt;
+                        &lt;path
+                            d&#x3D;&quot;M7.24995 20C6.93328 20 6.67495 19.875 6.47495 19.625C6.27495 19.375 6.21662 19.1 6.29995 18.8L6.99995 16H4.77495C4.44162 16 4.17495 15.871 3.97495 15.613C3.77495 15.3543 3.71661 15.0667 3.79995 14.75C3.84995 14.5167 3.96662 14.3333 4.14995 14.2C4.33328 14.0667 4.54162 14 4.77495 14H7.49995L8.49995 10H5.77495C5.44161 10 5.17495 9.871 4.97495 9.613C4.77495 9.35433 4.71662 9.06667 4.79995 8.75C4.84995 8.51667 4.96662 8.33333 5.14995 8.2C5.33328 8.06667 5.54162 8 5.77495 8H8.99995L9.82495 4.725C9.87495 4.50833 9.98328 4.33333 10.1499 4.2C10.3166 4.06667 10.5166 4 10.7499 4C11.0666 4 11.3249 4.125 11.5249 4.375C11.7249 4.625 11.7833 4.9 11.6999 5.2L10.9999 8H14.9999L15.8249 4.725C15.8749 4.50833 15.9833 4.33333 16.1499 4.2C16.3166 4.06667 16.5166 4 16.7499 4C17.0666 4 17.3249 4.125 17.5249 4.375C17.7249 4.625 17.7833 4.9 17.6999 5.2L16.9999 8H19.2249C19.5583 8 19.8249 8.129 20.0249 8.387C20.2249 8.64567 20.2833 8.93333 20.1999 9.25C20.15 9.48333 20.0333 9.66667 19.8499 9.8C19.6666 9.93333 19.4583 10 19.2249 10H16.4999L15.4999 14H18.2249C18.5583 14 18.8249 14.129 19.0249 14.387C19.2249 14.6457 19.2833 14.9333 19.1999 15.25C19.1499 15.4833 19.0333 15.6667 18.8499 15.8C18.6666 15.9333 18.4583 16 18.2249 16H14.9999L14.1749 19.275C14.1249 19.4917 14.0166 19.6667 13.8499 19.8C13.6833 19.9333 13.4833 20 13.2499 20C12.9333 20 12.6749 19.875 12.4749 19.625C12.2749 19.375 12.2166 19.1 12.2999 18.8L12.9999 16H8.99995L8.17495 19.275C8.12495 19.4917 8.01661 19.6667 7.84995 19.8C7.68328 19.9333 7.48328 20 7.24995 20ZM9.49995 14H13.4999L14.4999 10H10.4999L9.49995 14Z&quot;
+                            fill&#x3D;&quot;black&quot; /&gt;
+                    &lt;/g&gt;
+                &lt;/svg&gt;
+                &lt;span class&#x3D;&quot;channel-name&quot;&gt;{{channel.name}}&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;menu-channel-content-mobile&quot; [routerLink]&#x3D;&quot;[&#x27;/main-page&#x27; , channel.id]&quot; (click)&#x3D;&quot;mobileChange()&quot;&gt;
+            &lt;div class&#x3D;&quot;channel&quot; [class.active]&#x3D;&quot;channel.id &#x3D;&#x3D;&#x3D; channelService.currentChannel.id&quot;&gt;
+                &lt;svg class&#x3D;&quot;svg-color&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot;
+                    xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                    &lt;mask id&#x3D;&quot;mask0_813_12093&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; width&#x3D;&quot;24&quot;
+                        height&#x3D;&quot;24&quot;&gt;
+                        &lt;rect width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; fill&#x3D;&quot;#D9D9D9&quot; /&gt;
+                    &lt;/mask&gt;
+                    &lt;g mask&#x3D;&quot;url(#mask0_813_12093)&quot;&gt;
+                        &lt;path
+                            d&#x3D;&quot;M7.24995 20C6.93328 20 6.67495 19.875 6.47495 19.625C6.27495 19.375 6.21662 19.1 6.29995 18.8L6.99995 16H4.77495C4.44162 16 4.17495 15.871 3.97495 15.613C3.77495 15.3543 3.71661 15.0667 3.79995 14.75C3.84995 14.5167 3.96662 14.3333 4.14995 14.2C4.33328 14.0667 4.54162 14 4.77495 14H7.49995L8.49995 10H5.77495C5.44161 10 5.17495 9.871 4.97495 9.613C4.77495 9.35433 4.71662 9.06667 4.79995 8.75C4.84995 8.51667 4.96662 8.33333 5.14995 8.2C5.33328 8.06667 5.54162 8 5.77495 8H8.99995L9.82495 4.725C9.87495 4.50833 9.98328 4.33333 10.1499 4.2C10.3166 4.06667 10.5166 4 10.7499 4C11.0666 4 11.3249 4.125 11.5249 4.375C11.7249 4.625 11.7833 4.9 11.6999 5.2L10.9999 8H14.9999L15.8249 4.725C15.8749 4.50833 15.9833 4.33333 16.1499 4.2C16.3166 4.06667 16.5166 4 16.7499 4C17.0666 4 17.3249 4.125 17.5249 4.375C17.7249 4.625 17.7833 4.9 17.6999 5.2L16.9999 8H19.2249C19.5583 8 19.8249 8.129 20.0249 8.387C20.2249 8.64567 20.2833 8.93333 20.1999 9.25C20.15 9.48333 20.0333 9.66667 19.8499 9.8C19.6666 9.93333 19.4583 10 19.2249 10H16.4999L15.4999 14H18.2249C18.5583 14 18.8249 14.129 19.0249 14.387C19.2249 14.6457 19.2833 14.9333 19.1999 15.25C19.1499 15.4833 19.0333 15.6667 18.8499 15.8C18.6666 15.9333 18.4583 16 18.2249 16H14.9999L14.1749 19.275C14.1249 19.4917 14.0166 19.6667 13.8499 19.8C13.6833 19.9333 13.4833 20 13.2499 20C12.9333 20 12.6749 19.875 12.4749 19.625C12.2749 19.375 12.2166 19.1 12.2999 18.8L12.9999 16H8.99995L8.17495 19.275C8.12495 19.4917 8.01661 19.6667 7.84995 19.8C7.68328 19.9333 7.48328 20 7.24995 20ZM9.49995 14H13.4999L14.4999 10H10.4999L9.49995 14Z&quot;
+                            fill&#x3D;&quot;black&quot; /&gt;
+                    &lt;/g&gt;
+                &lt;/svg&gt;
+                &lt;span class&#x3D;&quot;channel-name&quot;&gt;{{channel.name}}&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        }
+        }
+
+        &lt;div class&#x3D;&quot;menu-channel-add-container&quot; (click)&#x3D;&quot;openAddChannelDialog()&quot;&gt;
+            &lt;div class&#x3D;&quot;menu-channel-add&quot;&gt;
+                &lt;svg class&#x3D;&quot;svg-color&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot;
+                    xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                    &lt;mask id&#x3D;&quot;mask0_235_367&quot; style&#x3D;&quot;mask-type:alpha&quot; maskUnits&#x3D;&quot;userSpaceOnUse&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; width&#x3D;&quot;24&quot;
+                        height&#x3D;&quot;24&quot;&gt;
+                        &lt;rect width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; fill&#x3D;&quot;black&quot; /&gt;
+                    &lt;/mask&gt;
+                    &lt;g mask&#x3D;&quot;url(#mask0_235_367)&quot;&gt;
+                        &lt;path
+                            d&#x3D;&quot;M12 17C12.2833 17 12.521 16.904 12.713 16.712C12.9043 16.5207 13 16.2833 13 16V13H16.025C16.3083 13 16.5417 12.904 16.725 12.712C16.9083 12.5207 17 12.2833 17 12C17 11.7167 16.904 11.479 16.712 11.287C16.5207 11.0957 16.2833 11 16 11H13V7.975C13 7.69167 12.9043 7.45833 12.713 7.275C12.521 7.09167 12.2833 7 12 7C11.7167 7 11.4793 7.09567 11.288 7.287C11.096 7.479 11 7.71667 11 8V11H7.975C7.69167 11 7.45833 11.0957 7.275 11.287C7.09167 11.479 7 11.7167 7 12C7 12.2833 7.09567 12.5207 7.287 12.712C7.479 12.904 7.71667 13 8 13H11V16.025C11 16.3083 11.096 16.5417 11.288 16.725C11.4793 16.9083 11.7167 17 12 17ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6873 5.825 19.975 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26267 14.6833 2 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31267 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.31233 8.1 2.787C9.31667 2.26233 10.6167 2 12 2C13.3833 2 14.6833 2.26233 15.9 2.787C17.1167 3.31233 18.175 4.025 19.075 4.925C19.975 5.825 20.6873 6.88333 21.212 8.1C21.7373 9.31667 22 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6873 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6873 15.9 21.212C14.6833 21.7373 13.3833 22 12 22ZM12 20C14.2167 20 16.1043 19.221 17.663 17.663C19.221 16.1043 20 14.2167 20 12C20 9.78333 19.221 7.89567 17.663 6.337C16.1043 4.779 14.2167 4 12 4C9.78333 4 7.896 4.779 6.338 6.337C4.77933 7.89567 4 9.78333 4 12C4 14.2167 4.77933 16.1043 6.338 17.663C7.896 19.221 9.78333 20 12 20Z&quot;
+                            fill&#x3D;&quot;black&quot; /&gt;
+                    &lt;/g&gt;
+                &lt;/svg&gt;
+                &lt;span class&#x3D;&quot;channel-add-text&quot;&gt;Channel hinzufügen&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        }
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><section class="menu-channel-container">    <div class="menu-channel-header">        <div class="menu-channel-header-left" (click)="toggleExpansion()">            <svg class="svg-color" width="30" height="30" viewBox="0 0 30 30" fill="none"                [ngStyle]="{ transform: !isExpanded ? \'rotate(-90deg)\' : \'rotate(0deg)\' }"                xmlns="http://www.w3.org/2000/svg">                <mask id="mask0_235_344" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="30"                    height="30">                    <rect width="30" height="30" fill="#D9D9D9" />                </mask>                <g mask="url(#mask0_235_344)">                    <path                        d="M14.1248 17.875L10.8748 14.625C10.479 14.2292 10.3907 13.7762 10.6098 13.2662C10.8282 12.7554 11.2186 12.5 11.7811 12.5H18.2186C18.7811 12.5 19.1715 12.7554 19.3898 13.2662C19.609 13.7762 19.5207 14.2292 19.1248 14.625L15.8748 17.875C15.7498 18 15.6144 18.0937 15.4686 18.1562C15.3227 18.2187 15.1665 18.25 14.9998 18.25C14.8332 18.25 14.6769 18.2187 14.5311 18.1562C14.3852 18.0937 14.2498 18 14.1248 17.875Z"                        fill="black" />                </g>            </svg>            <div class="menu-channel-title">                <svg class="svg-color" width="24" height="24" viewBox="0 0 24 24" fill="none"                    xmlns="http://www.w3.org/2000/svg">                    <mask id="mask0_813_12191" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"                        height="24">                        <rect width="24" height="24" fill="#D9D9D9" />                    </mask>                    <g mask="url(#mask0_813_12191)">                        <path                            d="M6 21C4.9 21 3.95833 20.6083 3.175 19.825C2.39167 19.0417 2 18.1 2 17C2 15.9 2.39167 14.9583 3.175 14.175C3.95833 13.3917 4.9 13 6 13C7.1 13 8.04167 13.3917 8.825 14.175C9.60833 14.9583 10 15.9 10 17C10 18.1 9.60833 19.0417 8.825 19.825C8.04167 20.6083 7.1 21 6 21ZM18 21C16.9 21 15.9583 20.6083 15.175 19.825C14.3917 19.0417 14 18.1 14 17C14 15.9 14.3917 14.9583 15.175 14.175C15.9583 13.3917 16.9 13 18 13C19.1 13 20.0417 13.3917 20.825 14.175C21.6083 14.9583 22 15.9 22 17C22 18.1 21.6083 19.0417 20.825 19.825C20.0417 20.6083 19.1 21 18 21ZM6 19C6.55 19 7.02067 18.8043 7.412 18.413C7.804 18.021 8 17.55 8 17C8 16.45 7.804 15.9793 7.412 15.588C7.02067 15.196 6.55 15 6 15C5.45 15 4.97933 15.196 4.588 15.588C4.196 15.9793 4 16.45 4 17C4 17.55 4.196 18.021 4.588 18.413C4.97933 18.8043 5.45 19 6 19ZM18 19C18.55 19 19.021 18.8043 19.413 18.413C19.8043 18.021 20 17.55 20 17C20 16.45 19.8043 15.9793 19.413 15.588C19.021 15.196 18.55 15 18 15C17.45 15 16.979 15.196 16.587 15.588C16.1957 15.9793 16 16.45 16 17C16 17.55 16.1957 18.021 16.587 18.413C16.979 18.8043 17.45 19 18 19ZM12 11C10.9 11 9.95833 10.6083 9.175 9.825C8.39167 9.04167 8 8.1 8 7C8 5.9 8.39167 4.95833 9.175 4.175C9.95833 3.39167 10.9 3 12 3C13.1 3 14.0417 3.39167 14.825 4.175C15.6083 4.95833 16 5.9 16 7C16 8.1 15.6083 9.04167 14.825 9.825C14.0417 10.6083 13.1 11 12 11ZM12 9C12.55 9 13.021 8.804 13.413 8.412C13.8043 8.02067 14 7.55 14 7C14 6.45 13.8043 5.97933 13.413 5.588C13.021 5.196 12.55 5 12 5C11.45 5 10.9793 5.196 10.588 5.588C10.196 5.97933 10 6.45 10 7C10 7.55 10.196 8.02067 10.588 8.412C10.9793 8.804 11.45 9 12 9Z"                            fill="black" />                    </g>                </svg>                Channels            </div>        </div>        <button class="btn-icon-v3" (click)="openAddChannelDialog()">            <svg class="svg-circle" width="30" height="30" viewBox="0 0 30 30" fill="none"                xmlns="http://www.w3.org/2000/svg">                <g clip-path="url(#clip0_813_12245)">                    <mask id="mask0_813_12245" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="3" width="24"                        height="24">                        <rect x="3" y="3" width="24" height="24" fill="#D9D9D9" />                    </mask>                    <g mask="url(#mask0_813_12245)">                        <path                            d="M15 22C14.7167 22 14.4793 21.904 14.288 21.712C14.096 21.5207 14 21.2833 14 21V16H9C8.71667 16 8.479 15.904 8.287 15.712C8.09567 15.5207 8 15.2833 8 15C8 14.7167 8.09567 14.479 8.287 14.287C8.479 14.0957 8.71667 14 9 14H14V9C14 8.71667 14.096 8.479 14.288 8.287C14.4793 8.09567 14.7167 8 15 8C15.2833 8 15.521 8.09567 15.713 8.287C15.9043 8.479 16 8.71667 16 9V14H21C21.2833 14 21.5207 14.0957 21.712 14.287C21.904 14.479 22 14.7167 22 15C22 15.2833 21.904 15.5207 21.712 15.712C21.5207 15.904 21.2833 16 21 16H16V21C16 21.2833 15.9043 21.5207 15.713 21.712C15.521 21.904 15.2833 22 15 22Z"                            fill="black" />                    </g>                </g>                <defs>                    <clipPath id="clip0_813_12245">                        <rect x="3" y="3" width="24" height="24" rx="12" fill="white" />                    </clipPath>                </defs>            </svg>        </button>    </div>    <div class="scroll-channels">        @if (isExpanded) {        @for(channel of channelService.channels; track channel.id) {        @if (channel.channel_type === \'main\') {        <div class="menu-channel-content" [routerLink]="[\'/main-page\' , channel.id]">            <div class="channel" [class.active]="channel.id === channelService.currentChannel.id"                (click)="selectChannel(channel.id)">                <svg class="svg-color" width="24" height="24" viewBox="0 0 24 24" fill="none"                    xmlns="http://www.w3.org/2000/svg">                    <mask id="mask0_813_12093" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"                        height="24">                        <rect width="24" height="24" fill="#D9D9D9" />                    </mask>                    <g mask="url(#mask0_813_12093)">                        <path                            d="M7.24995 20C6.93328 20 6.67495 19.875 6.47495 19.625C6.27495 19.375 6.21662 19.1 6.29995 18.8L6.99995 16H4.77495C4.44162 16 4.17495 15.871 3.97495 15.613C3.77495 15.3543 3.71661 15.0667 3.79995 14.75C3.84995 14.5167 3.96662 14.3333 4.14995 14.2C4.33328 14.0667 4.54162 14 4.77495 14H7.49995L8.49995 10H5.77495C5.44161 10 5.17495 9.871 4.97495 9.613C4.77495 9.35433 4.71662 9.06667 4.79995 8.75C4.84995 8.51667 4.96662 8.33333 5.14995 8.2C5.33328 8.06667 5.54162 8 5.77495 8H8.99995L9.82495 4.725C9.87495 4.50833 9.98328 4.33333 10.1499 4.2C10.3166 4.06667 10.5166 4 10.7499 4C11.0666 4 11.3249 4.125 11.5249 4.375C11.7249 4.625 11.7833 4.9 11.6999 5.2L10.9999 8H14.9999L15.8249 4.725C15.8749 4.50833 15.9833 4.33333 16.1499 4.2C16.3166 4.06667 16.5166 4 16.7499 4C17.0666 4 17.3249 4.125 17.5249 4.375C17.7249 4.625 17.7833 4.9 17.6999 5.2L16.9999 8H19.2249C19.5583 8 19.8249 8.129 20.0249 8.387C20.2249 8.64567 20.2833 8.93333 20.1999 9.25C20.15 9.48333 20.0333 9.66667 19.8499 9.8C19.6666 9.93333 19.4583 10 19.2249 10H16.4999L15.4999 14H18.2249C18.5583 14 18.8249 14.129 19.0249 14.387C19.2249 14.6457 19.2833 14.9333 19.1999 15.25C19.1499 15.4833 19.0333 15.6667 18.8499 15.8C18.6666 15.9333 18.4583 16 18.2249 16H14.9999L14.1749 19.275C14.1249 19.4917 14.0166 19.6667 13.8499 19.8C13.6833 19.9333 13.4833 20 13.2499 20C12.9333 20 12.6749 19.875 12.4749 19.625C12.2749 19.375 12.2166 19.1 12.2999 18.8L12.9999 16H8.99995L8.17495 19.275C8.12495 19.4917 8.01661 19.6667 7.84995 19.8C7.68328 19.9333 7.48328 20 7.24995 20ZM9.49995 14H13.4999L14.4999 10H10.4999L9.49995 14Z"                            fill="black" />                    </g>                </svg>                <span class="channel-name">{{channel.name}}</span>            </div>        </div>        <div class="menu-channel-content-mobile" [routerLink]="[\'/main-page\' , channel.id]" (click)="mobileChange()">            <div class="channel" [class.active]="channel.id === channelService.currentChannel.id">                <svg class="svg-color" width="24" height="24" viewBox="0 0 24 24" fill="none"                    xmlns="http://www.w3.org/2000/svg">                    <mask id="mask0_813_12093" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"                        height="24">                        <rect width="24" height="24" fill="#D9D9D9" />                    </mask>                    <g mask="url(#mask0_813_12093)">                        <path                            d="M7.24995 20C6.93328 20 6.67495 19.875 6.47495 19.625C6.27495 19.375 6.21662 19.1 6.29995 18.8L6.99995 16H4.77495C4.44162 16 4.17495 15.871 3.97495 15.613C3.77495 15.3543 3.71661 15.0667 3.79995 14.75C3.84995 14.5167 3.96662 14.3333 4.14995 14.2C4.33328 14.0667 4.54162 14 4.77495 14H7.49995L8.49995 10H5.77495C5.44161 10 5.17495 9.871 4.97495 9.613C4.77495 9.35433 4.71662 9.06667 4.79995 8.75C4.84995 8.51667 4.96662 8.33333 5.14995 8.2C5.33328 8.06667 5.54162 8 5.77495 8H8.99995L9.82495 4.725C9.87495 4.50833 9.98328 4.33333 10.1499 4.2C10.3166 4.06667 10.5166 4 10.7499 4C11.0666 4 11.3249 4.125 11.5249 4.375C11.7249 4.625 11.7833 4.9 11.6999 5.2L10.9999 8H14.9999L15.8249 4.725C15.8749 4.50833 15.9833 4.33333 16.1499 4.2C16.3166 4.06667 16.5166 4 16.7499 4C17.0666 4 17.3249 4.125 17.5249 4.375C17.7249 4.625 17.7833 4.9 17.6999 5.2L16.9999 8H19.2249C19.5583 8 19.8249 8.129 20.0249 8.387C20.2249 8.64567 20.2833 8.93333 20.1999 9.25C20.15 9.48333 20.0333 9.66667 19.8499 9.8C19.6666 9.93333 19.4583 10 19.2249 10H16.4999L15.4999 14H18.2249C18.5583 14 18.8249 14.129 19.0249 14.387C19.2249 14.6457 19.2833 14.9333 19.1999 15.25C19.1499 15.4833 19.0333 15.6667 18.8499 15.8C18.6666 15.9333 18.4583 16 18.2249 16H14.9999L14.1749 19.275C14.1249 19.4917 14.0166 19.6667 13.8499 19.8C13.6833 19.9333 13.4833 20 13.2499 20C12.9333 20 12.6749 19.875 12.4749 19.625C12.2749 19.375 12.2166 19.1 12.2999 18.8L12.9999 16H8.99995L8.17495 19.275C8.12495 19.4917 8.01661 19.6667 7.84995 19.8C7.68328 19.9333 7.48328 20 7.24995 20ZM9.49995 14H13.4999L14.4999 10H10.4999L9.49995 14Z"                            fill="black" />                    </g>                </svg>                <span class="channel-name">{{channel.name}}</span>            </div>        </div>        }        }        <div class="menu-channel-add-container" (click)="openAddChannelDialog()">            <div class="menu-channel-add">                <svg class="svg-color" width="24" height="24" viewBox="0 0 24 24" fill="none"                    xmlns="http://www.w3.org/2000/svg">                    <mask id="mask0_235_367" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"                        height="24">                        <rect width="24" height="24" fill="black" />                    </mask>                    <g mask="url(#mask0_235_367)">                        <path                            d="M12 17C12.2833 17 12.521 16.904 12.713 16.712C12.9043 16.5207 13 16.2833 13 16V13H16.025C16.3083 13 16.5417 12.904 16.725 12.712C16.9083 12.5207 17 12.2833 17 12C17 11.7167 16.904 11.479 16.712 11.287C16.5207 11.0957 16.2833 11 16 11H13V7.975C13 7.69167 12.9043 7.45833 12.713 7.275C12.521 7.09167 12.2833 7 12 7C11.7167 7 11.4793 7.09567 11.288 7.287C11.096 7.479 11 7.71667 11 8V11H7.975C7.69167 11 7.45833 11.0957 7.275 11.287C7.09167 11.479 7 11.7167 7 12C7 12.2833 7.09567 12.5207 7.287 12.712C7.479 12.904 7.71667 13 8 13H11V16.025C11 16.3083 11.096 16.5417 11.288 16.725C11.4793 16.9083 11.7167 17 12 17ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6873 5.825 19.975 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26267 14.6833 2 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31267 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.31233 8.1 2.787C9.31667 2.26233 10.6167 2 12 2C13.3833 2 14.6833 2.26233 15.9 2.787C17.1167 3.31233 18.175 4.025 19.075 4.925C19.975 5.825 20.6873 6.88333 21.212 8.1C21.7373 9.31667 22 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6873 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6873 15.9 21.212C14.6833 21.7373 13.3833 22 12 22ZM12 20C14.2167 20 16.1043 19.221 17.663 17.663C19.221 16.1043 20 14.2167 20 12C20 9.78333 19.221 7.89567 17.663 6.337C16.1043 4.779 14.2167 4 12 4C9.78333 4 7.896 4.779 6.338 6.337C4.77933 7.89567 4 9.78333 4 12C4 14.2167 4.77933 16.1043 6.338 17.663C7.896 19.221 9.78333 20 12 20Z"                            fill="black" />                    </g>                </svg>                <span class="channel-add-text">Channel hinzufügen</span>            </div>        </div>        }    </div></section></div>'
+    var COMPONENTS = [{'name': 'AddChannelCardComponent', 'selector': 'app-add-channel-card'},{'name': 'AddMemberCardComponent', 'selector': 'app-add-member-card'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AvatarComponent', 'selector': 'app-avatar'},{'name': 'ChannelComponent', 'selector': 'app-channel'},{'name': 'CheckEmailComponent', 'selector': 'app-check-email'},{'name': 'DialogAddMemberComponent', 'selector': 'app-dialog-add-member'},{'name': 'DialogAddMemberMobileComponent', 'selector': 'app-dialog-add-member-mobile'},{'name': 'DialogEditChannelComponent', 'selector': 'app-dialog-edit-channel'},{'name': 'DialogEditProfileComponent', 'selector': 'app-dialog-edit-profile'},{'name': 'DialogEmojiPickerComponent', 'selector': 'app-dialog-emoji-picker'},{'name': 'DialogShowMembersComponent', 'selector': 'app-dialog-show-members'},{'name': 'DialogShowProfileComponent', 'selector': 'app-dialog-show-profile'},{'name': 'EmailSnackbarComponent', 'selector': 'app-email-snackbar'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ImprintComponent', 'selector': 'app-imprint'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LoginPageComponent', 'selector': 'app-login-page'},{'name': 'LoginSnackbarComponent', 'selector': 'app-login-snackbar'},{'name': 'LogOutDialogComponent', 'selector': 'app-log-out-dialog'},{'name': 'MainHeaderComponent', 'selector': 'app-main-header'},{'name': 'MainMenuChannelsComponent', 'selector': 'app-main-menu-channels'},{'name': 'MainMenuComponent', 'selector': 'app-main-menu'},{'name': 'MainMenuDmComponent', 'selector': 'app-main-menu-dm'},{'name': 'MainMenuHeaderComponent', 'selector': 'app-main-menu-header'},{'name': 'MainPageComponent', 'selector': 'app-main-page'},{'name': 'MessageComponent', 'selector': 'app-message'},{'name': 'MessageInputComponent', 'selector': 'app-message-input'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SearchBarComponent', 'selector': 'app-search-bar'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'},{'name': 'SignInComponent', 'selector': 'app-sign-in'},{'name': 'ThreadComponent', 'selector': 'app-thread'},{'name': 'UserCreatedSnackbarComponent', 'selector': 'app-user-created-snackbar'}];
+    var DIRECTIVES = [{'name': 'OpenProfileDirective', 'selector': '[appOpenProfile]'}];
+    var ACTUAL_COMPONENT = {'name': 'MainMenuChannelsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MainMenuChannelsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

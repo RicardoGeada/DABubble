@@ -27,9 +27,12 @@ export class LoginComponent {
   iconSrc = '/assets/img/mail.png';
   oobCode: string = '';
 
-  constructor(private userAuth: UserAuthService, private userService: UserService,
-    private router: Router, private channelService: ChannelFirebaseService,
-    public route: ActivatedRoute) { }
+  constructor(private userAuth: UserAuthService, 
+    private userService: UserService,
+    private router: Router, 
+    private channelService: ChannelFirebaseService,
+    public route: ActivatedRoute
+  ) { }
 
 
   ngonInit() {
@@ -41,15 +44,12 @@ export class LoginComponent {
     this.isLoading = true;
     this.userAuth.loginUser(this.loginEmail, this.loginPassword)
       .then(() => {
-        return Promise.all([
-          this.loadUserData(this.loginEmail)
-        ]);
+        return Promise.all([this.loadUserData(this.loginEmail)]);
       })
       .then(() => {
         this.updateLoggedInUser();
       })
       .catch((error) => {
-        console.error(error);
         this.error = true;
         this.isLoading = false;
       });
@@ -74,19 +74,18 @@ export class LoginComponent {
 
 
   async loginWithGoogle() {
-      await this.userAuth.loginWithGoogle();
-      this.isLoading = true;
-      let user = this.setGoogleUser();
-      let googleUserId = this.userService.allUsers.find(user => user.email === this.userAuth.googleEmail)?.id;
-      if (!googleUserId) {
-        // User does not exist, add Google user
-        await this.userService.addUser(user);
-      }
-      await Promise.all([
-        this.loadUserData(this.userAuth.googleEmail),
-      ]).then(() => {
-        this.updateLoggedInUser();
-      });
+    await this.userAuth.loginWithGoogle();
+    this.isLoading = true;
+    let user = this.setGoogleUser();
+    let googleUserId = this.userService.allUsers.find(user => user.email === this.userAuth.googleEmail)?.id;
+    if (!googleUserId) {
+      await this.userService.addUser(user);
+    }
+    await Promise.all([
+      this.loadUserData(this.userAuth.googleEmail),
+    ]).then(() => {
+      this.updateLoggedInUser();
+    });
   }
 
 
@@ -97,6 +96,11 @@ export class LoginComponent {
 
   setGoogleUser() {
     let user = this.userService.allUsers.find(user => user.email === this.userAuth.googleEmail);
+    return this.createUserObject(user);
+  }
+
+
+  createUserObject(user: any) {
     return {
       name: this.userAuth.googleName,
       email: this.userAuth.googleEmail,
@@ -123,14 +127,16 @@ export class LoginComponent {
     };
   }
 
+
   async loginAsGuest() {
     this.isLoading = true;
-      await this.userAuth.guestLogin();
-      await Promise.all([
-        this.loadUserData('guest'),
-      ]).then(() => {
-        this.updateLoggedInUser();
-      });
+    this.error = false;
+    await this.userAuth.guestLogin();
+    await Promise.all([
+      this.loadUserData('guest'),
+    ]).then(() => {
+      this.updateLoggedInUser();
+    });
   }
 
 

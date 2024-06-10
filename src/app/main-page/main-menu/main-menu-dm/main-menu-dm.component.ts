@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UserService } from '../../../firebase.service/user.service';
 import { User } from '../../../interfaces/user.interface';
 import { ChannelFirebaseService } from '../../../firebase.service/channelFirebase.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Channel } from '../../../interfaces/channel.interface';
 import { ChannelTypeEnum } from '../../../shared/enums/channel-type.enum';
 import { ThreadService } from '../../../services/thread.service';
@@ -19,12 +19,11 @@ import { SharedService } from '../../../services/shared.service';
   templateUrl: './main-menu-dm.component.html',
   styleUrl: './main-menu-dm.component.scss',
 })
-export class MainMenuDmComponent implements OnInit, OnDestroy {
+export class MainMenuDmComponent implements OnInit {
   isExpanded: boolean = true;
   users: User[] = [];
   selectedUserId: string = '';
   profileImg = this.userService.currentUser?.profile_img;
-
   newDirectChannel : Channel = {
     id: '',
     name: 'Direct Channel',
@@ -46,6 +45,7 @@ export class MainMenuDmComponent implements OnInit, OnDestroy {
     public sharedService: SharedService
   ) {}
 
+
   ngOnInit(): void {
     this.users = this.userService.allUsers;
     this.stateService.getSelectedUserId().subscribe(id => {
@@ -53,28 +53,29 @@ export class MainMenuDmComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {}
 
   toggleExpansion(): void {
     this.isExpanded = !this.isExpanded;
   }
 
+
   async openDirectChannel(user_id: string): Promise<void> {
-    let channel_id = this.channelService.getDirectChannelId(this.userService.currentUser.id, user_id);
-    if (channel_id != '') {
-      this.router.navigateByUrl('/main-page/' + channel_id);
-    } else {
-      channel_id = await this.createNewDirectChannel(user_id);
-      this.router.navigateByUrl('/main-page/' + channel_id);
-    }
+    this.openChannel(user_id);
     this.closeThread();
     this.stateService.setSelectedUserId(user_id);
-    // this.selectedUserId = user_id;
-
   }
+
+
   async openDirectChannelMobile(user_id: string): Promise<void> {
     this.mainpage.toggleMenu();
     this.sharedService.showMobileDiv();
+    this.openChannel(user_id);
+    this.closeThread();
+    this.stateService.setSelectedUserId(user_id);
+  }
+
+
+  async openChannel(user_id: string): Promise<void> {
     let channel_id = this.channelService.getDirectChannelId(this.userService.currentUser.id, user_id);
     if (channel_id != '') {
       this.router.navigateByUrl('/main-page/' + channel_id);
@@ -82,11 +83,8 @@ export class MainMenuDmComponent implements OnInit, OnDestroy {
       channel_id = await this.createNewDirectChannel(user_id);
       this.router.navigateByUrl('/main-page/' + channel_id);
     }
-    this.closeThread();
-    this.stateService.setSelectedUserId(user_id);
-    // this.selectedUserId = user_id;
-
   }
+
 
   async createNewDirectChannel(user_id : string) {
     this.newDirectChannel.creator = this.userService.currentUser.id;
@@ -95,9 +93,9 @@ export class MainMenuDmComponent implements OnInit, OnDestroy {
     return await this.channelService.addChannel(this.newDirectChannel);
   }
 
+
   closeThread() {
     this.userService.saveLastThread(this.userService.currentUser.id, '');
     this.threadService.closeThread();
   }
-  
 }
