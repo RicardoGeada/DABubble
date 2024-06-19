@@ -28,7 +28,7 @@
     
     <div class="check-div">
         <input [(ngModel)]="checkbox.checked" [ngClass]="{'hover-effect': hoverState}" (mouseover)="hoverState = true" (mouseout)="hoverState = false" type="checkbox" name="checkbox" id="checkbox">
-        <p (mouseover)="hoverState = true" (mouseout)="hoverState = false">Ich stimme der <a [ngClass]="{'hover-effect': hoverState}" (mouseover)="hoverState = true" (mouseout)="hoverState = false" [routerLink]="['/login-page/privacy-policy']" id="link">Datenschutzerklärung</a> zu.</p>
+        <p (mouseover)="hoverState = true" (mouseout)="hoverState = false">Ich stimme der <a [ngClass]="{'hover-effect': hoverState}" (mouseover)="hoverState = true" (mouseout)="hoverState = false" [routerLink]="['/privacy-policy']" id="link">Datenschutzerklärung</a> zu.</p>
     </div>
     <div class="next-btn-container">
         @if (checkWindowWidth()){
