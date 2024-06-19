@@ -5,6 +5,7 @@ import { UserAuthService } from '../../../firebase.service/user.auth.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../../firebase.service/user.service';
 import { OpenProfileDirective } from '../../../shared/directives/open-profile.directive';
+import { ChannelService } from '../../../firebase.service/channel.service';
 
 @Component({
   selector: 'app-log-out-dialog',
@@ -19,7 +20,8 @@ export class LogOutDialogComponent {
     public dialogRef: MatDialogRef<LogOutDialogComponent>,
     private userAuth: UserAuthService,
     private router: Router,
-    public userService: UserService
+    public userService: UserService,
+    public channelService : ChannelService,
   ) {}
 
 
@@ -34,11 +36,11 @@ export class LogOutDialogComponent {
 
 
   logOut(): void {
-    this.userAuth.logout().then(() => {
-      this.router.navigate(['/login-page']);
-      localStorage.removeItem('currentUser');
+    this.userAuth.logout().then(async() => {
       this.dialogRef.close();
-      this.userService.updateOnlineStatus(this.userService.currentUser.id, false);
+      localStorage.removeItem('currentUser');
+      await this.userService.updateOnlineStatus(this.userService.currentUser.id, false);
+      window.location.href = '/login-page';
     });
   }
 }

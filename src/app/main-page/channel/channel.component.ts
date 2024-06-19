@@ -116,7 +116,7 @@ export class ChannelComponent {
     public newMessageAdressees: NewMessageAdresseesService,
   ) {
     this.channelId = this.activatedRoute.snapshot.paramMap.get('channelId') ?? ''
-    if (userService.currentUser && channelService.currentChannel.members.includes(userService.currentUser.id)) {
+    if (userService.currentUser) {
     this.openChannel();
     }
   }
