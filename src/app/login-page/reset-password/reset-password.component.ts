@@ -19,6 +19,7 @@ export class ResetPasswordComponent {
   resetPasswordAgain: string = '';
   oobCode: string = '';
   iconPassw: string = 'assets/img/lock.png';
+  passwordError: boolean = false;
   constructor(private router: Router, private _snackBar: MatSnackBar,
     private userAuth: UserAuthService, private route: ActivatedRoute) { }
 
@@ -64,17 +65,31 @@ export class ResetPasswordComponent {
   
 
   changePassword(newPassword: string) {
-    Promise.resolve(this.updateUserPassword(newPassword)).then(() => {
-      this.confirmPopup();
-      this.returnToLogin();
-      this.triggerAnimation();
-    }).catch((error) => {
-      console.error(error);
-    });
+    if(this.validatePassword(this.resetPassword)) {
+      Promise.resolve(this.updateUserPassword(newPassword)).then(() => {
+        this.confirmPopup();
+        this.returnToLogin();
+        this.triggerAnimation();
+      }).catch((error) => {
+        console.error(error);
+      });
+    }
   }
 
 
   changeIconPassw(focus: boolean) {
     this.iconPassw = focus ? 'assets/img/lock_b.png' : 'assets/img/lock.png';
+  }
+
+  validatePassword(password: string): boolean {
+    // Mindestens 6 Zeichen, mindestens eine Großbuchstabe, eine Kleinbuchstabe, eine Zahl , ein Sonderzeichen '@$!%*?&._'
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&._])[A-Za-z\d@$!%*?&._]{6,}$/;
+    if (!passwordRegex.test(password)) {
+      this.passwordError = true;
+      setTimeout(() => this.passwordError = false, 2000);
+      return false;
+    }
+    this.passwordError = false;
+    return true;
   }
 }
