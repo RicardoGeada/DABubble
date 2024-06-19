@@ -21,7 +21,7 @@
 
         <div class="img-container">
             @if (!changeAvatar){
-            <img class="profile-img" [src]="userService.currentUser.profile_img" alt="Profile Image" (click)="openAvatarDialog(); $event.stopPropagation()">
+            <img class="profile-img" [src]="userService.currentUser.profile_img" alt="Profile Image" (click)="openAvatarDialog(); $event.stopPropagation()" referrerpolicy="no-referrer" >
             }
             @if (changeAvatar){
             <img class="profile-img" [src]="thisAvatar" alt="Profile Image" (click)="$event.stopPropagation()">

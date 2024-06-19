@@ -140,7 +140,7 @@
           <div class="channel-header-direct">
               <div class="channel-member" [class.selected]="user.id === selectedUserId">
                   <div class="profile-img-container">
-                      <img [src]="user.profile_img" alt="" class="profile-img">
+                      <img [src]="user.profile_img" alt="" class="profile-img" referrerpolicy="no-referrer" >
                       <div class="online-status-wborder" [ngClass]="user.logged_in ? 'online' : 'offline'"></div>
                   </div>
       

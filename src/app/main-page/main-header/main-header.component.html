@@ -18,7 +18,7 @@
     <div #userHead id="userHead" class="user-head" (click)="openLogOutDialog(userHead)">
         <span class="name fs-32">{{userService.currentUser?.name}}</span>
         <div class="avatar">
-            <img [src]="userService.currentUser?.profile_img" class="profile-img">
+            <img [src]="userService.currentUser?.profile_img" class="profile-img" referrerpolicy="no-referrer" >
             <div class="online-status-wborder online"></div>
         </div>
         <div class="menu-btn">

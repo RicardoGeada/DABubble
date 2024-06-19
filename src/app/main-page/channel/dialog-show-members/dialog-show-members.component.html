@@ -24,7 +24,7 @@
                 <div class="member-img-container">
                     @if(userService.getUser(member).profile_img && userService.getUser(member).name) {
                         <img [src]="userService.getUser(member).profile_img" [alt]="userService.getUser(member).name"
-                        class="profile-img">
+                        class="profile-img" referrerpolicy="no-referrer" >
                     }
                     @if (!userService.getUser(member).logged_in){
                     <div class="online-status-wborder offline"></div>

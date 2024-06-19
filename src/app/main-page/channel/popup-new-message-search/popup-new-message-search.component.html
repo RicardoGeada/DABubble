@@ -8,7 +8,7 @@
           <li [class.selected]="user.id === selectedUserId" (click)="addDirectChannelToArray(user.id)">
             <div class="user">
               <div class="user-img-container">
-                <img [src]="user.profile_img" alt="" class="profile-img" />
+                <img [src]="user.profile_img" alt="" class="profile-img" referrerpolicy="no-referrer" />
                 <div class="online-status-wborder online" [ngClass]="user.logged_in ? 'online' : 'offline'"></div>
               </div>
               <div class="user-name fs-18">{{user.name}}</div>

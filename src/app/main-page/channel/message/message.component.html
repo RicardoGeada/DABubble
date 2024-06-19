@@ -1,5 +1,5 @@
 <div #messageElem [ngClass]="{'message-container' : !isCurrentUser(), 'message-container-reverse' : isCurrentUser()}">
-    <img class="profile-img" [src]="messageCreator?.profile_img ?? deleted_img" alt="">
+    <img class="profile-img" [src]="messageCreator?.profile_img ?? deleted_img" alt="" referrerpolicy="no-referrer" >
     <!-- message -->
     @if(!editMessage) {
         <div class="message-content">
