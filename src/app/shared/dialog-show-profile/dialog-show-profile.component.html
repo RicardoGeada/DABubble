@@ -59,7 +59,7 @@
             </svg>
             <div class="email-label fs-20">E-Mail-Adresse</div>
         </div>
-        <div class="email-address fs-18">{{ isOwnProfile() ? userService.currentUser.email : user?.email }}</div>
+        <div class="email-address fs-18"><a [href]="'mailto:' + (isOwnProfile() ? userService.currentUser.email : user?.email)">{{ isOwnProfile() ? userService.currentUser.email : user?.email }}</a></div>
     </div>
 
     <!-- Button zum Senden einer Nachricht nur anzeigen, wenn isOwnProfile = false ist -->

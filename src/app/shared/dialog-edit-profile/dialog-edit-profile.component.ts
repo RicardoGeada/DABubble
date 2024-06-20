@@ -141,12 +141,12 @@ export class DialogEditProfileComponent implements OnInit {
 
   async changeEmailOnly(email: any) {
     const emailExists = await this.userAuth.emailExists(email);
-    if (emailExists) {
+    if (emailExists.includes(email)) {
       this.emailExists = true;
       return;
     }
     this.emailExists = false;
-    await this.userAuth.changeCurrentUser(email);
+    await this.userAuth.changeCurrentUser(undefined ,email);
     this.dialogRef.close();
   }
 }

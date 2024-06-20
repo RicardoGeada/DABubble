@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { EmailSnackbarComponent } from './popups/email-snackbar/email-snackbar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -23,7 +23,8 @@ export class AppComponent {
     private _snackBar: MatSnackBar, 
     public userAuth: UserAuthService,
     public userService: UserService, 
-    public channelService: ChannelService) {
+    public channelService: ChannelService,
+    private route: ActivatedRoute) {
     if (userService.currentUser) {
       this.userId = userService.currentUser.id;
     }
@@ -40,6 +41,7 @@ export class AppComponent {
 
 
   ngOnInit(): void {
+    this.checkQueryParams();
     this.userAuth.checkAuth().then(isLoggedIn => {
       if (isLoggedIn) {
         if (this.router.url.includes('/reset-password')){
@@ -51,6 +53,18 @@ export class AppComponent {
         this.checkUrls();
       }
     });
+  }
+
+  checkQueryParams() {
+    this.route.queryParams.subscribe(params => {
+      const mode = params['mode'];
+      const oobCode = params['oobCode'];
+
+      if (mode === 'resetPassword' && oobCode) {
+        this.router.navigate(['/reset-password'], { queryParams: { mode, oobCode } });
+      }
+    });
+
   }
 
 

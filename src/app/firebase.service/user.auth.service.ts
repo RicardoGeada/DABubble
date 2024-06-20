@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
-import { Auth, GoogleAuthProvider, applyActionCode, checkActionCode, confirmPasswordReset, getAuth, sendPasswordResetEmail, signInWithPopup, updateEmail, verifyPasswordResetCode,} from '@angular/fire/auth';
+import { Auth, GoogleAuthProvider, applyActionCode, checkActionCode, confirmPasswordReset, getAuth, sendPasswordResetEmail, signInWithPopup, updateEmail, verifyPasswordResetCode} from '@angular/fire/auth';
 import { Firestore } from '@angular/fire/firestore';
-import { createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, fetchSignInMethodsForEmail, signInAnonymously, signOut, onAuthStateChanged, verifyBeforeUpdateEmail,} from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, fetchSignInMethodsForEmail, signInAnonymously, signOut, onAuthStateChanged, verifyBeforeUpdateEmail} from 'firebase/auth';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
 
@@ -141,4 +141,8 @@ export class UserAuthService {
       });
     });
   }
+
+
 }
+
+

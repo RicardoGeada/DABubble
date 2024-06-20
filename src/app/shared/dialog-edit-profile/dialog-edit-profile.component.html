@@ -79,10 +79,10 @@
                     <div class="email-label fs-20">E-Mail-Adresse</div>
                 </div>
 
-                <div class="input-field fs-18">
+                <!-- <div class="input-field fs-18"> -->
                     <!-- <input type="email" formControlName="email" [placeholder]="emailPlaceholder()"> -->
                     <div class="email-address fs-18">{{ isOwnProfile() ? userService.currentUser.email : user?.email }}</div>
-                </div>
+                <!-- </div> -->
                 @if (emailExists) {
                 <p class="errorMsg">Email existiert bereits</p>
                 }
