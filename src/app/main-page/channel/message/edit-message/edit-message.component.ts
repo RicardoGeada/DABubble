@@ -35,6 +35,7 @@ import { PasteAsTextDirective } from '../../../../shared/directives/paste-as-tex
 })
 export class EditMessageComponent {
   @Output() closeEditEvent: EventEmitter<void> = new EventEmitter<void>();
+  @Output() editEmojiPickerOpenEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ViewChild('channelInput', { static: true }) channelInput!: ElementRef;
   @ViewChild('channelInput', { read: ViewContainerRef, static: true }) channelInputViewRef!: ViewContainerRef;
   @Input() channelType: 'main' | 'direct' | 'thread' | 'new' = 'main';
@@ -92,6 +93,10 @@ export class EditMessageComponent {
     this.closeEditEvent.emit();
   }
 
+  editEmojiPickerState(boolean : boolean) {
+    this.editEmojiPickerOpenEvent.emit(boolean);
+  }
+
 
   formatTagForSave(text: string) {
     const regex = new RegExp(/<app-profile-button[^>]*><button[^>]*data-user-id="([^"]+)"[^>]*>[^<]*<\/button><\/app-profile-button>/g);
@@ -110,10 +115,12 @@ export class EditMessageComponent {
   openDialogEmojiPicker(input: HTMLDivElement) {
     const component = DialogEmojiPickerComponent;
     const dialogRef = this.customDialogService.openDialog(component);
+    this.editEmojiPickerState(true);
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.addEmoji(input, result);
-      }
+      };
+      this.editEmojiPickerState(false);
     });
   }
 
