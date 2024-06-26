@@ -107,27 +107,6 @@ export class PopupSearchComponent {
     this.renderer.insertBefore(container, componentRef.location.nativeElement, element);
     this.renderer.removeChild(container, element);
   }
-  // addProfileButton(user: User, event: Event) {
-  //   event.preventDefault();
-  //   let container = this.inputElement.nativeElement;
-  //   let range = this.cursorPositionService.restoreCursorPosition(container);
-  //   if (range) {
-  //     range = this.extendRangeToSearchTerm(range!, this.searchTerm);
-  //     this.replaceRangeWithHTML(range, `<span class="dynamic-user" data-userid="${user.id}">${user.name}</span>`);
-  //     const dynamicUserElements = container.querySelectorAll('.dynamic-user');
-  //     dynamicUserElements.forEach((element: HTMLElement) => {
-  //       const userId = element.getAttribute('data-userid');
-  //       const userName = element.innerText;
-  //       const componentRef: ComponentRef<ProfileButtonComponent> = this.viewContainerRef.createComponent(ProfileButtonComponent);
-  //       componentRef.instance.userId = userId!;
-  //       componentRef.instance.userName = userName;
-  //       range!.setStartAfter(element); // set cursor after tag
-  //       this.renderer.insertBefore(container, componentRef.location.nativeElement, element);
-  //       this.renderer.removeChild(container, element);
-  //       this.searchTerm = '';
-  //     });
-  //   }
-  // }
 
 
   extendRangeToSearchTerm(range: Range, searchTerm: string) {
@@ -164,24 +143,6 @@ export class PopupSearchComponent {
     range.setStart(currentNode, Math.max(0, startOffset - inputLength));
     range.setEnd(currentNode, startOffset);
   }
-  // extendRangeToSearchTerm(range: Range, searchTerm: string) {
-  //   const startContainer = range.startContainer;
-  //   const startOffset = range.startOffset;
-  //   const inputLength = searchTerm.length;
-  //   let currentNode = startContainer;
-  //   let newStartOffset = startOffset;
-  //   while (newStartOffset < inputLength && currentNode.previousSibling) {
-  //     currentNode = currentNode.previousSibling;
-  //     if (currentNode.nodeType === Node.TEXT_NODE) {
-  //       newStartOffset += currentNode.textContent!.length;
-  //     } else if (currentNode.nodeType === Node.ELEMENT_NODE && currentNode.nodeName === 'BR') {
-  //       newStartOffset++;
-  //     }
-  //   }
-  //   range.setStart(currentNode, Math.max(0, startOffset - inputLength));
-  //   range.setEnd(currentNode, startOffset);
-  //   return range;
-  // }
 
 
   replaceRangeWithHTML(range: Range, newHTML: string) {
@@ -223,32 +184,4 @@ export class PopupSearchComponent {
     }
   }
 
-
-  // replaceRangeWithHTML(range: Range, newHTML: string) {
-  //   const tempDiv = document.createElement('div');
-  //   tempDiv.innerHTML = newHTML;
-
-  //   const fragment = document.createDocumentFragment();
-  //   let child;
-  //   while ((child = tempDiv.firstChild)) {
-  //     fragment.appendChild(child);
-  //   }
-
-  //   // Ensure the range is within a valid element
-  //   const startContainer = range.startContainer;
-  //   if (startContainer.nodeType === Node.TEXT_NODE) {
-  //     range.deleteContents();
-  //     range.insertNode(fragment);
-  //   } else if (startContainer.nodeType === Node.ELEMENT_NODE) {
-  //     const element = startContainer as HTMLElement;
-  //     const offset = range.startOffset;
-  //     const childNodes = element.childNodes;
-
-  //     if (offset < childNodes.length) {
-  //       element.insertBefore(fragment, childNodes[offset]);
-  //     } else {
-  //       element.appendChild(fragment);
-  //     }
-  //   }
-  // }
 }
