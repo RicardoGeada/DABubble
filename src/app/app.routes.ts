@@ -9,6 +9,7 @@ import { CheckEmailComponent } from './login-page/check-email/check-email.compon
 import { ImprintComponent } from './shared/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './shared/privacy-policy/privacy-policy.component';
 import { ChannelComponent } from './main-page/channel/channel.component';
+import { AuthEmailComponent } from './shared/auth-email/auth-email.component';
 
 
 export const routes: Routes = [
@@ -22,6 +23,7 @@ export const routes: Routes = [
         ]
     },
     { path: 'reset-password', component: ResetPasswordComponent },
+    { path: 'auth-email', component: AuthEmailComponent },
     { path: 'imprint', component: ImprintComponent },
     { path: 'privacy-policy', component: PrivacyPolicyComponent },
 

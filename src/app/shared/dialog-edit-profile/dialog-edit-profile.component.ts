@@ -21,7 +21,7 @@ export class DialogEditProfileComponent implements OnInit {
 
   editForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    email: new FormControl({ value: '', disabled: this.isEmailDisabled() }, [
+    email: new FormControl('', [
       Validators.required,
       Validators.email,
     ]),
@@ -38,6 +38,8 @@ export class DialogEditProfileComponent implements OnInit {
   changeAvatar: boolean = false;
   thisAvatar: string = this.userService.currentUser?.profile_img;
   imageChanged: boolean = false;
+  currentFile: any;
+
 
   constructor(
     public dialogRef: MatDialogRef<DialogEditProfileComponent>,
@@ -49,18 +51,9 @@ export class DialogEditProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.userAuth.currentUser().then((user) => {
-      if (user) {
-        this.editForm.patchValue({
-          name: user.displayName,
-          email: user.email,
-        });
-        if (this.isEmailDisabled()) {
-          this.editForm.get('email')?.disable();
-        } else {
-          this.editForm.get('email')?.enable();
-        }
-      }
+    this.editForm.patchValue({
+      name: this.userService.currentUser.name,
+      email: this.userService.currentUser.email,
     });
   }
 
@@ -79,11 +72,6 @@ export class DialogEditProfileComponent implements OnInit {
   }
 
 
-  isEmailDisabled(): boolean {
-    return this.userService.currentUser?.email == this.userAuth.googleEmail;
-  }
-
-
   openAvatarDialog() {
     this.changeAvatar = true;
   }
@@ -91,8 +79,6 @@ export class DialogEditProfileComponent implements OnInit {
 
   closeAvatarDialog() {
     if (this.changeAvatar) {
-      this.userService.currentUser.profile_img = this.thisAvatar;
-      this.router.navigate(['/main-page']);
       this.changeAvatar = false;
     }
   }
@@ -100,34 +86,49 @@ export class DialogEditProfileComponent implements OnInit {
 
   async changeUserAvatar(i: number) {
     this.thisAvatar = this.avatars[i];
-    await this.userService.updateUserImage(this.userService.currentUser.id, this.thisAvatar);
+    this.currentFile = undefined;
     this.imageChanged = true;
+    this.closeAvatarDialog();
   }
 
 
+  
   async uploadAvatar(event: any) {
     const file = event.target.files[0];
-    const imageUrl = await this.userService.uploadImage(file);
-    this.thisAvatar = imageUrl;
-    await this.userService.updateUserImage(this.userService.currentUser.id, this.thisAvatar);
+    this.currentFile = file;
+    this.thisAvatar = this.createURL(file);
     this.closeAvatarDialog();
     this.imageChanged = true;
   }
 
 
+  createURL(file: File) {
+    return URL.createObjectURL(file);
+  }
+
+
   async onSubmit() {
-    if (this.editForm.valid) {
+    if (this.editForm.valid || this.imageChanged) {
       const displayName = this.editForm.get('name')?.value;
       const email = this.editForm.get('email')?.value;
+      if(this.imageChanged) {
+        if(this.currentFile) {
+          const imgURL = await this.userService.uploadImage(this.currentFile);
+          await this.userService.updateUserImage(this.userService.currentUser.id, imgURL);
+          this.userService.currentUser.profile_img = imgURL;
+        } else {
+          await this.userService.updateUserImage(this.userService.currentUser.id, this.thisAvatar);
+          this.userService.currentUser.profile_img = this.thisAvatar;
+        }
+      }
+      
       if (displayName != this.userService.currentUser.name) {
         this.changeNameOnly(displayName);
       }
       if (email != this.userService.currentUser.email) {
         this.changeEmailOnly(email);
       }
-      else {
-        return;
-      }
+      this.dialogRef.close();
     }
   }
 
@@ -135,7 +136,6 @@ export class DialogEditProfileComponent implements OnInit {
   async changeNameOnly(displayName: any) {
     await this.userAuth.changeCurrentUser(displayName);
     this.userService.currentUser.name = displayName;
-    this.dialogRef.close();
   }
   
 
@@ -146,7 +146,13 @@ export class DialogEditProfileComponent implements OnInit {
       return;
     }
     this.emailExists = false;
-    await this.userAuth.changeCurrentUser(undefined ,email);
-    this.dialogRef.close();
+    await this.userAuth.changeCurrentUser(undefined, email);
+  }
+
+
+  changeFromGmail() {
+    let string = '';
+    string = this.userService.currentUser.email;
+    return string.includes("gmail");
   }
 }

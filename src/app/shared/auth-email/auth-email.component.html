@@ -1,0 +1,13 @@
+<div class="notification-container">
+    <div class="headline-container">
+        <button class="back-to-login btn-icon" (click)="backToLogin()"><img src="assets/img/arrow_back.svg" class="" alt=""></button> 
+        <div class="title">{{title}}</div>
+    </div>
+ 
+    @if(notification != '') {
+        <div class="notification">{{notification}}</div>
+    }  
+    @if(error != '') {
+        <div class="error">{{error}}</div>
+    }
+</div>

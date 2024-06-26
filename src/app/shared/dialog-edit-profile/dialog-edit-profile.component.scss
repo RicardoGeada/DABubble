@@ -173,7 +173,11 @@
   color: var(--color-error);
   font-size: 16px;
   font-weight: 500;
+}
 
+.info {
+  color: var(--color-purple-1);
+  font-weight: 500;
 }
 @media (max-width: 768px){
   .show-profile-dialog {

@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserAuthService } from './firebase.service/user.auth.service';
 import { UserService } from './firebase.service/user.service';
 import { ChannelService } from './firebase.service/channel.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,10 @@ export class AppComponent {
   title = 'DABubble';
   timeoutId: any;
   userId: any;
+
+  loggedIn : boolean = false;
+
+  private queryParamsSubscription!: Subscription;
 
   constructor(private router: Router, 
     private _snackBar: MatSnackBar, 
@@ -40,46 +45,41 @@ export class AppComponent {
   }
 
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    // check if user is logged in
+    await this.userAuth.checkAuth().then( isLoggedIn => this.loggedIn = isLoggedIn )
     this.checkQueryParams();
-    this.userAuth.checkAuth().then(isLoggedIn => {
-      if (isLoggedIn) {
-        if (this.router.url.includes('/reset-password')){
-          return;
-        }
-        this.getUserData();
-        this.setUserChannel();
-      } if (!isLoggedIn) {
-        this.checkUrls();
-      }
-    });
   }
 
   checkQueryParams() {
-    this.route.queryParams.subscribe(params => {
+    this.queryParamsSubscription = this.route.queryParams.subscribe(params => {
       const mode = params['mode'];
       const oobCode = params['oobCode'];
 
       if (mode === 'resetPassword' && oobCode) {
         this.router.navigate(['/reset-password'], { queryParams: { mode, oobCode } });
+      } 
+      else if ((mode === 'verifyAndChangeEmail' || mode === 'recoverEmail' || mode === 'verifyEmail') && oobCode) {
+        if(!this.loggedIn && mode === 'verifyAndChangeEmail') this.router.navigate(['/login-page/login'], { queryParams: { mode, oobCode } });
+        else { this.router.navigate(['/auth-email'], { queryParams: { mode, oobCode } }); };
+      } 
+      else {
+        if (this.loggedIn) {
+          this.getUserData();
+          this.setUserChannel();
+        } else {
+          this.userAuth.logout();
+          this.router.navigate(['/login-page/login']);
+        }
       }
     });
-
   }
 
-
-  checkUrls(){
-    if (this.router.url.includes('/reset-password?mode=action&oobCode=code') || this.router.url.includes('/reset-password')) {
-      return;
-    } if (this.router.url.includes('/login-page/login')) {
-      return;
-    }
-    else {
-    this.userAuth.logout();
-    this.router.navigate(['/login-page/login']);
+  ngOnDestroy() {
+    if (this.queryParamsSubscription) {
+      this.queryParamsSubscription.unsubscribe();
     }
   }
-
 
   setUserChannel() {
     if (this.userService.currentUser) {

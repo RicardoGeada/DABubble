@@ -21,22 +21,22 @@
 
         <div class="img-container">
             @if (!changeAvatar){
-            <img class="profile-img" [src]="userService.currentUser.profile_img" alt="Profile Image" (click)="openAvatarDialog(); $event.stopPropagation()" referrerpolicy="no-referrer" >
+            <img class="profile-img" [src]="thisAvatar" alt="Profile Image" (click)="openAvatarDialog(); $event.stopPropagation()" referrerpolicy="no-referrer" >
             }
             @if (changeAvatar){
             <img class="profile-img" [src]="thisAvatar" alt="Profile Image" (click)="$event.stopPropagation()">
             <div class="change-avatar"  (click)="$event.stopPropagation()">
                 <div class="avatar-list">
-                    <button (click)="changeUserAvatar(0)"><img src="assets/img/avatar-1.jpg" alt=""></button>
-                    <button (click)="changeUserAvatar(1)"><img src="assets/img/avatar-2.jpg" alt=""></button>
-                    <button (click)="changeUserAvatar(2)"><img src="assets/img/avatar-3.jpg" alt=""></button>
-                    <button (click)="changeUserAvatar(3)"><img src="assets/img/avatar-4.jpg" alt=""></button>
-                    <button (click)="changeUserAvatar(4)"><img src="assets/img/avatar-5.jpg" alt=""></button>
-                    <button (click)="changeUserAvatar(5)"><img src="assets/img/avatar-6.jpg" alt=""></button>
+                    <button type="button" (click)="changeUserAvatar(0)"><img src="assets/img/avatar-1.jpg" alt=""></button>
+                    <button type="button" (click)="changeUserAvatar(1)"><img src="assets/img/avatar-2.jpg" alt=""></button>
+                    <button type="button" (click)="changeUserAvatar(2)"><img src="assets/img/avatar-3.jpg" alt=""></button>
+                    <button type="button" (click)="changeUserAvatar(3)"><img src="assets/img/avatar-4.jpg" alt=""></button>
+                    <button type="button" (click)="changeUserAvatar(4)"><img src="assets/img/avatar-5.jpg" alt=""></button>
+                    <button type="button" (click)="changeUserAvatar(5)"><img src="assets/img/avatar-6.jpg" alt=""></button>
                 </div>
                 <div class="j-left upload-container">
                     <input type="file" #fileInput style="display: none" (change)="uploadAvatar($event)">
-                    <button (click)="fileInput.click()" class="btn-secondary fs-18">Bild Hochladen</button>
+                    <button type="button" (click)="fileInput.click()" class="btn-secondary fs-18">Bild Hochladen</button>
                 </div>
             </div>
             }
@@ -59,7 +59,7 @@
                     <div class="email-label fs-20">Vollständiger Name</div>
                 </div>
                 <div class="input-field fs-18 change-name">
-                    <input class="change-name" type="text" formControlName="name" placeholder={{userService.currentUser?.name}}>
+                    <input #name class="change-name" type="text" formControlName="name" [placeholder]="userService.currentUser?.name">
                 </div>
             </div>
 
@@ -79,14 +79,21 @@
                     <div class="email-label fs-20">E-Mail-Adresse</div>
                 </div>
 
-                <!-- <div class="input-field fs-18"> -->
-                    <!-- <input type="email" formControlName="email" [placeholder]="emailPlaceholder()"> -->
-                    <div class="email-address fs-18">{{ isOwnProfile() ? userService.currentUser.email : user?.email }}</div>
-                <!-- </div> -->
+                <div class="input-field fs-18">
+                    <input #email type="email" formControlName="email" [placeholder]="emailPlaceholder()">
+                </div>
+                @if(email.value != userService.currentUser.email) {
+                <p class="info">
+                    Die Änderung deiner Email-Adresse muss verifiziert werden.<br>
+                    Hierfür senden wir dir nach der Bestätigung einen Link an deine neue Email-Adresse.
+                    @if(changeFromGmail()) {
+                        <br>Ändere im Anschluss das Passwort wenn du von Login mit Google wechselst.
+                    }
+                </p>    
+                }
                 @if (emailExists) {
                 <p class="errorMsg">Email existiert bereits</p>
                 }
-
             </div>
         </div>
 
@@ -94,7 +101,7 @@
             <button class="btn-secondary fs-18" [mat-dialog-close]>
                 Abbrechen
             </button>
-            <button type="submit" class="btn-primary fs-18" [disabled]="!editForm.valid">
+            <button type="submit" class="btn-primary fs-18" [disabled]="!editForm.valid || ((name.value == userService.currentUser.name) && (email.value == userService.currentUser.email) && (!imageChanged))">
                 Speichern
             </button>
         </div>
