@@ -93,8 +93,8 @@ export class EditMessageComponent {
   }
 
 
-  formatTagForSave(text : string) {
-    const regex = new RegExp(/<app-profile-button[^>]*><button[^>]*ng-reflect-user-id="([^"]+)"[^>]*>[^<]*<\/button><\/app-profile-button>/g)
+  formatTagForSave(text: string) {
+    const regex = new RegExp(/<app-profile-button[^>]*><button[^>]*data-user-id="([^"]+)"[^>]*>[^<]*<\/button><\/app-profile-button>/g);
     const formattedText = text.replace(regex, '@$1');
     return formattedText;
   }

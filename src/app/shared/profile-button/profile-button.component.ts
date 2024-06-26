@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, Renderer2 } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, Renderer2 } from '@angular/core';
 import { OpenProfileDirective } from '../directives/open-profile.directive';
 
 @Component({
@@ -10,14 +10,15 @@ import { OpenProfileDirective } from '../directives/open-profile.directive';
 })
 export class ProfileButtonComponent {
 
-  constructor(private el: ElementRef, private renderer: Renderer2) { }
+  constructor(private el: ElementRef, private renderer: Renderer2, private cdRef: ChangeDetectorRef) { }
 
-  @Input() userId: string = '';
+  @Input() userId!: string;
   @Input() userName!: string;
 
   ngOnInit(): void {
     this.renderer.setAttribute(this.el.nativeElement, 'contenteditable', 'false');
     this.renderer.addClass(this.el.nativeElement, 'tag');
+    this.cdRef.detectChanges();
   }
 
 }
