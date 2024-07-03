@@ -40,7 +40,7 @@
             @for(user of newlyAddedUsers; track user.id) {
             <div class="channel-member" #profileBtn (click)="openUserProfile(user.id, profileBtn)">
                 <div class="profile-img-container">
-                    <img [src]="user.profile_img" alt="" class="profile-img">
+                    <img [src]="user.profile_img" alt="" class="profile-img" referrerpolicy="no-referrer" >
                     @if (!user.logged_in){
                     <div class="online-status-wborder offline"></div>
                     }
@@ -78,7 +78,7 @@
                     @for(user of filteredUsers; track user.id) {
                     <div class="user" (click)="onSelectUser(user)">
                         <div class="user-img-container">
-                            <img [src]="user.profile_img" alt="" class="profile-img" />
+                            <img [src]="user.profile_img" alt="" class="profile-img" referrerpolicy="no-referrer" />
                             @if (!user.logged_in){
                             <div class="online-status-wborder offline"></div>
                             }

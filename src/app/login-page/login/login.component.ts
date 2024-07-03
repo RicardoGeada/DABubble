@@ -27,6 +27,7 @@ export class LoginComponent {
   iconSrc = 'assets/img/mail.png';
   passwSrc = 'assets/img/lock.png';
   oobCode: string = '';
+  infoText: string = 'Wir empfehlen dir, die E-Mail-Adresse zu nutzen, die du bei der Arbeit verwendest.';
 
   constructor(private userAuth: UserAuthService, 
     private userService: UserService,
@@ -36,8 +37,12 @@ export class LoginComponent {
   ) { }
 
 
-  ngonInit() {
+  ngOnInit() {
     this.error = false;
+    this.route.queryParams.subscribe((params) => {
+      const mode = params['mode'];
+      if (mode === 'verifyAndChangeEmail') this.infoText = 'Bitte logge dich mit deiner alten Email ein, um die Änderung deiner Email-Adresse zu akzeptieren.';
+    })
   }
 
 
@@ -62,7 +67,8 @@ export class LoginComponent {
     this.isLoading = false;
     this.userService.updateOnlineStatus(this.userService.currentUser.id, true);
     localStorage.setItem('currentUser', JSON.stringify(this.userService.currentUser));
-    this.navigateToMainPage();
+    // this.navigateToMainPage();
+    this.handleNavigation();
   }
 
 
@@ -89,6 +95,15 @@ export class LoginComponent {
     });
   }
 
+
+  handleNavigation() {
+    this.route.queryParams.subscribe((params) => {
+      const mode = params['mode'];
+      const oobCode = params['oobCode'];
+      if((mode === 'verifyAndChangeEmail' || mode === 'recoverEmail') && oobCode) this.router.navigate(['/auth-email'], { queryParams: { mode, oobCode } });
+      else this.navigateToMainPage();
+    })
+  }
 
   navigateToMainPage() {
     this.router.navigate(['/main-page']);

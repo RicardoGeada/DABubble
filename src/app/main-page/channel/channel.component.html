@@ -39,7 +39,7 @@
           @for(member of channelService.currentChannel.members; track member; let index = $index) {
           @if(index
           < 3) { <img src="{{ userService.getUser(member)?.profile_img }}" alt="profile-img"
-            class="profile-img-wborder" />
+            class="profile-img-wborder" referrerpolicy="no-referrer" />
           }
           }
         </div>
@@ -68,7 +68,7 @@
   <div class="channel-header-direct">
     <div #profileBtn appOpenProfile [userId]="getDirectChannelUser().id" [button]="profileBtn" class="channel-member">
       <div class="profile-img-container">
-        <img src="{{ getDirectChannelUser()?.profile_img }}" alt="" class="profile-img" />
+        <img src="{{ getDirectChannelUser()?.profile_img }}" alt="" class="profile-img" referrerpolicy="no-referrer" />
         <div class="online-status-wborder" [ngClass]="getDirectChannelUser()?.logged_in ? 'online' : 'offline'"></div>
       </div>
       <div class="channel-member-name fs-24">{{ getDirectChannelUser()?.name }}</div>
@@ -166,7 +166,7 @@
       @if (channelService.currentChannel.members.length == 2 && channelService.currentChannel.members[0] != channelService.currentChannel.members[1]) {
       <div class="channel-info-container">
         <div class="channel-name-container">
-          <img src="{{ getDirectChannelUser()?.profile_img }}" alt="" class="profile-img w100">
+          <img src="{{ getDirectChannelUser()?.profile_img }}" alt="" class="profile-img w100" referrerpolicy="no-referrer" >
           <div class="channel-name fs-24">{{ getDirectChannelUser()?.name }}</div>
         </div>
         <div class="channel-info fs-20">
@@ -180,7 +180,7 @@
       || channelService.currentChannel.members.length == 1) {
       <div class="channel-info-container">
         <div class="channel-name-container">
-          <img src="{{ currentUser.profile_img }}" alt="" class="profile-img w100">
+          <img src="{{ currentUser.profile_img }}" alt="" class="profile-img w100" referrerpolicy="no-referrer" >
           <div class="channel-name fs-24">{{ currentUser.name }} (Du)</div>
         </div>
         <div class="channel-info fs-20">

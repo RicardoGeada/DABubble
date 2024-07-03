@@ -40,18 +40,6 @@ export class LoginPageComponent {
   }
 
 
-  ngOnInit(): void {
-    if (this.router.url.includes('/login-page/email-reset')) {
-      this.oobCode = this.route.snapshot.queryParams['oobCode'];
-      if (this.oobCode) {
-        this.userAuth.handleActionCode(this.oobCode);
-      }
-    } else {
-      this.router.navigate(['login-page/login']);
-    }
-  }
-
-
   resetUser(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.removeItem('currentUser');

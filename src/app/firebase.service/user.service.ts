@@ -243,4 +243,11 @@ export class UserService implements OnDestroy {
       }, observer.error);
     });
   }
+
+
+  async recoverEmail(currentEmail: string, restoredEmail: string) {
+    const user = this.allUsers.find((user) => user.email == currentEmail);
+    if (user) await this.updateUserEmail(user.id, restoredEmail);
+  }
+
 }

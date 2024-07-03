@@ -56,7 +56,7 @@
                 <div class="channel-member" [class.selected]="user?.id === selectedUserId"
                     (click)="openDirectChannelMobile(user?.id)">
                     <div class="profile-img-container">
-                        <img [src]="user.profile_img" alt="" class="profile-img">
+                        <img [src]="user.profile_img" alt="" class="profile-img" referrerpolicy="no-referrer" >
                         <div class="online-status-wborder" [ngClass]="user.logged_in ? 'online' : 'offline'"></div>
                     </div>
 
@@ -76,7 +76,7 @@
                 <div class="channel-member" [class.selected]="userService.currentUser?.id === selectedUserId"
                     (click)="openDirectChannel(userService.currentUser?.id)">
                     <div class="profile-img-container">
-                        <img [src]="userService.currentUser?.profile_img" alt="" class="profile-img">
+                        <img [src]="userService.currentUser?.profile_img" alt="" class="profile-img" referrerpolicy="no-referrer" >
                         <div class="online-status-wborder online"></div>
                     </div>
                     <div class="channel-member-name fs-18">
@@ -92,7 +92,7 @@
                 <div class="channel-member" [class.selected]="user?.id === selectedUserId"
                     (click)="openDirectChannel(user?.id)">
                     <div class="profile-img-container">
-                        <img [src]="user.profile_img" alt="" class="profile-img">
+                        <img [src]="user.profile_img" alt="" class="profile-img" referrerpolicy="no-referrer" >
                         <div class="online-status-wborder" [ngClass]="user.logged_in ? 'online' : 'offline'"></div>
                     </div>
 

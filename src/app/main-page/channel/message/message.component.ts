@@ -62,6 +62,7 @@ export class MessageComponent {
   editMessage: boolean = false;
   tagText: string = '';
   preventEditClose: boolean = false;
+  editEmojiPickerOpen: boolean = false;
 
   constructor(
     public messageService: MessageService,
@@ -112,7 +113,7 @@ export class MessageComponent {
 
   documentClickHandler = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
-    if (!this.messageElem.nativeElement.contains(target) && this.editMessage && !this.preventEditClose) {
+    if (!this.messageElem.nativeElement.contains(target) && this.editMessage && !this.preventEditClose && !this.editEmojiPickerOpen) {
       this.closeEdit();
     }
     this.preventEditClose = false;
@@ -276,6 +277,10 @@ export class MessageComponent {
   closeEdit() {
     this.editMessage = false;
     this.showMoreOptions = false;
+  }
+
+  editEmojiPickerState(boolean: boolean) {
+    this.editEmojiPickerOpen = boolean;
   }
 
 
