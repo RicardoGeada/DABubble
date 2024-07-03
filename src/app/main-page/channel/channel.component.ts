@@ -234,11 +234,10 @@ export class ChannelComponent {
 
 
   getDateFormat(dateInput: number) {
-
     let d = new Date(dateInput);
     let date = d.getDate();
     let day: number | string = d.getDay();
-    let month: number | string = d.getMonth() + 1;
+    let month: number | string = d.getMonth();
     day = this.weekdays[day];
     month = this.months[month];
     let result = day + ',' + ' ' + date + ' ' + month;
